@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-10T11:48:26.502857",
+  "generated_at": "2026-07-10T14:14:14.427910",
   "summary": {
-    "total_api_requests": 3,
+    "total_api_requests": 2,
     "successful_api_requests": 2,
-    "failed_api_requests": 1,
-    "avg_api_latency_ms": 1.89,
+    "failed_api_requests": 0,
+    "avg_api_latency_ms": 10.13,
     "total_llm_calls": 0,
     "successful_llm_calls": 0,
     "total_tokens_used": 0,
@@ -18,41 +18,30 @@
   "tool_call_breakdown": {},
   "api_endpoint_breakdown": {
     "/docs": 1,
-    "/openapi.json": 1,
-    "/me": 1
+    "/openapi.json": 1
   },
   "error_breakdown": {},
   "raw": {
     "api_requests": [
       {
-        "timestamp": "2026-07-10T11:47:15.731745",
+        "timestamp": "2026-07-10T14:14:14.340743",
         "type": "api_request",
         "endpoint": "/docs",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 0.39,
+        "duration_ms": 1.63,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-10T11:47:16.007464",
+        "timestamp": "2026-07-10T14:14:14.427599",
         "type": "api_request",
         "endpoint": "/openapi.json",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 3.32,
+        "duration_ms": 18.64,
         "user_role": "unknown",
         "success": true
-      },
-      {
-        "timestamp": "2026-07-10T11:48:26.502129",
-        "type": "api_request",
-        "endpoint": "/me",
-        "method": "GET",
-        "status_code": 401,
-        "duration_ms": 1.95,
-        "user_role": "unknown",
-        "success": false
       }
     ],
     "llm_calls": [],

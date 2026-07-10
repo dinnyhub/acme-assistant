@@ -10,6 +10,8 @@ from app.metrics import log_api_request, log_error, get_metrics_summary
 from app.auth.auth import get_current_user, require_role
 from app.database import get_customer_by_name
 
+from app.api.routes import router
+
 load_dotenv()
 logger = get_logger(__name__)
 
@@ -41,7 +43,10 @@ async def log_requests(request: Request, call_next):
     )
     return response
 
-@app.get("/")
+# Include API routes
+app.include_router(router, prefix="/api")
+
+@app.get("/", tags = ["System"], summary="Root endpoint")
 async def root():
     logger.info("Root endpoint called")
     return {
@@ -50,11 +55,11 @@ async def root():
         "status": "running"
     }
 
-@app.get("/health")
+@app.get("/health", tags = ["System"], summary="Health check endpoint")
 async def health():
     return {"status": "healthy"}
 
-@app.get("/metrics")
+@app.get("/metrics", tags = ["Monitoring"], summary="Get real-time metrics for API requests, LLM calls, tool calls, MCP calls and errors")
 async def metrics():
     """
     Power BI connects to this endpoint to get all monitoring data.
@@ -63,7 +68,7 @@ async def metrics():
     """
     return get_metrics_summary()
 
-@app.get("/me")
+@app.get("/me", tags = ["Auth"], summary="Get current user info from Keycloak token")
 async def get_me(user: dict = Depends(get_current_user)):
     """
     Returns current user info from their Keycloak token.
@@ -75,7 +80,7 @@ async def get_me(user: dict = Depends(get_current_user)):
         "email": user["email"]
     }
 
-@app.get("/customers/{name}")
+@app.get("/customers/{name}", tags=["Customers"], summary="Get customer by name")
 async def get_customer(
     name: str,
     user: dict = Depends(get_current_user)
