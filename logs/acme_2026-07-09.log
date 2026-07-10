@@ -1,0 +1,10 @@
+2026-07-09 22:35:18 | INFO | app.main | Root endpoint called
+2026-07-09 22:35:18 | INFO | app.metrics | API | GET / | 200 | 1.87ms | role=unknown
+2026-07-09 22:35:18 | INFO | app.metrics | API | GET /favicon.ico | 404 | 0.25ms | role=unknown
+2026-07-09 22:35:26 | INFO | app.metrics | API | GET /docs | 200 | 0.21ms | role=unknown
+2026-07-09 22:35:26 | INFO | app.metrics | API | GET /openapi.json | 200 | 1.66ms | role=unknown
+2026-07-10 11:18:20 | INFO | app.metrics | API | GET /docs | 200 | 0.97ms | role=unknown
+2026-07-10 11:18:20 | INFO | app.metrics | API | GET /openapi.json | 200 | 0.21ms | role=unknown
+2026-07-10 11:19:50 | INFO | app.main | Root endpoint called
+2026-07-10 11:19:50 | INFO | app.metrics | API | GET / | 200 | 1.38ms | role=unknown
+2026-07-10 11:20:09 | INFO | app.metrics | API | GET /health | 200 | 1.79ms | role=unknown
