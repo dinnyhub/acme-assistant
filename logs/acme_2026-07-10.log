@@ -1,0 +1,3 @@
+2026-07-10 11:47:15 | INFO | app.metrics | API | GET /docs | 200 | 0.39ms | role=unknown
+2026-07-10 11:47:16 | INFO | app.metrics | API | GET /openapi.json | 200 | 3.32ms | role=unknown
+2026-07-10 11:48:26 | INFO | app.metrics | API | GET /me | 401 | 1.95ms | role=unknown

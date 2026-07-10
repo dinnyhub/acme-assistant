@@ -1,10 +1,14 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, Request, HTTPException, Depends
 from dotenv import load_dotenv
 import time
 
 from app.logger import get_logger
 from app.metrics import log_api_request, log_error, get_metrics_summary
+
+from app.auth.auth import get_current_user, require_role
+from app.database import get_customer_by_name
 
 load_dotenv()
 logger = get_logger(__name__)
@@ -58,3 +62,29 @@ async def metrics():
     tool calls, MCP calls and errors.
     """
     return get_metrics_summary()
+
+@app.get("/me")
+async def get_me(user: dict = Depends(get_current_user)):
+    """
+    Returns current user info from their Keycloak token.
+    Any authenticated user can call this.
+    """
+    return {
+        "username": user["username"],
+        "roles": user["roles"],
+        "email": user["email"]
+    }
+
+@app.get("/customers/{name}")
+async def get_customer(
+    name: str,
+    user: dict = Depends(get_current_user)
+):
+    """
+    Get customer by name.
+    All authenticated users can access this.
+    """
+    customer = get_customer_by_name(name)
+    if not customer:
+        raise HTTPException(status_code=404, detail="Customer not found")
+    return customer
