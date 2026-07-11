@@ -53,7 +53,7 @@ def execute_write(query: str, params: tuple | None = None) -> bool:
         cursor = conn.cursor()
         cursor.execute(query, params)
         conn.commit()
-        logger.info(f"Write query executed successfully")
+        logger.info("Write query executed successfully")
         return True
     except Exception as e:
         if conn:

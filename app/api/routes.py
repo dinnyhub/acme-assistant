@@ -3,17 +3,16 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from app.auth.auth import get_current_user, require_role, get_user_role
 from app.agent.agent import run_agent
-from app.metrics import log_api_request, log_error
+from app.metrics import log_error
 from app.logger import get_logger
+from app.mcp_server.server import mcp_server
 
 logger = get_logger(__name__)
 router = APIRouter()
 
-
 # ── Request/Response models ───────────────────────────────────────
 class QueryRequest(BaseModel):
     query: str
-
 
 class QueryResponse(BaseModel):
     response: str
@@ -21,6 +20,9 @@ class QueryResponse(BaseModel):
     role: str
     duration_ms: float
 
+class MCPToolRequest(BaseModel):
+    tool_name: str
+    arguments: dict
 
 # ── Routes ────────────────────────────────────────────────────────
 @router.post("/query", response_model=QueryResponse, tags=["Agent"], summary="Send a query to the AI agent")
@@ -129,3 +131,33 @@ async def update_issue_status(
     from app.database import update_issue_status
     success = update_issue_status(issue_id, new_status)
     return {"success": success, "message": f"Status updated to {new_status}"}
+
+# ── MCP routes ────────────────────────────────────────────────────
+@router.get("/mcp/tools",
+    tags=["MCP Server"],
+    summary="List all available MCP tools"
+)
+async def list_mcp_tools(
+    user: dict = Depends(get_current_user)
+):
+    """
+    Returns all tools registered on the MCP server.
+    This is how the agent discovers what tools are available.
+    """
+    return mcp_server.list_tools()
+
+
+@router.post("/mcp/call",
+    tags=["MCP Server"],
+    summary="Call an MCP tool directly"
+)
+async def call_mcp_tool(
+    request: MCPToolRequest,
+    user: dict = Depends(get_current_user)
+):
+    """
+    Directly call an MCP tool by name with arguments.
+    Used for testing and direct tool access.
+    """
+    result = mcp_server.call_tool(request.tool_name, request.arguments)
+    return result

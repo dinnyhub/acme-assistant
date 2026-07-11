@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-10T14:14:14.427910",
+  "generated_at": "2026-07-10T14:17:24.177543",
   "summary": {
-    "total_api_requests": 2,
+    "total_api_requests": 3,
     "successful_api_requests": 2,
-    "failed_api_requests": 0,
-    "avg_api_latency_ms": 10.13,
+    "failed_api_requests": 1,
+    "avg_api_latency_ms": 7.96,
     "total_llm_calls": 0,
     "successful_llm_calls": 0,
     "total_tokens_used": 0,
@@ -18,7 +18,8 @@
   "tool_call_breakdown": {},
   "api_endpoint_breakdown": {
     "/docs": 1,
-    "/openapi.json": 1
+    "/openapi.json": 1,
+    "/api/query": 1
   },
   "error_breakdown": {},
   "raw": {
@@ -42,6 +43,16 @@
         "duration_ms": 18.64,
         "user_role": "unknown",
         "success": true
+      },
+      {
+        "timestamp": "2026-07-10T14:17:24.176906",
+        "type": "api_request",
+        "endpoint": "/api/query",
+        "method": "POST",
+        "status_code": 401,
+        "duration_ms": 3.62,
+        "user_role": "unknown",
+        "success": false
       }
     ],
     "llm_calls": [],

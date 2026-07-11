@@ -1,15 +1,12 @@
-from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, Request, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import time
 
 from app.logger import get_logger
-from app.metrics import log_api_request, log_error, get_metrics_summary
-
-from app.auth.auth import get_current_user, require_role
+from app.metrics import log_api_request, get_metrics_summary
+from app.auth.auth import get_current_user
 from app.database import get_customer_by_name
-
 from app.api.routes import router
 
 load_dotenv()

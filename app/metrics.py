@@ -1,6 +1,5 @@
 import json
 import os
-import time
 from datetime import datetime
 from app.logger import get_logger
 

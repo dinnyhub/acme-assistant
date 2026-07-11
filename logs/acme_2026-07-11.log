@@ -1,0 +1,5 @@
+2026-07-11 08:39:59 | INFO | app.mcp_server.server | MCP Server initialised | tools=['get_customer_profile', 'get_open_issues', 'get_issue_history', 'get_next_actions', 'create_next_action']
+2026-07-11 08:40:21 | INFO | app.mcp_server.server | MCP Server initialised | tools=['get_customer_profile', 'get_open_issues', 'get_issue_history', 'get_next_actions', 'create_next_action']
+2026-07-11 08:40:39 | INFO | app.mcp_server.server | MCP Server initialised | tools=['get_customer_profile', 'get_open_issues', 'get_issue_history', 'get_next_actions', 'create_next_action']
+2026-07-11 08:41:38 | INFO | app.mcp_server.server | MCP Server initialised | tools=['get_customer_profile', 'get_open_issues', 'get_issue_history', 'get_next_actions', 'create_next_action']
+2026-07-11 08:42:00 | INFO | app.mcp_server.server | MCP Server initialised | tools=['get_customer_profile', 'get_open_issues', 'get_issue_history', 'get_next_actions', 'create_next_action']

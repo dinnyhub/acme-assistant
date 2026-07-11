@@ -3,7 +3,6 @@ from app.database import (
     get_customer_by_name,
     get_open_issues,
     get_issue_history,
-    get_next_actions,
     create_next_action,
     update_issue_status
 )
@@ -114,7 +113,7 @@ def tool_create_next_action(
         }
 
     try:
-        success = create_next_action(
+        create_next_action(
             issue_id, action_text, assigned_to, due_date
         )
         duration = (time.time() - start) * 1000
@@ -162,7 +161,7 @@ def tool_update_issue_status(
         return {"error": f"Invalid status. Must be one of: {valid_statuses}"}
 
     try:
-        success = update_issue_status(issue_id, new_status)
+        update_issue_status(issue_id, new_status)
         duration = (time.time() - start) * 1000
         log_tool_call("update_issue_status",
                      {"issue_id": issue_id, "status": new_status},
