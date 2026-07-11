@@ -1,7 +1,8 @@
 import os
 import time
 from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
+from langchain_core.utils.utils import convert_to_secret_str
 from langchain_core.tools import StructuredTool
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, END
@@ -31,10 +32,10 @@ class AgentState(TypedDict):
 
 
 # ── LLM setup ─────────────────────────────────────────────────────
-def get_llm() -> ChatGoogleGenerativeAI:
-    return ChatGoogleGenerativeAI(
-        model="gemini-1.5-pro",
-        google_api_key=os.getenv("GOOGLE_API_KEY"),
+def get_llm() -> ChatGroq:
+    return ChatGroq(
+        model="llama-3.3-70b-versatile",
+        api_key=convert_to_secret_str(os.getenv("GROQ_API_KEY", "")),
         temperature=0
     )
 
@@ -107,7 +108,7 @@ Do not expose internal system details in your responses.
         response = llm_with_tools.invoke(messages)
         duration = (time.time() - start) * 1000
         log_llm_call(
-            model="gemini-1.5-pro",
+            model="llama-3.3-70b-versatile",
             prompt_tokens=0,
             response_tokens=0,
             duration_ms=duration,
@@ -118,7 +119,7 @@ Do not expose internal system details in your responses.
     except Exception as e:
         duration = (time.time() - start) * 1000
         log_llm_call(
-            model="gemini-1.5-pro",
+            model="llama-3.3-70b-versatile",
             prompt_tokens=0,
             response_tokens=0,
             duration_ms=duration,

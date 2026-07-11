@@ -1,63 +1,116 @@
 {
-  "generated_at": "2026-07-10T14:17:24.177543",
+  "generated_at": "2026-07-11T09:01:43.791429",
   "summary": {
-    "total_api_requests": 3,
-    "successful_api_requests": 2,
+    "total_api_requests": 2,
+    "successful_api_requests": 1,
     "failed_api_requests": 1,
-    "avg_api_latency_ms": 7.96,
-    "total_llm_calls": 0,
-    "successful_llm_calls": 0,
+    "avg_api_latency_ms": 763.7,
+    "total_llm_calls": 3,
+    "successful_llm_calls": 3,
     "total_tokens_used": 0,
-    "avg_llm_latency_ms": 0,
-    "total_tool_calls": 0,
-    "successful_tool_calls": 0,
+    "avg_llm_latency_ms": 375.39,
+    "total_tool_calls": 2,
+    "successful_tool_calls": 2,
     "total_mcp_calls": 0,
     "successful_mcp_calls": 0,
-    "total_errors": 0
+    "total_errors": 1
   },
-  "tool_call_breakdown": {},
+  "tool_call_breakdown": {
+    "get_customer_profile": 1,
+    "get_open_issues": 1
+  },
   "api_endpoint_breakdown": {
-    "/docs": 1,
-    "/openapi.json": 1,
-    "/api/query": 1
+    "/api/query": 2
   },
-  "error_breakdown": {},
+  "error_breakdown": {
+    "JWTError": 1
+  },
   "raw": {
     "api_requests": [
       {
-        "timestamp": "2026-07-10T14:14:14.340743",
-        "type": "api_request",
-        "endpoint": "/docs",
-        "method": "GET",
-        "status_code": 200,
-        "duration_ms": 1.63,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-10T14:14:14.427599",
-        "type": "api_request",
-        "endpoint": "/openapi.json",
-        "method": "GET",
-        "status_code": 200,
-        "duration_ms": 18.64,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-10T14:17:24.176906",
+        "timestamp": "2026-07-11T09:01:06.003866",
         "type": "api_request",
         "endpoint": "/api/query",
         "method": "POST",
         "status_code": 401,
-        "duration_ms": 3.62,
+        "duration_ms": 64.3,
         "user_role": "unknown",
         "success": false
+      },
+      {
+        "timestamp": "2026-07-11T09:01:43.791341",
+        "type": "api_request",
+        "endpoint": "/api/query",
+        "method": "POST",
+        "status_code": 200,
+        "duration_ms": 1463.11,
+        "user_role": "unknown",
+        "success": true
       }
     ],
-    "llm_calls": [],
-    "tool_calls": [],
+    "llm_calls": [
+      {
+        "timestamp": "2026-07-11T09:01:43.080359",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 656.24,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-11T09:01:43.422625",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 128.13,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-11T09:01:43.789880",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 341.79,
+        "success": true,
+        "error": null
+      }
+    ],
+    "tool_calls": [
+      {
+        "timestamp": "2026-07-11T09:01:43.293415",
+        "type": "tool_call",
+        "tool_name": "get_customer_profile",
+        "duration_ms": 211.08,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-11T09:01:43.447337",
+        "type": "tool_call",
+        "tool_name": "get_open_issues",
+        "duration_ms": 23.48,
+        "success": true,
+        "error": null
+      }
+    ],
     "mcp_calls": [],
-    "errors": []
+    "errors": [
+      {
+        "timestamp": "2026-07-11T09:01:06.003247",
+        "type": "error",
+        "source": "auth",
+        "error_type": "JWTError",
+        "message": "Signature has expired.",
+        "user_role": "unknown"
+      }
+    ]
   }
 }
