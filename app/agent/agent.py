@@ -17,7 +17,7 @@ from app.agent.tools import (
     tool_create_next_action,
     tool_update_issue_status
 )
-from app.metrics import log_llm_call
+from app.metrics import log_llm_call, log_agent_event
 from app.logger import get_logger
 
 load_dotenv()
@@ -169,21 +169,51 @@ async def run_agent(
     user_role: str = "sales_user",
     username: str = "unknown"
 ) -> str:
+    start = time.time()
     logger.info(
         f"Agent query | user={username} | role={user_role} | query={query[:50]}"
     )
 
-    agent = build_agent(user_role, username)
+    try:
+        agent = build_agent(user_role, username)
+        initial_state: AgentState = {
+            "messages": [HumanMessage(content=query)],
+            "user_role": user_role,
+            "username": username
+        }
+        result = await agent.ainvoke(initial_state)  # type: ignore
+        final_message = result["messages"][-1]
 
-    initial_state: AgentState = {
-        "messages": [HumanMessage(content=query)],
-        "user_role": user_role,
-        "username": username
-    }
+        # Count how many tool calls were made
+        tools_called = [
+            m.name for m in result["messages"]
+            if hasattr(m, "name") and m.name is not None
+        ]
 
-    result = await agent.ainvoke(initial_state)  # type: ignore
-    final_message = result["messages"][-1]
+        duration = (time.time() - start) * 1000
+        log_agent_event(
+            event_type="agent_completed",
+            username=username,
+            user_role=user_role,
+            query_preview=query,
+            duration_ms=duration,
+            success=True,
+            tools_called=tools_called
+        )
 
-    if hasattr(final_message, "content"):
-        return final_message.content
-    return str(final_message)
+        if hasattr(final_message, "content"):
+            return final_message.content
+        return str(final_message)
+
+    except Exception as e:
+        duration = (time.time() - start) * 1000
+        log_agent_event(
+            event_type="agent_failed",
+            username=username,
+            user_role=user_role,
+            query_preview=query,
+            duration_ms=duration,
+            success=False,
+            error=str(e)
+        )
+        raise

@@ -4,14 +4,17 @@ from datetime import datetime
 from app.logger import get_logger
 
 logger = get_logger(__name__)
-
+    
 metrics_store = {
     "api_requests": [],
     "agent_calls": [],
     "tool_calls": [],
     "mcp_calls": [],
     "llm_calls": [],
-    "errors": []
+    "errors": [],
+    "security_events": [],
+    "auth_events": [],
+    "database_events": []
 }
 
 def log_api_request(
@@ -151,8 +154,14 @@ def get_metrics_summary() -> dict:
             "llm_calls": llm_calls[-50:],
             "tool_calls": tool_calls[-50:],
             "mcp_calls": mcp_calls[-50:],
-            "errors": errors[-50:]
-        }
+            "errors": errors[-50:],
+            "security_events": metrics_store["security_events"][-50:],
+            "database_events": metrics_store["database_events"][-50:]  
+        },
+        "total_agent_calls": len(metrics_store["agent_calls"]),
+        "successful_agent_calls": sum(1 for r in metrics_store["agent_calls"] if r.get("success")),
+        "total_auth_events": len(metrics_store["security_events"]),
+        "total_database_events": len(metrics_store["database_events"]),
     }
 
 def _breakdown_by_field(items: list, field: str) -> dict:
@@ -166,3 +175,114 @@ def _save_metrics():
     os.makedirs("logs", exist_ok=True)
     with open("logs/metrics.json", "w") as f:
         json.dump(get_metrics_summary(), f, indent=2)
+
+def log_security_event(
+    event_type: str,
+    approval_id: str,
+    sensitive_data_types: list,
+    requested_by: str,
+    outcome: str,
+    approved_by: str | None = None
+):
+    """Log security events for Power BI monitoring."""
+    entry = {
+        "timestamp": datetime.now().isoformat(),
+        "type": "security_event",
+        "event_type": event_type,
+        "approval_id": approval_id,
+        "sensitive_data_types": sensitive_data_types,
+        "requested_by": requested_by,
+        "outcome": outcome,
+        "approved_by": approved_by
+    }
+    metrics_store["security_events"].append(entry)
+    logger.warning(
+        f"SECURITY | {event_type} | approval_id={approval_id} | "
+        f"types={sensitive_data_types} | requested_by={requested_by} | "
+        f"outcome={outcome} | approved_by={approved_by}"
+    )
+    _save_metrics()
+
+def log_agent_event(
+    event_type: str,
+    username: str,
+    user_role: str,
+    query_preview: str,
+    duration_ms: float,
+    success: bool,
+    tools_called: list | None = None,
+    error: str | None = None
+):
+    """Log agent start, end, and outcome for Power BI monitoring."""
+    entry = {
+        "timestamp": datetime.now().isoformat(),
+        "type": "agent_event",
+        "event_type": event_type,
+        "username": username,
+        "user_role": user_role,
+        "query_preview": query_preview[:100],
+        "duration_ms": round(duration_ms, 2),
+        "success": success,
+        "tools_called": tools_called or [],
+        "error": error
+    }
+    metrics_store["agent_calls"].append(entry)
+    logger.info(
+        f"AGENT | {event_type} | user={username} | "
+        f"role={user_role} | duration={duration_ms:.2f}ms | "
+        f"success={success} | tools={tools_called}"
+    )
+    _save_metrics()
+
+
+def log_auth_event(
+    event_type: str,
+    username: str,
+    user_role: str,
+    success: bool,
+    error: str | None = None
+):
+    """Log authentication and authorisation events for Power BI."""
+    entry = {
+        "timestamp": datetime.now().isoformat(),
+        "type": "auth_event",
+        "event_type": event_type,
+        "username": username,
+        "user_role": user_role,
+        "success": success,
+        "error": error
+    }
+    metrics_store["security_events"].append(entry)
+    logger.info(
+        f"AUTH | {event_type} | user={username} | "
+        f"role={user_role} | success={success}"
+    )
+    _save_metrics()
+
+
+def log_database_event(
+    operation: str,
+    table: str,
+    duration_ms: float,
+    rows_returned: int,
+    success: bool,
+    error: str | None = None
+):
+    """Log database operations for Power BI monitoring."""
+    entry = {
+        "timestamp": datetime.now().isoformat(),
+        "type": "database_event",
+        "operation": operation,
+        "table": table,
+        "duration_ms": round(duration_ms, 2),
+        "rows_returned": rows_returned,
+        "success": success,
+        "error": error
+    }
+    metrics_store["database_events"].append(entry)
+    logger.info(
+        f"DB | {operation} | table={table} | "
+        f"rows={rows_returned} | duration={duration_ms:.2f}ms | "
+        f"success={success}"
+    )
+    _save_metrics()

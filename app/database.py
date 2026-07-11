@@ -1,11 +1,30 @@
 import os
+import time
 import psycopg2
 import psycopg2.extras
 from dotenv import load_dotenv
 from app.logger import get_logger
+from app.metrics import log_database_event
 
 load_dotenv()
 logger = get_logger(__name__)
+
+def _extract_table_name(query: str) -> str:
+    """Extract table name from SQL query for logging."""
+    query_upper = query.upper().strip()
+    if "FROM" in query_upper:
+        parts = query_upper.split("FROM")
+        if len(parts) > 1:
+            return parts[1].strip().split()[0].lower()
+    if "INTO" in query_upper:
+        parts = query_upper.split("INTO")
+        if len(parts) > 1:
+            return parts[1].strip().split()[0].lower()
+    if "UPDATE" in query_upper:
+        parts = query_upper.split("UPDATE")
+        if len(parts) > 1:
+            return parts[1].strip().split()[0].lower()
+    return "unknown"
 
 def get_db_connection():
     """
@@ -22,10 +41,7 @@ def get_db_connection():
         raise
 
 def execute_query(query: str, params: tuple | None = None) -> list:
-    """
-    Executes a SELECT query and returns results as a list of dicts.
-    Every query is logged for observability.
-    """
+    start = time.time()
     conn = None
     try:
         conn = get_db_connection()
@@ -33,9 +49,14 @@ def execute_query(query: str, params: tuple | None = None) -> list:
         cursor.execute(query, params)
         results = cursor.fetchall()
         results = [dict(row) for row in results]
+        duration = (time.time() - start) * 1000
+        table = _extract_table_name(query)
         logger.info(f"Query executed successfully | rows={len(results)}")
+        log_database_event("SELECT", table, duration, len(results), True)
         return results
     except Exception as e:
+        duration = (time.time() - start) * 1000
+        log_database_event("SELECT", "unknown", duration, 0, False, str(e))
         logger.error(f"Query failed: {e} | query={query}")
         raise
     finally:
@@ -43,27 +64,28 @@ def execute_query(query: str, params: tuple | None = None) -> list:
             conn.close()
 
 def execute_write(query: str, params: tuple | None = None) -> bool:
-    """
-    Executes an INSERT or UPDATE query.
-    Used for creating next actions and updating issues.
-    """
+    start = time.time()
     conn = None
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
         cursor.execute(query, params)
         conn.commit()
+        duration = (time.time() - start) * 1000
+        table = _extract_table_name(query)
         logger.info("Write query executed successfully")
+        log_database_event("WRITE", table, duration, 0, True)
         return True
     except Exception as e:
         if conn:
             conn.rollback()
+        duration = (time.time() - start) * 1000
+        log_database_event("WRITE", "unknown", duration, 0, False, str(e))
         logger.error(f"Write query failed: {e}")
         raise
     finally:
         if conn:
             conn.close()
-
 # ── Database query functions used by agent tools ──────────────────
 
 def get_customer_by_name(name: str) -> dict | None:

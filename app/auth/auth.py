@@ -5,7 +5,7 @@ from fastapi import HTTPException, Security, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from jose import jwt, JWTError
 from app.logger import get_logger
-from app.metrics import log_error
+from app.metrics import log_error, log_auth_event
 
 load_dotenv()
 logger = get_logger(__name__)
@@ -41,16 +41,34 @@ async def get_current_user(
         username = payload.get("preferred_username")
         roles = payload.get("realm_access", {}).get("roles", [])
         logger.info(f"User authenticated | username={username} | roles={roles}")
+        log_auth_event(
+            event_type="login_success",
+            username=username or "unknown",
+            user_role=str(roles),
+            success=True
+        )
         return {
             "username": username,
             "roles": roles,
             "email": payload.get("email"),
         }
     except JWTError as e:
-        log_error("auth", "JWTError", str(e))
+        log_auth_event(
+            event_type="login_failed",
+            username="unknown",
+            user_role="unknown",
+            success=False,
+            error=str(e)
+        )
         raise HTTPException(status_code=401, detail="Invalid or expired token")
     except Exception as e:
-        log_error("auth", "AuthError", str(e))
+        log_auth_event(
+            event_type="auth_error",
+            username="unknown",
+            user_role="unknown",
+            success=False,
+            error=str(e)
+        )
         raise HTTPException(status_code=401, detail="Authentication failed")
 
 
