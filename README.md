@@ -1,6 +1,6 @@
 # Acme Operations Assistant
 
-An agentic AI assistant for Acme Operations — built for the EY Future Development Engineer case study. The system enables internal staff to query customer data, manage support issues, and receive AI-powered escalation summaries through a secure, role-based conversational interface.
+An agentic AI assistant for Acme Operations — built for the EY Applied AI Engineer technical assessment. The system enables internal staff to query customer data, manage support issues, and receive AI-powered escalation summaries through a secure, role-based conversational interface.
 
 ---
 
@@ -48,9 +48,9 @@ open http://localhost:8502
 
 ```mermaid
 graph TD
-    User["👤 User Browser\nHTML Chat UI"] 
+    User["👤 User Browser\nHTML Chat UI"]
     Dashboard["📊 Developer Dashboard\nStreamlit :8502"]
-    
+
     User -->|HTTPS + JWT| FastAPI
     Dashboard -->|GET /metrics| FastAPI
 
@@ -105,16 +105,22 @@ The LangGraph agent dynamically selects tools based on user queries. It does not
 ### MCP Server
 A custom Python MCP (Model Context Protocol) server exposes the same tools in a standardised, reusable format. This separates tool definitions from agent logic — tools can be reused across different agents or called directly via the `/api/mcp/call` endpoint.
 
+The MCP server is implemented as a Python class within the application rather than a separate container. This is a deliberate trade-off — in production it would run as a separate containerised service for independent scaling and versioning.
+
+**Why MCP is useful here:** Without MCP, tool definitions are tightly coupled to the agent. With MCP, the same tool definitions can be consumed by any agent or called directly via API — making the system more modular and testable.
+
 ### Skills
 The Customer Escalation Summary Skill is a structured, repeatable workflow distinct from a one-off prompt call. It:
+
 1. Fetches customer data from PostgreSQL
-2. Calculates base risk level deterministically from issue priorities
+2. Calculates base risk level **deterministically** from issue priorities — no LLM needed for this step
 3. Identifies missing information without LLM involvement
 4. Calls the LLM only for the executive summary and recommendation
-5. Returns a structured `EscalationSummary` object with four outputs: executive summary, risk level (Low/Medium/High/Critical), recommended next action, and missing information
+5. Returns a structured `EscalationSummary` object with four outputs: executive summary, risk level (Low/Medium/High/Critical), recommended next action, and missing information identification
 
 ### Authentication — Keycloak
 Keycloak is a hard requirement. Every request must present a valid JWT bearer token. Three roles are enforced:
+
 - `sales_user` — read-only access to customer and issue data
 - `support_user` — read and update access for issues
 - `admin` — full access including creating next actions
@@ -125,28 +131,33 @@ The Keycloak realm is exported as `infra/keycloak/acme-realm.json` and auto-impo
 Before any query reaches the LLM, the system scans for sensitive data patterns (email, phone, credit card, bank account, NI number, passport, sort code, IP address).
 
 If detected:
-1. The request is held immediately and an approval ID is returned
+1. The request returns a 403 immediately with an approval ID
 2. The user sees a security alert in the UI
 3. The user can approve (Continue) or cancel (Edit Query)
 4. If approved — the query is logged with who approved it and when
-5. The query is sanitised (sensitive data redacted) before reaching the LLM
+5. The query proceeds with the original data — the user has accepted responsibility
+6. All approval events are logged to the audit trail and metrics
 
 This satisfies FCA human oversight requirements and GDPR data minimisation principles.
 
 ### Redis Memory
-Conversation history is stored in Redis with a 1-hour TTL. The agent receives the last 2 exchanges as context on each query, enabling follow-up questions without re-fetching data.
+Conversation history is stored in Redis with a 1-hour TTL. The agent receives the last 4 messages as context on each query, enabling follow-up questions without re-fetching data.
+
+**Redis vs PostgreSQL rationale:** Redis stores short-term conversation memory because it is optimised for fast key-value reads with automatic expiry — no cleanup jobs needed. PostgreSQL stores durable structured data (customers, issues, next actions) that must survive restarts and support complex queries. The two stores serve fundamentally different purposes — Redis for ephemeral session state, PostgreSQL for business data.
 
 ### Observability
 Two-layer observability:
 
 **1. Daily rotating log files** (`logs/acme_YYYY-MM-DD.log`)
 - Auto-delete after 7 days
-- Every API request, LLM call, tool call, auth event, security event logged
+- Every API request, LLM call, tool call, auth event, security event logged with timestamp
+- Full audit trail for compliance — approval ID, requester, approver, timestamp
 
 **2. Metrics endpoint** (`GET /metrics`)
 - Real-time JSON metrics for all system components
 - Power BI connects to this endpoint for production dashboards
 - Streamlit developer dashboard (`http://localhost:8502`) consumes the same endpoint for local development
+- Tracks: API requests, LLM calls, tool calls, agent events, MCP calls, database queries, auth events, security events
 
 ---
 
@@ -167,7 +178,7 @@ Two-layer observability:
 | Issues | `POST /api/issues/{id}/next-action` | Create next action (admin) |
 | Issues | `PUT /api/issues/{id}/status` | Update status (support/admin) |
 | MCP Server | `GET /api/mcp/tools` | List MCP tools |
-| MCP Server | `POST /api/mcp/call` | Call MCP tool |
+| MCP Server | `POST /api/mcp/call` | Call MCP tool directly |
 | Skills | `POST /api/skills/escalation/{name}` | Run escalation skill |
 | Security | `GET /api/security/pending-approvals` | Pending approvals (admin) |
 | Security | `POST /api/security/approve/{id}` | Approve query (admin) |
@@ -198,9 +209,9 @@ python eval/evaluation.py
 
 Results saved to `eval/results.json`.
 
-**Pass cases:** customer profile, open issues, issue history, status update, next action creation
+**Pass cases:** customer profile retrieval, open issues retrieval, issue history, status update by support_user, next action creation by admin
 
-**Fail cases:** RBAC denial (sales_user create), RBAC denial (sales_user update), RBAC denial (support_user create), customer not found, invalid status value
+**Fail cases:** RBAC denial (sales_user create next action), RBAC denial (sales_user update status), RBAC denial (support_user create next action), customer not found, invalid status value
 
 **Result: 10/10 — 100% pass rate**
 
@@ -211,17 +222,17 @@ Results saved to `eval/results.json`.
 **LLM: Groq llama-3.3-70b-versatile**
 Free tier with 100K daily tokens. In production this would use Azure OpenAI Service (GPT-4o) to keep all data within the Microsoft compliance boundary — satisfying FCA and GDPR requirements. The architecture is identical — only the LLM provider changes.
 
+**MCP server: integrated vs separate container**
+The MCP server runs as a Python class within the application rather than a separate container. This simplifies the Docker Compose setup and reduces operational complexity for a prototype. In production it would be a separate containerised service for independent scaling and versioning.
+
 **Keycloak: dev-file mode**
-Using `KC_DB: dev-file` for simplicity. In production Keycloak would use PostgreSQL as its database for persistence and high availability.
+Using `KC_DB: dev-file` for simplicity. The realm is exported as JSON and auto-imported on startup so no manual setup is needed. In production Keycloak would use PostgreSQL as its database for persistence and high availability.
 
 **Redis: in-memory metrics**
-Metrics are stored in application memory and reset on restart. In production metrics would be persisted to a time-series database (InfluxDB or Azure Monitor).
-
-**MCP server: custom Python class**
-Implemented as a Python class rather than a separate MCP process. In production the MCP server would run as a separate containerised service, enabling independent scaling and versioning.
+Metrics are stored in application memory and reset on restart. In production metrics would be persisted to a time-series database (InfluxDB or Azure Monitor) and the Redis metrics store would be replaced with a proper observability platform.
 
 **Sensitive data: regex-based detection**
-Pattern matching covers common UK financial data types. In production this would use a dedicated PII detection service (Azure AI Content Safety or AWS Comprehend) with ML-based detection.
+Pattern matching covers common UK financial data types (email, phone, credit card, NI number, bank account, sort code, passport, IP address). In production this would use a dedicated PII detection service (Azure AI Content Safety or AWS Comprehend) with ML-based detection for higher accuracy.
 
 ---
 
@@ -233,7 +244,13 @@ AI tools were used during development of this project:
 - **Groq llama-3.3-70b-versatile** — production LLM powering the agent reasoning, tool calling, and response generation
 - **Groq llama-3.1-8b-instant** — evaluation runs, chosen for higher daily token quota (500K vs 100K TPD)
 
-All code was reviewed, tested, and understood before inclusion. Architecture decisions, system design, and trade-off analysis are my own.
+**What was delegated to AI tools:** Code scaffolding, boilerplate generation, debugging suggestions, and documentation drafting were delegated to AI tools. This freed time for architecture decisions, system integration, and security design.
+
+**How code was reviewed and validated:** Every AI-generated function was read line by line, tested against real data, and validated with pyflakes for unused imports and type errors. Several errors were caught and corrected — including incorrect LangGraph API usage, wrong regex patterns for sensitive data detection, and session contamination bugs in the evaluation framework.
+
+**How errors and hallucinations were identified:** Running the application end-to-end against real data immediately exposed incorrect outputs. Type errors were caught by Pylance. Logic errors (such as the agent entering infinite loops when conversation history was passed incorrectly) were identified through log analysis.
+
+**What I would not trust AI to do without human oversight:** Security-critical decisions (RBAC logic, data sanitisation rules, approval flow design), architecture trade-offs, and anything requiring business context judgment. AI tools are strong at implementation — weak at knowing what to build and why. In a client engagement I would always design the security architecture myself and use AI only for implementation of well-specified components.
 
 ---
 
@@ -267,7 +284,7 @@ All code was reviewed, tested, and understood before inclusion. Architecture dec
 - `data_sanitiser.py` — Sensitive data detection and human-in-the-loop approval
 
 **app/static/** — Frontend
-- `index.html` — chat UI
+- `index.html` — ChatGPT-style chat UI
 
 **infra/** — Infrastructure configuration
 - `postgres/init.sql` — Database schema and seed data
@@ -281,4 +298,5 @@ All code was reviewed, tested, and understood before inclusion. Architecture dec
 - `docker-compose.yml` — Full stack orchestration
 - `Dockerfile` — Application container
 - `requirements.txt` — Python dependencies
+- `.env.example` — Environment variable template
 - `README.md` — This file
