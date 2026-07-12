@@ -1,11 +1,13 @@
 import streamlit as st
 import requests
+import pandas as pd
 import time
+from datetime import datetime
 
 API = "http://localhost:8000"
 
 st.set_page_config(
-    page_title="Acme - Developer Dashboard",
+    page_title="Acme Assistant — Developer Dashboard",
     page_icon="📊",
     layout="wide"
 )
@@ -15,188 +17,282 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
+    [data-testid="stMetricValue"] {
+        font-size: 1.8rem !important;
+        font-weight: 700 !important;
+    }
+    [data-testid="stMetricLabel"] {
+        font-size: 0.85rem !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
-st.title("Acme Assistant — Developer Dashboard")
-st.caption("Real-time monitoring of all system components")
 
-if st.button("Refresh"):
-    st.rerun()
+def fetch_metrics() -> dict:
+    try:
+        resp = requests.get(f"{API}/metrics", timeout=5)
+        if resp.status_code == 200:
+            return resp.json()
+        return {}
+    except Exception:
+        return {}
 
-try:
-    resp = requests.get(f"{API}/metrics")
-    data = resp.json()
-    s = data["summary"]
 
-    # ── Summary metrics ───────────────────────────────────────────
-    st.subheader("System Overview")
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric(
-            "API Requests",
-            s["total_api_requests"],
-            f"Avg {s['avg_api_latency_ms']}ms"
-        )
-    with col2:
-        st.metric(
-            "LLM Calls",
-            s["total_llm_calls"],
-            f"Avg {s['avg_llm_latency_ms']}ms"
-        )
-    with col3:
-        st.metric(
-            "Tool Calls",
-            s["total_tool_calls"],
-            f"{s['successful_tool_calls']} successful"
-        )
-    with col4:
-        st.metric(
-            "Errors",
-            s["total_errors"],
-            delta_color="inverse"
-        )
+# ── Header ─────────────────────────────────────────────────────────
+h1, h2 = st.columns([5, 1])
+with h1:
+    st.title("Acme Assistant — Developer Dashboard")
+    st.caption(f"Last updated: {datetime.now().strftime('%H:%M:%S')} — Auto refreshes every 30s")
+with h2:
+    st.write("")
+    if st.button("🔄 Refresh"):
+        st.rerun()
 
-    col5, col6, col7, col8 = st.columns(4)
-    with col5:
-        st.metric("Agent Calls", s.get("total_agent_calls", 0))
-    with col6:
-        st.metric("DB Queries", s.get("total_database_events", 0))
-    with col7:
-        st.metric("Auth Events", s.get("total_auth_events", 0))
-    with col8:
-        st.metric(
-            "Security Events",
-            s.get("total_security_events", 0),
-            f"{s.get('pending_approvals', 0)} pending"
-        )
+data = fetch_metrics()
 
-    st.divider()
+if not data:
+    st.error("Cannot connect to API at http://localhost:8000 — make sure the server is running")
+    st.stop()
 
-    # ── Breakdowns ────────────────────────────────────────────────
-    col1, col2 = st.columns(2)
-    with col1:
-        st.subheader("Tool Call Breakdown")
-        breakdown = data.get("tool_call_breakdown", {})
-        if breakdown:
-            for tool, count in sorted(
-                breakdown.items(), key=lambda x: x[1], reverse=True
-            ):
-                st.progress(
-                    count / max(breakdown.values()),
-                    text=f"`{tool}` — {count} calls"
-                )
-        else:
-            st.write("No tool calls yet")
+s = data.get("summary", {})
+raw = data.get("raw", {})
 
-    with col2:
-        st.subheader("API Endpoint Breakdown")
-        endpoints = data.get("api_endpoint_breakdown", {})
-        if endpoints:
-            for endpoint, count in sorted(
-                endpoints.items(), key=lambda x: x[1], reverse=True
-            ):
-                st.progress(
-                    count / max(endpoints.values()),
-                    text=f"`{endpoint}` — {count} requests"
-                )
-        else:
-            st.write("No API calls yet")
+total_api = s.get("total_api_requests", 0)
+avg_api_lat = s.get("avg_api_latency_ms", 0)
+success_api = s.get("successful_api_requests", 0)
+failed_api = s.get("failed_api_requests", 0)
+total_llm = s.get("total_llm_calls", 0)
+avg_llm_lat = s.get("avg_llm_latency_ms", 0)
+total_tools = s.get("total_tool_calls", 0)
+success_tools = s.get("successful_tool_calls", 0)
+total_errors = s.get("total_errors", 0)
+total_agent = s.get("total_agent_calls", 0)
+success_agent = s.get("successful_agent_calls", 0)
+total_security = s.get("total_security_events", 0)
+pending_approvals = s.get("pending_approvals", 0)
+total_db = s.get("total_database_events", 0)
+total_mcp = s.get("total_mcp_calls", 0)
+tool_success_rate = round(success_tools * 100 / total_tools) if total_tools > 0 else 0
+api_success_rate = round(success_api * 100 / total_api) if total_api > 0 else 0
 
-    st.divider()
+# ── KPI Row 1 ──────────────────────────────────────────────────────
+st.subheader("System Overview")
+r1c1, r1c2, r1c3, r1c4 = st.columns(4)
 
-    raw = data.get("raw", {})
+with r1c1:
+    st.metric("API Requests", total_api, f"Avg {avg_api_lat}ms · {api_success_rate}% success")
+with r1c2:
+    st.metric("LLM Calls", total_llm, f"Avg {avg_llm_lat}ms")
+with r1c3:
+    st.metric("Tool Calls", total_tools, f"{tool_success_rate}% success")
+with r1c4:
+    st.metric("Agent Calls", total_agent, f"{success_agent} successful")
 
-    # ── Recent API requests ───────────────────────────────────────
+# ── KPI Row 2 ──────────────────────────────────────────────────────
+r2c1, r2c2, r2c3, r2c4 = st.columns(4)
+
+with r2c1:
+    st.metric("MCP Calls", total_mcp)
+with r2c2:
+    st.metric("DB Queries", total_db)
+with r2c3:
+    st.metric("Errors", total_errors, delta_color="inverse")
+with r2c4:
+    st.metric(
+        "Security Events", total_security,
+        f"{pending_approvals} pending",
+        delta_color="inverse" if pending_approvals > 0 else "normal"
+    )
+
+st.divider()
+
+# ── Horizontal Bar Charts ──────────────────────────────────────────
+col_left, col_right = st.columns(2)
+
+with col_left:
+    st.subheader("Tool Call Breakdown")
+    tool_breakdown = data.get("tool_call_breakdown", {})
+    if tool_breakdown:
+        df_tools = pd.DataFrame(
+            list(tool_breakdown.items()),
+            columns=["Tool", "Calls"]
+        ).sort_values("Calls", ascending=True)
+        st.bar_chart(df_tools.set_index("Tool"), horizontal=True, height=280)
+    else:
+        st.info("No tool calls recorded yet")
+
+with col_right:
+    st.subheader("API Endpoint Breakdown")
+    endpoint_breakdown = data.get("api_endpoint_breakdown", {})
+    if endpoint_breakdown:
+        df_endpoints = pd.DataFrame(
+            list(endpoint_breakdown.items()),
+            columns=["Endpoint", "Requests"]
+        ).sort_values("Requests", ascending=True)
+        st.bar_chart(df_endpoints.set_index("Endpoint"), horizontal=True, height=280)
+    else:
+        st.info("No API requests recorded yet")
+
+st.divider()
+
+# ── Success Rate Progress Bars ─────────────────────────────────────
+st.subheader("Success Rates")
+p1, p2, p3 = st.columns(3)
+
+with p1:
+    st.markdown("**API Requests**")
+    st.progress(api_success_rate / 100, text=f"{api_success_rate}% successful ({success_api}/{total_api})")
+
+with p2:
+    st.markdown("**Tool Calls**")
+    st.progress(tool_success_rate / 100, text=f"{tool_success_rate}% successful ({success_tools}/{total_tools})")
+
+with p3:
+    agent_rate = round(success_agent * 100 / total_agent) if total_agent > 0 else 0
+    st.markdown("**Agent Calls**")
+    st.progress(agent_rate / 100, text=f"{agent_rate}% successful ({success_agent}/{total_agent})")
+
+st.divider()
+
+# ── LLM Calls Table ────────────────────────────────────────────────
+st.subheader("LLM Call Performance")
+llm_calls = raw.get("llm_calls", [])
+if llm_calls:
+    df_llm = pd.DataFrame(llm_calls[-15:][::-1])
+    df_llm["time"] = pd.to_datetime(df_llm["timestamp"]).dt.strftime("%H:%M:%S")
+    df_llm["status"] = df_llm["success"].map({True: "✅", False: "❌"})
+    df_llm["latency"] = df_llm["duration_ms"].apply(lambda x: f"{x:.0f}ms")
+    avg_lat = df_llm["duration_ms"].mean()
+    max_lat = df_llm["duration_ms"].max()
+    min_lat = df_llm["duration_ms"].min()
+    m1, m2, m3 = st.columns(3)
+    with m1:
+        st.metric("Avg Latency", f"{avg_lat:.0f}ms")
+    with m2:
+        st.metric("Max Latency", f"{max_lat:.0f}ms")
+    with m3:
+        st.metric("Min Latency", f"{min_lat:.0f}ms")
+    st.dataframe(
+        df_llm[["time", "model", "latency", "status"]],
+        hide_index=True,
+        
+    )
+else:
+    st.info("No LLM calls recorded yet")
+
+st.divider()
+
+# ── API + Tool Calls ───────────────────────────────────────────────
+col_a, col_b = st.columns(2)
+
+with col_a:
     st.subheader("Recent API Requests")
     api_requests = raw.get("api_requests", [])
     if api_requests:
-        for req in reversed(api_requests[-10:]):
-            status_icon = "✅" if req["success"] else "❌"
-            st.write(
-                f"{status_icon} `{req['method']} {req['endpoint']}` | "
-                f"Status: {req['status_code']} | "
-                f"Duration: {req['duration_ms']}ms | "
-                f"{req['timestamp'][:19]}"
-            )
+        df_api = pd.DataFrame(api_requests[-10:][::-1])
+        df_api["time"] = pd.to_datetime(df_api["timestamp"]).dt.strftime("%H:%M:%S")
+        df_api["status"] = df_api["success"].map({True: "✅", False: "❌"})
+        st.dataframe(
+            df_api[["time", "method", "endpoint", "status_code", "duration_ms", "status"]],
+            hide_index=True,
+            
+        )
     else:
-        st.write("No API requests yet")
+        st.info("No API requests yet")
 
-    st.divider()
-
-    # ── Recent LLM calls ──────────────────────────────────────────
-    st.subheader("Recent LLM Calls")
-    llm_calls = raw.get("llm_calls", [])
-    if llm_calls:
-        for call in reversed(llm_calls[-10:]):
-            status_icon = "✅" if call["success"] else "❌"
-            st.write(
-                f"{status_icon} Model: `{call['model']}` | "
-                f"Duration: {call['duration_ms']}ms | "
-                f"Tokens: {call['total_tokens']} | "
-                f"{call['timestamp'][:19]}"
-            )
-    else:
-        st.write("No LLM calls yet")
-
-    st.divider()
-
-    # ── Recent tool calls ─────────────────────────────────────────
+with col_b:
     st.subheader("Recent Tool Calls")
     tool_calls = raw.get("tool_calls", [])
     if tool_calls:
-        for call in reversed(tool_calls[-10:]):
-            status_icon = "✅" if call["success"] else "❌"
-            st.write(
-                f"{status_icon} Tool: `{call['tool_name']}` | "
-                f"Duration: {call['duration_ms']}ms | "
-                f"{call['timestamp'][:19]}"
-            )
+        df_tc = pd.DataFrame(tool_calls[-10:][::-1])
+        df_tc["time"] = pd.to_datetime(df_tc["timestamp"]).dt.strftime("%H:%M:%S")
+        df_tc["status"] = df_tc["success"].map({True: "✅", False: "❌"})
+        st.dataframe(
+            df_tc[["time", "tool_name", "duration_ms", "status"]],
+            hide_index=True,
+            
+        )
     else:
-        st.write("No tool calls yet")
+        st.info("No tool calls yet")
 
-    st.divider()
+st.divider()
 
-    # ── Security events ───────────────────────────────────────────
+# ── Security + Database ────────────────────────────────────────────
+col_sec, col_db = st.columns(2)
+
+with col_sec:
     st.subheader("Security Events")
     security_events = raw.get("security_events", [])
     if security_events:
-        for event in reversed(security_events[-10:]):
-            event_type = event.get("event_type", "unknown")
-            icon = (
-                "🔴" if "timeout" in event_type or "rejected" in event_type
-                else "🟡" if "requested" in event_type or "pending" in event_type
-                else "🟢"
-            )
-            st.write(
-                f"{icon} `{event_type}` | "
-                f"User: {event.get('requested_by', event.get('username', 'unknown'))} | "
-                f"Types: {event.get('sensitive_data_types', [])} | "
-                f"{event['timestamp'][:19]}"
-            )
+        df_sec = pd.DataFrame(security_events[-10:][::-1])
+        df_sec["time"] = pd.to_datetime(df_sec["timestamp"]).dt.strftime("%H:%M:%S")
+        st.dataframe(
+            df_sec[["time", "event_type", "requested_by", "outcome"]],
+            hide_index=True,
+            
+        )
     else:
-        st.write("No security events yet")
+        st.success("No security events — all queries are clean")
 
-    st.divider()
-
-    # ── Database events ───────────────────────────────────────────
-    st.subheader("Database Events")
+with col_db:
+    st.subheader("Recent Database Queries")
     db_events = raw.get("database_events", [])
     if db_events:
-        for event in reversed(db_events[-10:]):
-            status_icon = "✅" if event["success"] else "❌"
-            st.write(
-                f"{status_icon} `{event['operation']}` on `{event['table']}` | "
-                f"Rows: {event['rows_returned']} | "
-                f"Duration: {event['duration_ms']}ms | "
-                f"{event['timestamp'][:19]}"
-            )
+        df_db = pd.DataFrame(db_events[-10:][::-1])
+        df_db["time"] = pd.to_datetime(df_db["timestamp"]).dt.strftime("%H:%M:%S")
+        df_db["status"] = df_db["success"].map({True: "✅", False: "❌"})
+        st.dataframe(
+            df_db[["time", "operation", "table", "rows_returned", "duration_ms", "status"]],
+            hide_index=True,
+            
+        )
     else:
-        st.write("No database events yet")
+        st.info("No database queries yet")
 
-    # Auto refresh every 30 seconds
-    time.sleep(0.1)
+st.divider()
 
-except Exception as e:
-    st.error(f"Cannot connect to API: {e}")
-    st.info("Make sure the FastAPI server is running on http://localhost:8000")
+# ── Agent + MCP ────────────────────────────────────────────────────
+col_agent, col_mcp = st.columns(2)
+
+with col_agent:
+    st.subheader("Agent Events")
+    agent_calls = raw.get("agent_calls", [])
+    if agent_calls:
+        df_agent = pd.DataFrame(agent_calls[-10:][::-1])
+        df_agent["time"] = pd.to_datetime(df_agent["timestamp"]).dt.strftime("%H:%M:%S")
+        df_agent["status"] = df_agent["success"].map({True: "✅", False: "❌"})
+        df_agent["tools"] = df_agent["tools_called"].apply(
+            lambda x: ", ".join(x) if isinstance(x, list) else str(x)
+        )
+        st.dataframe(
+            df_agent[["time", "username", "user_role", "duration_ms", "tools", "status"]],
+            hide_index=True,
+            
+        )
+    else:
+        st.info("No agent events yet")
+
+with col_mcp:
+    st.subheader("MCP Server Calls")
+    mcp_calls = raw.get("mcp_calls", [])
+    if mcp_calls:
+        df_mcp = pd.DataFrame(mcp_calls[-10:][::-1])
+        df_mcp["time"] = pd.to_datetime(df_mcp["timestamp"]).dt.strftime("%H:%M:%S")
+        df_mcp["status"] = df_mcp["success"].map({True: "✅", False: "❌"})
+        st.dataframe(
+            df_mcp[["time", "server", "tool", "duration_ms", "status"]],
+            hide_index=True,
+            
+        )
+    else:
+        st.info("No MCP calls recorded yet")
+
+st.divider()
+st.caption("Auto-refreshes every 30 seconds. Click 🔄 Refresh to update manually.")
+
+# Auto refresh
+if "last_refresh" not in st.session_state:
+    st.session_state.last_refresh = time.time()
+if time.time() - st.session_state.last_refresh > 30:
+    st.session_state.last_refresh = time.time()
+    st.rerun()

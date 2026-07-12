@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-12T14:36:26.267360",
+  "generated_at": "2026-07-12T15:22:31.629195",
   "summary": {
-    "total_api_requests": 16,
-    "successful_api_requests": 15,
+    "total_api_requests": 124,
+    "successful_api_requests": 123,
     "failed_api_requests": 1,
-    "avg_api_latency_ms": 164.24,
+    "avg_api_latency_ms": 22.56,
     "total_llm_calls": 7,
     "successful_llm_calls": 6,
     "total_tokens_used": 0,
@@ -20,57 +20,338 @@
     "get_open_issues": 2
   },
   "api_endpoint_breakdown": {
-    "/health": 10,
+    "/health": 102,
     "/ui": 1,
     "/login": 1,
     "/me": 1,
-    "/api/query": 3
+    "/api/query": 3,
+    "/metrics": 16
   },
   "error_breakdown": {},
   "raw": {
     "api_requests": [
       {
-        "timestamp": "2026-07-12T14:31:55.754223",
+        "timestamp": "2026-07-12T15:03:15.039669",
         "type": "api_request",
-        "endpoint": "/health",
+        "endpoint": "/metrics",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 8.22,
+        "duration_ms": 2.19,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-12T14:32:25.813933",
+        "timestamp": "2026-07-12T15:03:29.376635",
         "type": "api_request",
         "endpoint": "/health",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 0.87,
+        "duration_ms": 0.71,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-12T14:32:55.864454",
+        "timestamp": "2026-07-12T15:03:59.443807",
         "type": "api_request",
         "endpoint": "/health",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 6.59,
+        "duration_ms": 0.73,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-12T14:33:25.929772",
+        "timestamp": "2026-07-12T15:04:29.504132",
         "type": "api_request",
         "endpoint": "/health",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 1.97,
+        "duration_ms": 0.75,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-12T14:33:55.980485",
+        "timestamp": "2026-07-12T15:04:59.572996",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.7,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:05:29.632040",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 2.39,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:05:59.703398",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 18.19,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:06:29.756077",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.69,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:06:59.781021",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.4,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:07:29.840363",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.67,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:07:59.897815",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.72,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:08:24.378158",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 2.45,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:08:29.994240",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 2.79,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:09:00.061990",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.76,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:09:30.112374",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.82,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:10:00.171504",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.69,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:10:03.954802",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 2.64,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:10:04.772108",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 3.38,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:10:08.295579",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 2.61,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:10:28.174488",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 2.84,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:10:30.237933",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 1.74,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:11:00.293849",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.74,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:11:28.077976",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 3.38,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:11:30.361567",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.72,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:12:00.435896",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 2.0,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:12:30.499975",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.69,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:13:00.548607",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.78,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:13:30.611141",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.76,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:14:00.668981",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.63,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:14:30.730386",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 1.29,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:15:00.780379",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.69,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:15:30.848074",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.63,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:16:00.898494",
         "type": "api_request",
         "endpoint": "/health",
         "method": "GET",
@@ -80,112 +361,172 @@
         "success": true
       },
       {
-        "timestamp": "2026-07-12T14:34:26.034820",
+        "timestamp": "2026-07-12T15:16:30.956655",
         "type": "api_request",
         "endpoint": "/health",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 1.75,
+        "duration_ms": 0.71,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-12T14:34:56.086367",
+        "timestamp": "2026-07-12T15:17:01.017600",
         "type": "api_request",
         "endpoint": "/health",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 0.69,
+        "duration_ms": 0.97,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-12T14:35:21.598119",
-        "type": "api_request",
-        "endpoint": "/ui",
-        "method": "GET",
-        "status_code": 200,
-        "duration_ms": 13.45,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-12T14:35:26.146831",
+        "timestamp": "2026-07-12T15:17:31.076782",
         "type": "api_request",
         "endpoint": "/health",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 0.68,
+        "duration_ms": 0.73,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-12T14:35:29.948739",
-        "type": "api_request",
-        "endpoint": "/login",
-        "method": "POST",
-        "status_code": 200,
-        "duration_ms": 240.72,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-12T14:35:29.968365",
-        "type": "api_request",
-        "endpoint": "/me",
-        "method": "GET",
-        "status_code": 200,
-        "duration_ms": 14.47,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-12T14:35:34.777195",
-        "type": "api_request",
-        "endpoint": "/api/query",
-        "method": "POST",
-        "status_code": 200,
-        "duration_ms": 1194.68,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-12T14:35:37.730472",
-        "type": "api_request",
-        "endpoint": "/api/query",
-        "method": "POST",
-        "status_code": 200,
-        "duration_ms": 958.83,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-12T14:35:39.498405",
-        "type": "api_request",
-        "endpoint": "/api/query",
-        "method": "POST",
-        "status_code": 500,
-        "duration_ms": 182.12,
-        "user_role": "unknown",
-        "success": false
-      },
-      {
-        "timestamp": "2026-07-12T14:35:56.200784",
+        "timestamp": "2026-07-12T15:18:01.097790",
         "type": "api_request",
         "endpoint": "/health",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 0.69,
+        "duration_ms": 0.36,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-12T14:36:26.265920",
+        "timestamp": "2026-07-12T15:18:31.147591",
         "type": "api_request",
         "endpoint": "/health",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 1.39,
+        "duration_ms": 0.81,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:19:01.203774",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 1.7,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:19:31.255963",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 4.77,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:20:01.331843",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.73,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:20:14.401256",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 4.63,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:20:19.488278",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 3.28,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:20:31.398933",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 1.4,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:21:01.458129",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.72,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:21:31.514290",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.75,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:22:01.575944",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.74,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:22:04.308878",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 3.13,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:22:11.530020",
+        "type": "api_request",
+        "endpoint": "/metrics",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 3.3,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T15:22:31.627643",
+        "type": "api_request",
+        "endpoint": "/health",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 0.98,
         "user_role": "unknown",
         "success": true
       }

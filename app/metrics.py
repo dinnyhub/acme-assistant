@@ -156,7 +156,8 @@ def get_metrics_summary() -> dict:
             "mcp_calls": mcp_calls[-50:],
             "errors": errors[-50:],
             "security_events": metrics_store["security_events"][-50:],
-            "database_events": metrics_store["database_events"][-50:]  
+            "database_events": metrics_store["database_events"][-50:],
+            "agent_calls": metrics_store["agent_calls"][-50:]
         },
         "total_agent_calls": len(metrics_store["agent_calls"]),
         "successful_agent_calls": sum(1 for r in metrics_store["agent_calls"] if r.get("success")),
