@@ -1979,3 +1979,119 @@
 2026-07-12 14:50:10 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=1
 2026-07-12 14:50:10 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=1
 2026-07-12 14:50:10 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=2
+2026-07-12 14:11:16 | INFO | app.metrics | API | GET /health | 200 | 6.51ms | role=unknown
+2026-07-12 14:11:46 | INFO | app.metrics | API | GET /health | 200 | 0.72ms | role=unknown
+2026-07-12 14:12:16 | INFO | app.metrics | API | GET /health | 200 | 0.47ms | role=unknown
+2026-07-12 14:12:47 | INFO | app.metrics | API | GET /health | 200 | 1.20ms | role=unknown
+2026-07-12 14:13:17 | INFO | app.metrics | API | GET /health | 200 | 1.47ms | role=unknown
+2026-07-12 14:13:47 | INFO | app.metrics | API | GET /health | 200 | 0.99ms | role=unknown
+2026-07-12 14:13:50 | INFO | app.metrics | API | GET /health | 200 | 1.53ms | role=unknown
+2026-07-12 14:14:17 | INFO | app.metrics | API | GET /health | 200 | 0.90ms | role=unknown
+2026-07-12 14:14:47 | INFO | app.metrics | API | GET /health | 200 | 0.76ms | role=unknown
+2026-07-12 14:15:17 | INFO | app.metrics | API | GET /health | 200 | 2.20ms | role=unknown
+2026-07-12 14:15:47 | INFO | app.metrics | API | GET /health | 200 | 0.81ms | role=unknown
+2026-07-12 14:16:17 | INFO | app.metrics | API | GET /health | 200 | 0.64ms | role=unknown
+2026-07-12 14:16:47 | INFO | app.metrics | API | GET /health | 200 | 0.71ms | role=unknown
+2026-07-12 14:17:17 | INFO | app.metrics | API | GET /health | 200 | 0.68ms | role=unknown
+2026-07-12 14:17:47 | INFO | app.metrics | API | GET /health | 200 | 0.77ms | role=unknown
+2026-07-12 14:18:17 | INFO | app.metrics | API | GET /health | 200 | 0.70ms | role=unknown
+2026-07-12 14:18:47 | INFO | app.metrics | API | GET /health | 200 | 0.69ms | role=unknown
+2026-07-12 14:19:17 | INFO | app.metrics | API | GET /health | 200 | 2.97ms | role=unknown
+2026-07-12 14:19:47 | INFO | app.metrics | API | GET /health | 200 | 0.51ms | role=unknown
+2026-07-12 14:20:17 | INFO | app.metrics | API | GET /health | 200 | 0.54ms | role=unknown
+2026-07-12 14:20:47 | INFO | app.metrics | API | GET /health | 200 | 0.74ms | role=unknown
+2026-07-12 14:21:17 | INFO | app.metrics | API | GET /health | 200 | 1.01ms | role=unknown
+2026-07-12 14:21:48 | INFO | app.metrics | API | GET /health | 200 | 1.20ms | role=unknown
+2026-07-12 14:22:18 | INFO | app.metrics | API | GET /health | 200 | 1.29ms | role=unknown
+2026-07-12 14:22:48 | INFO | app.metrics | API | GET /health | 200 | 0.93ms | role=unknown
+2026-07-12 14:23:18 | INFO | app.metrics | API | GET /health | 200 | 0.40ms | role=unknown
+2026-07-12 14:23:48 | INFO | app.metrics | API | GET /health | 200 | 2.29ms | role=unknown
+2026-07-12 14:24:18 | INFO | app.metrics | API | GET /health | 200 | 0.37ms | role=unknown
+2026-07-12 14:24:48 | INFO | app.metrics | API | GET /health | 200 | 0.81ms | role=unknown
+2026-07-12 14:25:18 | INFO | app.metrics | API | GET /health | 200 | 3.62ms | role=unknown
+2026-07-12 14:25:48 | INFO | app.metrics | API | GET /health | 200 | 0.47ms | role=unknown
+2026-07-12 14:26:18 | INFO | app.metrics | API | GET /health | 200 | 0.41ms | role=unknown
+2026-07-12 14:26:48 | INFO | app.metrics | API | GET /health | 200 | 0.36ms | role=unknown
+2026-07-12 14:27:18 | INFO | app.metrics | API | GET /health | 200 | 0.43ms | role=unknown
+2026-07-12 14:27:48 | INFO | app.metrics | API | GET /health | 200 | 1.99ms | role=unknown
+2026-07-12 14:28:18 | INFO | app.metrics | API | GET /health | 200 | 0.62ms | role=unknown
+2026-07-12 14:28:48 | INFO | app.metrics | API | GET /health | 200 | 0.40ms | role=unknown
+2026-07-12 14:29:18 | INFO | app.metrics | API | GET /health | 200 | 0.62ms | role=unknown
+2026-07-12 14:29:48 | INFO | app.metrics | API | GET /health | 200 | 2.31ms | role=unknown
+2026-07-12 14:30:19 | INFO | app.metrics | API | GET /health | 200 | 0.67ms | role=unknown
+2026-07-12 14:30:49 | INFO | app.metrics | API | GET /health | 200 | 2.32ms | role=unknown
+2026-07-12 14:31:19 | INFO | app.metrics | API | GET /health | 200 | 0.65ms | role=unknown
+2026-07-12 14:31:55 | INFO | app.metrics | API | GET /health | 200 | 8.22ms | role=unknown
+2026-07-12 14:32:25 | INFO | app.metrics | API | GET /health | 200 | 0.87ms | role=unknown
+2026-07-12 14:32:55 | INFO | app.metrics | API | GET /health | 200 | 6.59ms | role=unknown
+2026-07-12 14:33:25 | INFO | app.metrics | API | GET /health | 200 | 1.97ms | role=unknown
+2026-07-12 14:33:55 | INFO | app.metrics | API | GET /health | 200 | 0.66ms | role=unknown
+2026-07-12 14:34:26 | INFO | app.metrics | API | GET /health | 200 | 1.75ms | role=unknown
+2026-07-12 14:34:56 | INFO | app.metrics | API | GET /health | 200 | 0.69ms | role=unknown
+2026-07-12 14:35:21 | INFO | app.metrics | API | GET /ui | 200 | 13.45ms | role=unknown
+2026-07-12 14:35:26 | INFO | app.metrics | API | GET /health | 200 | 0.68ms | role=unknown
+2026-07-12 14:35:29 | INFO | app.metrics | API | POST /login | 200 | 240.72ms | role=unknown
+2026-07-12 14:35:29 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 14:35:29 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 14:35:29 | INFO | app.metrics | API | GET /me | 200 | 14.47ms | role=unknown
+2026-07-12 14:35:33 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 14:35:33 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 14:35:33 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-12 14:35:33 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-12 14:35:34 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 348.74ms | success=True
+2026-07-12 14:35:34 | INFO | app.agent.agent | Agent LLM call successful | duration=348.74ms
+2026-07-12 14:35:34 | INFO | app.database | Database connection established
+2026-07-12 14:35:34 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:35:34 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=34.40ms | success=True
+2026-07-12 14:35:34 | INFO | app.metrics | TOOL | get_customer_profile | 35.38ms | success=True
+2026-07-12 14:35:34 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 179.92ms | success=True
+2026-07-12 14:35:34 | INFO | app.agent.agent | Agent LLM call successful | duration=179.92ms
+2026-07-12 14:35:34 | INFO | app.database | Database connection established
+2026-07-12 14:35:34 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:35:34 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=19.72ms | success=True
+2026-07-12 14:35:34 | INFO | app.metrics | TOOL | get_open_issues | 21.37ms | success=True
+2026-07-12 14:35:34 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 496.81ms | success=True
+2026-07-12 14:35:34 | INFO | app.agent.agent | Agent LLM call successful | duration=496.81ms
+2026-07-12 14:35:34 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1164.62ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:35:34 | INFO | app.memory | Session history saved | session=carol | messages=1
+2026-07-12 14:35:34 | INFO | app.memory | Session history retrieved | session=carol | messages=1
+2026-07-12 14:35:34 | INFO | app.memory | Session history saved | session=carol | messages=2
+2026-07-12 14:35:34 | INFO | app.metrics | API | POST /api/query | 200 | 1194.68ms | role=unknown
+2026-07-12 14:35:36 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 14:35:36 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 14:35:36 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-12 14:35:36 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-12 14:35:36 | INFO | app.memory | Session history retrieved | session=carol | messages=2
+2026-07-12 14:35:37 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 316.16ms | success=True
+2026-07-12 14:35:37 | INFO | app.agent.agent | Agent LLM call successful | duration=316.16ms
+2026-07-12 14:35:37 | INFO | app.database | Database connection established
+2026-07-12 14:35:37 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:35:37 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=10.48ms | success=True
+2026-07-12 14:35:37 | INFO | app.metrics | TOOL | get_customer_profile | 12.30ms | success=True
+2026-07-12 14:35:37 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 231.52ms | success=True
+2026-07-12 14:35:37 | INFO | app.agent.agent | Agent LLM call successful | duration=231.52ms
+2026-07-12 14:35:37 | INFO | app.database | Database connection established
+2026-07-12 14:35:37 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 14:35:37 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=5.66ms | success=True
+2026-07-12 14:35:37 | INFO | app.metrics | TOOL | get_open_issues | 6.62ms | success=True
+2026-07-12 14:35:37 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 324.82ms | success=True
+2026-07-12 14:35:37 | INFO | app.agent.agent | Agent LLM call successful | duration=324.82ms
+2026-07-12 14:35:37 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=930.52ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:35:37 | INFO | app.memory | Session history retrieved | session=carol | messages=2
+2026-07-12 14:35:37 | INFO | app.memory | Session history saved | session=carol | messages=3
+2026-07-12 14:35:37 | INFO | app.memory | Session history retrieved | session=carol | messages=3
+2026-07-12 14:35:37 | INFO | app.memory | Session history saved | session=carol | messages=4
+2026-07-12 14:35:37 | INFO | app.metrics | API | POST /api/query | 200 | 958.83ms | role=unknown
+2026-07-12 14:35:39 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 14:35:39 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 14:35:39 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Summarise all open issues for TechStart Ltd
+2026-07-12 14:35:39 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Summarise all open issues for TechStart Ltd
+2026-07-12 14:35:39 | INFO | app.memory | Session history retrieved | session=carol | messages=4
+2026-07-12 14:35:39 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 128.41ms | success=False
+2026-07-12 14:35:39 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99102, Requested 987. Please try again in 1m16.896s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 14:35:39 | INFO | app.metrics | AGENT | agent_failed | user=carol | role=admin | duration=157.00ms | success=False | tools=None
+2026-07-12 14:35:39 | WARNING | app.metrics | SECURITY | query_error | approval_id=none | types=[] | requested_by=carol | outcome=error | approved_by=None
+2026-07-12 14:35:39 | ERROR | app.api.routes | QueryError | Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99102, Requested 987. Please try again in 1m16.896s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 14:35:39 | INFO | app.metrics | API | POST /api/query | 500 | 182.12ms | role=unknown
+2026-07-12 14:35:56 | INFO | app.metrics | API | GET /health | 200 | 0.69ms | role=unknown
+2026-07-12 14:36:26 | INFO | app.metrics | API | GET /health | 200 | 1.39ms | role=unknown
