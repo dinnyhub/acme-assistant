@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acme Assistant</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f7f7f8;
+            color: #1a1a1a;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        #login-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f7f7f8;
+        }
+        .login-title { font-size: 28px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+        .login-subtitle { font-size: 14px; color: #888; margin-bottom: 32px; }
+        .login-box {
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
+            padding: 32px;
+            width: 360px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        .login-box h3 { font-size: 16px; font-weight: 600; margin-bottom: 20px; color: #1a1a1a; }
+        .input-group { margin-bottom: 14px; }
+        .input-group input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            color: #1a1a1a;
+            background: #fafafa;
+            transition: border 0.2s;
+        }
+        .input-group input:focus { border-color: #10a37f; background: white; }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #10a37f;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: background 0.2s;
+        }
+        .login-btn:hover { background: #0d8f6e; }
+        .login-btn:disabled { background: #ccc; cursor: not-allowed; }
+        .login-error { color: #e53e3e; font-size: 13px; margin-top: 10px; text-align: center; }
+        #app-page { display: none; flex-direction: column; height: 100vh; overflow: hidden; }
+        .header {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 0 24px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            z-index: 100;
+        }
+        .header-title { font-size: 17px; font-weight: 600; color: #1a1a1a; }
+        .user-btn {
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .user-btn:hover { background: #e0e0e0; }
+        .user-dropdown {
+            display: none;
+            position: absolute;
+            top: 44px;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 12px;
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+        .user-dropdown.open { display: block; }
+        .user-dropdown .user-name { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+        .user-dropdown .user-role { font-size: 12px; color: #888; margin-top: 2px; margin-bottom: 10px; }
+        .user-dropdown hr { border: none; border-top: 1px solid #f0f0f0; margin-bottom: 10px; }
+        .signout-btn {
+            width: 100%;
+            padding: 8px 12px;
+            background: #fff0f0;
+            color: #e53e3e;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 500;
+        }
+        .signout-btn:hover { background: #ffe0e0; }
+        .security-alert {
+            display: none;
+            background: #fffbeb;
+            border-bottom: 1px solid #fbbf24;
+            padding: 14px 24px;
+            flex-shrink: 0;
+        }
+        .security-alert.show { display: block; }
+        .security-alert h4 { font-size: 14px; font-weight: 600; color: #92400e; margin-bottom: 4px; }
+        .security-alert p { font-size: 13px; color: #78350f; margin-bottom: 10px; }
+        .security-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+        .security-tag {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .security-actions { display: flex; gap: 8px; }
+        .sec-continue-btn {
+            padding: 7px 18px;
+            background: #10a37f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .sec-continue-btn:hover { background: #0d8f6e; }
+        .sec-edit-btn {
+            padding: 7px 18px;
+            background: white;
+            color: #444;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .sec-edit-btn:hover { background: #f0f0f0; }
+        .chat-area { flex: 1; overflow-y: auto; padding: 24px 0; }
+        .chat-inner {
+            max-width: 720px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .welcome-msg { text-align: center; padding: 60px 0 20px; color: #888; }
+        .welcome-msg h2 { font-size: 24px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+        .welcome-msg p { font-size: 14px; }
+        .message-row { display: flex; gap: 8px; align-items: flex-start; }
+        .message-row.user { flex-direction: row; justify-content: flex-end; }
+        .message-row.bot { flex-direction: row; justify-content: flex-start; }
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .avatar.user-av { background: #10a37f; color: white; }
+        .avatar.bot-av { background: #f0f0f0; font-size: 18px; }
+        .bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .message-row.user .bubble {
+            background: #10a37f;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        .message-row.bot .bubble {
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #e5e5e5;
+            border-bottom-left-radius: 4px;
+        }
+        .message-row.error .bubble {
+            background: #fff0f0;
+            color: #e53e3e;
+            border: 1px solid #fecaca;
+            border-bottom-left-radius: 4px;
+        }
+        .message-meta { font-size: 11px; color: #aaa; margin-top: 4px; padding: 0 4px; }
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 14px 16px;
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
+            border-bottom-left-radius: 4px;
+            width: fit-content;
+        }
+        .typing-dot { width: 6px; height: 6px; background: #aaa; border-radius: 50%; animation: bounce 1.2s infinite; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
+        }
+        .bottom-area {
+            background: white;
+            border-top: 1px solid #e5e5e5;
+            padding: 12px 24px 16px;
+            flex-shrink: 0;
+        }
+        .bottom-inner { max-width: 720px; margin: 0 auto; }
+        .quick-queries { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+        .quick-chip {
+            padding: 5px 14px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #444;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quick-chip:hover { background: #e0f2ef; color: #10a37f; }
+        .input-row { display: flex; gap: 10px; align-items: flex-end; }
+        .chat-input {
+            flex: 1;
+            padding: 11px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 14px;
+            outline: none;
+            resize: none;
+            line-height: 1.5;
+            max-height: 120px;
+            background: #fafafa;
+            font-family: inherit;
+            transition: border 0.2s;
+        }
+        .chat-input:focus { border-color: #10a37f; background: white; }
+        .send-btn {
+            width: 40px;
+            height: 40px;
+            background: #10a37f;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.2s;
+        }
+        .send-btn:hover { background: #0d8f6e; }
+        .send-btn:disabled { background: #ccc; cursor: not-allowed; }
+        .send-btn svg { width: 18px; height: 18px; fill: white; }
+    </style>
+</head>
+<body>
+
+<div id="login-page">
+    <div class="login-title">Acme Assistant</div>
+    <div class="login-subtitle">AI-powered customer support assistant</div>
+    <div class="login-box">
+        <h3>Sign in to continue</h3>
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Username" autocomplete="off" />
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password" />
+        </div>
+        <button class="login-btn" id="login-btn" onclick="login()">Login</button>
+        <div class="login-error" id="login-error"></div>
+    </div>
+</div>
+
+<div id="app-page">
+    <div class="header">
+        <div class="header-title">Acme Assistant</div>
+        <div style="position:relative">
+            <button class="user-btn" id="user-btn" onclick="toggleDropdown()">👤</button>
+            <div class="user-dropdown" id="user-dropdown">
+                <div class="user-name" id="dd-name"></div>
+                <div class="user-role" id="dd-role"></div>
+                <hr>
+                <button class="signout-btn" onclick="logout()">Sign out</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="security-alert" id="security-alert">
+        <h4>⚠️ Sensitive Data Detected</h4>
+        <p>Your query contains sensitive data. It will be reviewed before reaching the AI. Do you want to continue or edit your query?</p>
+        <div class="security-tags" id="security-tags"></div>
+        <div class="security-actions">
+            <button class="sec-continue-btn" onclick="approveAndContinue()">Continue</button>
+            <button class="sec-edit-btn" onclick="editQuery()">Edit Query</button>
+        </div>
+    </div>
+
+    <div class="chat-area" id="chat-area">
+        <div class="chat-inner" id="chat-inner">
+            <div class="welcome-msg" id="welcome-msg">
+                <h2>How can I help you today?</h2>
+                <p>Ask me about customer issues, account status, or support queries</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-area">
+        <div class="bottom-inner">
+            <div class="quick-queries">
+                <button class="quick-chip" onclick="sendChip('Show me open customer issues for Acme Corp and summarise the latest status')">Acme Corp issues</button>
+                <button class="quick-chip" onclick="sendChip('Show me open issues for Global Finance Inc')">Global Finance</button>
+                <button class="quick-chip" onclick="sendChip('Summarise all open issues for TechStart Ltd')">TechStart summary</button>
+                <button class="quick-chip" onclick="sendChip('What is the status of issue 1 for Acme Corp?')">Issue 1 status</button>
+            </div>
+            <div class="input-row">
+                <textarea
+                    class="chat-input"
+                    id="chat-input"
+                    placeholder="Ask about customers, issues, next actions..."
+                    rows="1"
+                    onkeydown="handleKey(event)"
+                    oninput="autoResize(this)"
+                ></textarea>
+                <button class="send-btn" id="send-btn" onclick="sendMessage()">
+                    <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const API = 'http://localhost:8000';
+    let token = null;
+    let currentUser = null;
+    let currentRole = null;
+    let pendingApprovalId = null;
+    let pendingQuery = null;
+
+    document.getElementById('password').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') login();
+    });
+
+    function toggleDropdown() {
+        document.getElementById('user-dropdown').classList.toggle('open');
+    }
+
+    document.addEventListener('click', function(e) {
+        var btn = document.getElementById('user-btn');
+        var dd = document.getElementById('user-dropdown');
+        if (btn && dd && !btn.contains(e.target) && !dd.contains(e.target)) {
+            dd.classList.remove('open');
+        }
+    });
+
+    async function login() {
+        var username = document.getElementById('username').value.trim();
+        var password = document.getElementById('password').value;
+        var btn = document.getElementById('login-btn');
+        var err = document.getElementById('login-error');
+
+        if (!username || !password) {
+            err.textContent = 'Please enter both username and password';
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Signing in...';
+        err.textContent = '';
+
+        try {
+            var resp = await fetch(API + '/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ username: username, password: password })
+            });
+
+            if (!resp.ok) {
+                err.textContent = 'Invalid username or password';
+                btn.disabled = false;
+                btn.textContent = 'Login';
+                return;
+            }
+
+            var data = await resp.json();
+            token = data.access_token;
+
+            var meResp = await fetch(API + '/me', {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            var me = await meResp.json();
+            currentUser = me.username;
+            var roles = me.roles || [];
+            currentRole = roles.includes('admin') ? 'Admin'
+                        : roles.includes('support_user') ? 'Support User'
+                        : 'Sales User';
+
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('app-page').style.display = 'flex';
+            document.getElementById('dd-name').textContent = currentUser;
+            document.getElementById('dd-role').textContent = currentRole;
+
+        } catch(e) {
+            err.textContent = 'Connection error. Is the server running?';
+        }
+
+        btn.disabled = false;
+        btn.textContent = 'Login';
+    }
+
+    function logout() {
+        token = null;
+        currentUser = null;
+        currentRole = null;
+        pendingApprovalId = null;
+        pendingQuery = null;
+        document.getElementById('app-page').style.display = 'none';
+        document.getElementById('login-page').style.display = 'flex';
+        document.getElementById('password').value = '';
+        document.getElementById('username').value = '';
+        document.getElementById('chat-inner').innerHTML =
+            '<div class="welcome-msg" id="welcome-msg">' +
+            '<h2>How can I help you today?</h2>' +
+            '<p>Ask me about customer issues, account status, or support queries</p>' +
+            '</div>';
+        document.getElementById('user-dropdown').classList.remove('open');
+        document.getElementById('security-alert').classList.remove('show');
+    }
+
+    function handleKey(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    }
+
+    function autoResize(el) {
+        el.style.height = 'auto';
+        el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+    }
+
+    function sendChip(query) {
+        document.getElementById('chat-input').value = query;
+        sendMessage();
+    }
+
+    function addUserMessage(text) {
+        var welcome = document.getElementById('welcome-msg');
+        if (welcome) welcome.remove();
+        var inner = document.getElementById('chat-inner');
+        var div = document.createElement('div');
+        div.className = 'message-row user';
+        var initials = currentUser ? currentUser[0].toUpperCase() : 'U';
+        div.innerHTML =
+            '<div class="bubble">' + escapeHtml(text) + '</div>' +
+            '<div class="avatar user-av">' + initials + '</div>';
+        inner.appendChild(div);
+        scrollToBottom();
+    }
+
+    function addBotMessage(text, meta) {
+        var inner = document.getElementById('chat-inner');
+        var div = document.createElement('div');
+        div.className = 'message-row bot';
+        div.innerHTML =
+            '<div class="avatar bot-av">🤖</div>' +
+            '<div>' +
+            '<div class="bubble">' + formatText(text) + '</div>' +
+            (meta ? '<div class="message-meta">' + meta + '</div>' : '') +
+            '</div>';
+        inner.appendChild(div);
+        scrollToBottom();
+    }
+
+    function addErrorMessage(text) {
+        var inner = document.getElementById('chat-inner');
+        var div = document.createElement('div');
+        div.className = 'message-row error';
+        div.innerHTML =
+            '<div class="avatar bot-av">⚠️</div>' +
+            '<div><div class="bubble">' + escapeHtml(text) + '</div></div>';
+        inner.appendChild(div);
+        scrollToBottom();
+    }
+
+    function addTyping() {
+        var inner = document.getElementById('chat-inner');
+        var div = document.createElement('div');
+        div.className = 'message-row bot';
+        div.id = 'typing';
+        div.innerHTML =
+            '<div class="avatar bot-av">🤖</div>' +
+            '<div class="typing-indicator">' +
+            '<div class="typing-dot"></div>' +
+            '<div class="typing-dot"></div>' +
+            '<div class="typing-dot"></div>' +
+            '</div>';
+        inner.appendChild(div);
+        scrollToBottom();
+    }
+
+    function removeTyping() {
+        var t = document.getElementById('typing');
+        if (t) t.remove();
+    }
+
+    function scrollToBottom() {
+        var area = document.getElementById('chat-area');
+        area.scrollTop = area.scrollHeight;
+    }
+
+    function escapeHtml(text) {
+        return text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
+    function formatText(text) {
+        return escapeHtml(text)
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/^- (.+)$/gm, '<li>$1</li>')
+            .replace(/\n/g, '<br>');
+    }
+
+    async function sendMessage() {
+        var input = document.getElementById('chat-input');
+        var query = input.value.trim();
+        if (!query || !token) return;
+
+        var sendBtn = document.getElementById('send-btn');
+        sendBtn.disabled = true;
+        input.value = '';
+        input.style.height = 'auto';
+
+        addUserMessage(query);
+        addTyping();
+
+        try {
+            var resp = await fetch(API + '/api/query', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: query })
+            });
+
+            var data = await resp.json();
+            removeTyping();
+
+            if (resp.ok) {
+                addBotMessage(data.response, data.duration_ms + 'ms');
+            } else if (resp.status === 403) {
+                var detail = data.detail || '';
+                var match = detail.match(/Approval ID: ([a-f0-9-]+)/);
+                if (match) {
+                    pendingApprovalId = match[1];
+                    pendingQuery = query;
+                    var typeMatch = detail.match(/\['(.+?)'\]/);
+                    var types = typeMatch ? typeMatch[1].split("', '") : ['sensitive data'];
+                    showSecurityAlert(types);
+                } else if (detail.includes('timeout')) {
+                    addErrorMessage('Process stopped — sensitive data detected and approval timed out. Please contact your security officer.');
+                } else {
+                    addErrorMessage(detail);
+                }
+            } else {
+                addErrorMessage(data.detail || 'An error occurred. Please try again.');
+            }
+        } catch(e) {
+            removeTyping();
+            addErrorMessage('Connection error. Please try again.');
+        }
+
+        sendBtn.disabled = false;
+        input.focus();
+    }
+
+    function showSecurityAlert(types) {
+        var alert = document.getElementById('security-alert');
+        var tags = document.getElementById('security-tags');
+        tags.innerHTML = types.map(function(t) {
+            return '<span class="security-tag">' + t + '</span>';
+        }).join('');
+        alert.classList.add('show');
+    }
+
+    function hideSecurityAlert() {
+        document.getElementById('security-alert').classList.remove('show');
+    }
+
+    async function approveAndContinue() {
+        if (!pendingApprovalId || !pendingQuery) return;
+        hideSecurityAlert();
+
+        await fetch(API + '/api/security/self-approve/' + pendingApprovalId, {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+
+        var approvedQuery = pendingQuery + ' [approved:' + pendingApprovalId + ']';
+
+        addTyping();
+        try {
+            var resp = await fetch(API + '/api/query', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: approvedQuery })
+            });
+            var data = await resp.json();
+            removeTyping();
+            if (resp.ok) {
+                addBotMessage(data.response, data.duration_ms + 'ms');
+            } else {
+                addErrorMessage(data.detail || 'Error processing query');
+            }
+        } catch(e) {
+            removeTyping();
+            addErrorMessage('Connection error. Please try again.');
+        }
+
+        pendingApprovalId = null;
+        pendingQuery = null;
+    }
+
+    function editQuery() {
+        hideSecurityAlert();
+        if (pendingQuery) {
+            document.getElementById('chat-input').value = pendingQuery;
+            document.getElementById('chat-input').focus();
+        }
+        pendingApprovalId = null;
+        pendingQuery = null;
+    }
+</script>
+</body>
+</html>

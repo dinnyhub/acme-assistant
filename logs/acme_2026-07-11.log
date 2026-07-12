@@ -142,3 +142,492 @@
 2026-07-11 10:28:05 | INFO | app.agent.agent | Agent LLM call successful | duration=352.86ms
 2026-07-11 10:28:05 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=695.67ms | success=True | tools=['get_customer_profile']
 2026-07-11 10:28:05 | INFO | app.metrics | API | POST /api/query | 200 | 26762.64ms | role=unknown
+2026-07-11 11:04:07 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 11:04:07 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 11:04:07 | INFO | app.metrics | API | GET /me | 200 | 67.38ms | role=unknown
+2026-07-11 11:04:07 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 11:04:07 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 11:04:07 | INFO | app.metrics | API | GET /api/security/pending-approvals | 200 | 15.78ms | role=unknown
+2026-07-11 11:04:07 | INFO | app.metrics | API | GET /metrics | 200 | 0.34ms | role=unknown
+2026-07-11 15:02:23 | INFO | app.metrics | API | GET /metrics | 200 | 5.82ms | role=unknown
+2026-07-11 15:02:39 | INFO | app.metrics | API | GET /metrics | 200 | 0.74ms | role=unknown
+2026-07-11 17:52:31 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 17:52:31 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 17:52:31 | INFO | app.metrics | API | GET /me | 200 | 75.30ms | role=unknown
+2026-07-11 18:03:38 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:03:38 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:03:38 | INFO | app.metrics | API | GET /me | 200 | 41.37ms | role=unknown
+2026-07-11 18:03:59 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:03:59 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:03:59 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 18:03:59 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 18:03:59 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 587.06ms | success=True
+2026-07-11 18:03:59 | INFO | app.agent.agent | Agent LLM call successful | duration=587.06ms
+2026-07-11 18:03:59 | INFO | app.database | Database connection established
+2026-07-11 18:03:59 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 18:03:59 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=125.85ms | success=True
+2026-07-11 18:03:59 | INFO | app.metrics | TOOL | get_customer_profile | 126.28ms | success=True
+2026-07-11 18:04:00 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 203.31ms | success=True
+2026-07-11 18:04:00 | INFO | app.agent.agent | Agent LLM call successful | duration=203.31ms
+2026-07-11 18:04:00 | INFO | app.database | Database connection established
+2026-07-11 18:04:00 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 18:04:00 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=13.02ms | success=True
+2026-07-11 18:04:00 | INFO | app.metrics | TOOL | get_open_issues | 13.31ms | success=True
+2026-07-11 18:04:00 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 304.70ms | success=True
+2026-07-11 18:04:00 | INFO | app.agent.agent | Agent LLM call successful | duration=304.70ms
+2026-07-11 18:04:00 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1292.34ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 18:04:00 | INFO | app.metrics | API | POST /api/query | 200 | 1313.97ms | role=unknown
+2026-07-11 18:04:47 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:04:47 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:04:47 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 18:04:47 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 18:04:47 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 363.05ms | success=True
+2026-07-11 18:04:47 | INFO | app.agent.agent | Agent LLM call successful | duration=363.05ms
+2026-07-11 18:04:47 | INFO | app.database | Database connection established
+2026-07-11 18:04:47 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 18:04:47 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=15.47ms | success=True
+2026-07-11 18:04:47 | INFO | app.metrics | TOOL | get_customer_profile | 16.15ms | success=True
+2026-07-11 18:04:47 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 348.49ms | success=True
+2026-07-11 18:04:47 | INFO | app.agent.agent | Agent LLM call successful | duration=348.49ms
+2026-07-11 18:04:47 | INFO | app.database | Database connection established
+2026-07-11 18:04:47 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 18:04:47 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=12.13ms | success=True
+2026-07-11 18:04:47 | INFO | app.metrics | TOOL | get_open_issues | 12.44ms | success=True
+2026-07-11 18:04:48 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 292.99ms | success=True
+2026-07-11 18:04:48 | INFO | app.agent.agent | Agent LLM call successful | duration=292.99ms
+2026-07-11 18:04:48 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1074.20ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 18:04:48 | INFO | app.metrics | API | POST /api/query | 200 | 1104.06ms | role=unknown
+2026-07-11 18:09:15 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:09:15 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:09:15 | INFO | app.metrics | API | GET /me | 200 | 42.25ms | role=unknown
+2026-07-11 18:09:20 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:09:20 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:09:20 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 18:09:20 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 18:09:20 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 388.54ms | success=True
+2026-07-11 18:09:20 | INFO | app.agent.agent | Agent LLM call successful | duration=388.54ms
+2026-07-11 18:09:20 | INFO | app.database | Database connection established
+2026-07-11 18:09:20 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 18:09:20 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=22.81ms | success=True
+2026-07-11 18:09:20 | INFO | app.metrics | TOOL | get_customer_profile | 23.08ms | success=True
+2026-07-11 18:09:20 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 141.81ms | success=True
+2026-07-11 18:09:20 | INFO | app.agent.agent | Agent LLM call successful | duration=141.81ms
+2026-07-11 18:09:20 | INFO | app.database | Database connection established
+2026-07-11 18:09:20 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 18:09:20 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=13.10ms | success=True
+2026-07-11 18:09:20 | INFO | app.metrics | TOOL | get_open_issues | 13.38ms | success=True
+2026-07-11 18:09:21 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 634.50ms | success=True
+2026-07-11 18:09:21 | INFO | app.agent.agent | Agent LLM call successful | duration=634.50ms
+2026-07-11 18:09:21 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1261.64ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 18:09:21 | INFO | app.metrics | API | POST /api/query | 200 | 1279.15ms | role=unknown
+2026-07-11 18:09:23 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:09:23 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:09:23 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 18:09:23 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 18:09:23 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 253.76ms | success=True
+2026-07-11 18:09:23 | INFO | app.agent.agent | Agent LLM call successful | duration=253.76ms
+2026-07-11 18:09:23 | INFO | app.database | Database connection established
+2026-07-11 18:09:23 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 18:09:23 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=9.49ms | success=True
+2026-07-11 18:09:23 | INFO | app.metrics | TOOL | get_customer_profile | 9.78ms | success=True
+2026-07-11 18:09:23 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 127.87ms | success=True
+2026-07-11 18:09:23 | INFO | app.agent.agent | Agent LLM call successful | duration=127.87ms
+2026-07-11 18:09:23 | INFO | app.database | Database connection established
+2026-07-11 18:09:23 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 18:09:23 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=13.88ms | success=True
+2026-07-11 18:09:23 | INFO | app.metrics | TOOL | get_open_issues | 14.41ms | success=True
+2026-07-11 18:09:24 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 466.89ms | success=True
+2026-07-11 18:09:24 | INFO | app.agent.agent | Agent LLM call successful | duration=466.89ms
+2026-07-11 18:09:24 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=917.36ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 18:09:24 | INFO | app.metrics | API | POST /api/query | 200 | 945.92ms | role=unknown
+2026-07-11 18:13:10 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:13:10 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:13:10 | INFO | app.metrics | API | GET /me | 200 | 46.08ms | role=unknown
+2026-07-11 18:28:36 | INFO | app.main | Root endpoint called
+2026-07-11 18:28:36 | INFO | app.metrics | API | GET / | 200 | 4.35ms | role=unknown
+2026-07-11 18:28:36 | INFO | app.metrics | API | GET /favicon.ico | 404 | 0.49ms | role=unknown
+2026-07-11 18:28:44 | INFO | app.metrics | API | GET /ui | 200 | 2.07ms | role=unknown
+2026-07-11 18:29:04 | INFO | app.metrics | API | GET /config | 200 | 10.40ms | role=unknown
+2026-07-11 18:30:46 | INFO | app.metrics | API | GET /health | 200 | 1.04ms | role=unknown
+2026-07-11 18:32:21 | INFO | app.metrics | API | GET /.well-known/appspecific/com.chrome.devtools.json | 404 | 1.82ms | role=unknown
+2026-07-11 18:45:04 | INFO | app.metrics | API | GET /ui | 200 | 21.00ms | role=unknown
+2026-07-11 18:45:04 | INFO | app.metrics | API | GET /.well-known/appspecific/com.chrome.devtools.json | 404 | 0.66ms | role=unknown
+2026-07-11 18:45:14 | INFO | app.metrics | API | POST /login | 200 | 397.78ms | role=unknown
+2026-07-11 18:45:14 | INFO | app.metrics | API | OPTIONS /me | 200 | 0.29ms | role=unknown
+2026-07-11 18:45:14 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:45:14 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:45:14 | INFO | app.metrics | API | GET /me | 200 | 60.32ms | role=unknown
+2026-07-11 18:45:27 | INFO | app.metrics | API | OPTIONS /api/query | 200 | 0.34ms | role=unknown
+2026-07-11 18:45:27 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:45:27 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:45:27 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 18:45:27 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 18:45:27 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 387.87ms | success=True
+2026-07-11 18:45:27 | INFO | app.agent.agent | Agent LLM call successful | duration=387.87ms
+2026-07-11 18:45:28 | INFO | app.database | Database connection established
+2026-07-11 18:45:28 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 18:45:28 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=53.19ms | success=True
+2026-07-11 18:45:28 | INFO | app.metrics | TOOL | get_customer_profile | 53.59ms | success=True
+2026-07-11 18:45:28 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 199.32ms | success=True
+2026-07-11 18:45:28 | INFO | app.agent.agent | Agent LLM call successful | duration=199.32ms
+2026-07-11 18:45:28 | INFO | app.database | Database connection established
+2026-07-11 18:45:28 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 18:45:28 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=10.90ms | success=True
+2026-07-11 18:45:28 | INFO | app.metrics | TOOL | get_open_issues | 11.32ms | success=True
+2026-07-11 18:45:28 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 272.54ms | success=True
+2026-07-11 18:45:28 | INFO | app.agent.agent | Agent LLM call successful | duration=272.54ms
+2026-07-11 18:45:28 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1005.52ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 18:45:28 | INFO | app.metrics | API | POST /api/query | 200 | 1042.75ms | role=unknown
+2026-07-11 18:45:31 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:45:31 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:45:31 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 18:45:31 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 18:45:31 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 438.89ms | success=True
+2026-07-11 18:45:31 | INFO | app.agent.agent | Agent LLM call successful | duration=438.89ms
+2026-07-11 18:45:31 | INFO | app.database | Database connection established
+2026-07-11 18:45:31 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 18:45:31 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=18.41ms | success=True
+2026-07-11 18:45:31 | INFO | app.metrics | TOOL | get_customer_profile | 18.81ms | success=True
+2026-07-11 18:45:32 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 387.99ms | success=True
+2026-07-11 18:45:32 | INFO | app.agent.agent | Agent LLM call successful | duration=387.99ms
+2026-07-11 18:45:32 | INFO | app.database | Database connection established
+2026-07-11 18:45:32 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 18:45:32 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=10.25ms | success=True
+2026-07-11 18:45:32 | INFO | app.metrics | TOOL | get_open_issues | 10.70ms | success=True
+2026-07-11 18:45:32 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 333.38ms | success=True
+2026-07-11 18:45:32 | INFO | app.agent.agent | Agent LLM call successful | duration=333.38ms
+2026-07-11 18:45:32 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1232.93ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 18:45:32 | INFO | app.metrics | API | POST /api/query | 200 | 1254.11ms | role=unknown
+2026-07-11 18:45:38 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:45:38 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:45:38 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Summarise all open issues for TechStart Ltd
+2026-07-11 18:45:38 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Summarise all open issues for TechStart Ltd
+2026-07-11 18:45:39 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 402.33ms | success=True
+2026-07-11 18:45:39 | INFO | app.agent.agent | Agent LLM call successful | duration=402.33ms
+2026-07-11 18:45:39 | INFO | app.database | Database connection established
+2026-07-11 18:45:39 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 18:45:39 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=10.47ms | success=True
+2026-07-11 18:45:39 | INFO | app.metrics | TOOL | get_customer_profile | 10.91ms | success=True
+2026-07-11 18:45:39 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 199.80ms | success=True
+2026-07-11 18:45:39 | INFO | app.agent.agent | Agent LLM call successful | duration=199.80ms
+2026-07-11 18:45:39 | INFO | app.database | Database connection established
+2026-07-11 18:45:39 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 18:45:39 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=15.86ms | success=True
+2026-07-11 18:45:39 | INFO | app.metrics | TOOL | get_open_issues | 16.58ms | success=True
+2026-07-11 18:45:39 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 379.38ms | success=True
+2026-07-11 18:45:39 | INFO | app.agent.agent | Agent LLM call successful | duration=379.38ms
+2026-07-11 18:45:39 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1053.60ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 18:45:39 | INFO | app.metrics | API | POST /api/query | 200 | 1081.94ms | role=unknown
+2026-07-11 18:45:47 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 18:45:47 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 18:45:47 | INFO | app.api.routes | Query received | user=carol | role=admin | query=What is the status of issue 1 for Acme Corp?
+2026-07-11 18:45:47 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=What is the status of issue 1 for Acme Corp?
+2026-07-11 18:45:47 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 632.72ms | success=True
+2026-07-11 18:45:47 | INFO | app.agent.agent | Agent LLM call successful | duration=632.72ms
+2026-07-11 18:45:47 | INFO | app.database | Database connection established
+2026-07-11 18:45:47 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 18:45:47 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=9.16ms | success=True
+2026-07-11 18:45:47 | INFO | app.metrics | TOOL | get_customer_profile | 9.62ms | success=True
+2026-07-11 18:45:47 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 147.52ms | success=True
+2026-07-11 18:45:47 | INFO | app.agent.agent | Agent LLM call successful | duration=147.52ms
+2026-07-11 18:45:47 | INFO | app.database | Database connection established
+2026-07-11 18:45:47 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 18:45:47 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=11.32ms | success=True
+2026-07-11 18:45:47 | INFO | app.metrics | TOOL | get_open_issues | 12.23ms | success=True
+2026-07-11 18:45:48 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 153.94ms | success=True
+2026-07-11 18:45:48 | INFO | app.agent.agent | Agent LLM call successful | duration=153.94ms
+2026-07-11 18:45:48 | INFO | app.database | Database connection established
+2026-07-11 18:45:48 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 18:45:48 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=18.39ms | success=True
+2026-07-11 18:45:48 | INFO | app.metrics | TOOL | get_issue_history | 18.99ms | success=True
+2026-07-11 18:45:48 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 353.44ms | success=True
+2026-07-11 18:45:48 | INFO | app.agent.agent | Agent LLM call successful | duration=353.44ms
+2026-07-11 18:45:48 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1374.50ms | success=True | tools=['get_customer_profile', 'get_open_issues', 'get_issue_history']
+2026-07-11 18:45:48 | INFO | app.metrics | API | POST /api/query | 200 | 1398.08ms | role=unknown
+2026-07-11 19:39:15 | INFO | app.metrics | API | GET /ui | 200 | 4.60ms | role=unknown
+2026-07-11 19:39:25 | INFO | app.metrics | API | POST /login | 200 | 325.68ms | role=unknown
+2026-07-11 19:39:25 | INFO | app.metrics | API | OPTIONS /me | 200 | 0.16ms | role=unknown
+2026-07-11 19:39:25 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:39:25 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:39:25 | INFO | app.metrics | API | GET /me | 200 | 36.04ms | role=unknown
+2026-07-11 19:39:30 | INFO | app.metrics | API | OPTIONS /api/query | 200 | 0.14ms | role=unknown
+2026-07-11 19:39:30 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:39:30 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:39:30 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 19:39:30 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 19:39:31 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 353.33ms | success=True
+2026-07-11 19:39:31 | INFO | app.agent.agent | Agent LLM call successful | duration=353.33ms
+2026-07-11 19:39:31 | INFO | app.database | Database connection established
+2026-07-11 19:39:31 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 19:39:31 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=106.22ms | success=True
+2026-07-11 19:39:31 | INFO | app.metrics | TOOL | get_customer_profile | 106.80ms | success=True
+2026-07-11 19:39:31 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 244.50ms | success=True
+2026-07-11 19:39:31 | INFO | app.agent.agent | Agent LLM call successful | duration=244.50ms
+2026-07-11 19:39:31 | INFO | app.database | Database connection established
+2026-07-11 19:39:31 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 19:39:31 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=12.29ms | success=True
+2026-07-11 19:39:31 | INFO | app.metrics | TOOL | get_open_issues | 12.95ms | success=True
+2026-07-11 19:39:32 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 353.90ms | success=True
+2026-07-11 19:39:32 | INFO | app.agent.agent | Agent LLM call successful | duration=353.90ms
+2026-07-11 19:39:32 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1135.52ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 19:39:32 | INFO | app.metrics | API | POST /api/query | 200 | 1160.61ms | role=unknown
+2026-07-11 19:42:16 | INFO | app.metrics | API | GET /ui | 200 | 1.36ms | role=unknown
+2026-07-11 19:42:24 | INFO | app.metrics | API | POST /login | 200 | 271.18ms | role=unknown
+2026-07-11 19:42:24 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:42:24 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:42:24 | INFO | app.metrics | API | GET /me | 200 | 33.36ms | role=unknown
+2026-07-11 19:42:27 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:42:27 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:42:27 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 19:42:27 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 19:42:27 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 707.29ms | success=True
+2026-07-11 19:42:27 | INFO | app.agent.agent | Agent LLM call successful | duration=707.29ms
+2026-07-11 19:42:27 | INFO | app.database | Database connection established
+2026-07-11 19:42:27 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 19:42:27 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=12.11ms | success=True
+2026-07-11 19:42:27 | INFO | app.metrics | TOOL | get_customer_profile | 12.85ms | success=True
+2026-07-11 19:42:27 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 125.69ms | success=True
+2026-07-11 19:42:27 | INFO | app.agent.agent | Agent LLM call successful | duration=125.69ms
+2026-07-11 19:42:28 | INFO | app.database | Database connection established
+2026-07-11 19:42:28 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 19:42:28 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=11.98ms | success=True
+2026-07-11 19:42:28 | INFO | app.metrics | TOOL | get_open_issues | 12.71ms | success=True
+2026-07-11 19:42:28 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 341.41ms | success=True
+2026-07-11 19:42:28 | INFO | app.agent.agent | Agent LLM call successful | duration=341.41ms
+2026-07-11 19:42:28 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1252.71ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 19:42:28 | INFO | app.metrics | API | POST /api/query | 200 | 1277.94ms | role=unknown
+2026-07-11 19:45:28 | INFO | app.metrics | API | GET /ui | 200 | 1.64ms | role=unknown
+2026-07-11 19:45:36 | INFO | app.metrics | API | POST /login | 200 | 273.28ms | role=unknown
+2026-07-11 19:45:36 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:45:36 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:45:36 | INFO | app.metrics | API | GET /me | 200 | 28.27ms | role=unknown
+2026-07-11 19:45:39 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:45:39 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:45:39 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 19:45:39 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 19:45:39 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 532.25ms | success=True
+2026-07-11 19:45:39 | INFO | app.agent.agent | Agent LLM call successful | duration=532.25ms
+2026-07-11 19:45:39 | INFO | app.database | Database connection established
+2026-07-11 19:45:39 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 19:45:39 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=11.91ms | success=True
+2026-07-11 19:45:39 | INFO | app.metrics | TOOL | get_customer_profile | 12.69ms | success=True
+2026-07-11 19:45:39 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 155.06ms | success=True
+2026-07-11 19:45:39 | INFO | app.agent.agent | Agent LLM call successful | duration=155.06ms
+2026-07-11 19:45:39 | INFO | app.database | Database connection established
+2026-07-11 19:45:39 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 19:45:39 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=10.88ms | success=True
+2026-07-11 19:45:39 | INFO | app.metrics | TOOL | get_open_issues | 11.65ms | success=True
+2026-07-11 19:45:40 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 337.12ms | success=True
+2026-07-11 19:45:40 | INFO | app.agent.agent | Agent LLM call successful | duration=337.12ms
+2026-07-11 19:45:40 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1099.93ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 19:45:40 | INFO | app.metrics | API | POST /api/query | 200 | 1126.16ms | role=unknown
+2026-07-11 19:48:27 | INFO | app.metrics | API | GET /ui | 200 | 1.82ms | role=unknown
+2026-07-11 19:48:35 | INFO | app.metrics | API | POST /login | 200 | 316.88ms | role=unknown
+2026-07-11 19:48:35 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:48:35 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:48:35 | INFO | app.metrics | API | GET /me | 200 | 25.01ms | role=unknown
+2026-07-11 19:48:37 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:48:37 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:48:37 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 19:48:37 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 19:48:38 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 766.96ms | success=True
+2026-07-11 19:48:38 | INFO | app.agent.agent | Agent LLM call successful | duration=766.96ms
+2026-07-11 19:48:38 | INFO | app.database | Database connection established
+2026-07-11 19:48:38 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 19:48:38 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=12.93ms | success=True
+2026-07-11 19:48:38 | INFO | app.metrics | TOOL | get_customer_profile | 13.79ms | success=True
+2026-07-11 19:48:38 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 168.54ms | success=True
+2026-07-11 19:48:38 | INFO | app.agent.agent | Agent LLM call successful | duration=168.54ms
+2026-07-11 19:48:38 | INFO | app.database | Database connection established
+2026-07-11 19:48:38 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 19:48:38 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=16.05ms | success=True
+2026-07-11 19:48:38 | INFO | app.metrics | TOOL | get_open_issues | 17.07ms | success=True
+2026-07-11 19:48:39 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 597.49ms | success=True
+2026-07-11 19:48:39 | INFO | app.agent.agent | Agent LLM call successful | duration=597.49ms
+2026-07-11 19:48:39 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1625.13ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 19:48:39 | INFO | app.metrics | API | POST /api/query | 200 | 1663.14ms | role=unknown
+2026-07-11 19:48:41 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:48:41 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:48:41 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 19:48:41 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 19:48:42 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 626.41ms | success=True
+2026-07-11 19:48:42 | INFO | app.agent.agent | Agent LLM call successful | duration=626.41ms
+2026-07-11 19:48:42 | INFO | app.database | Database connection established
+2026-07-11 19:48:42 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 19:48:42 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=17.85ms | success=True
+2026-07-11 19:48:42 | INFO | app.metrics | TOOL | get_customer_profile | 19.46ms | success=True
+2026-07-11 19:48:42 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 127.56ms | success=True
+2026-07-11 19:48:42 | INFO | app.agent.agent | Agent LLM call successful | duration=127.56ms
+2026-07-11 19:48:42 | INFO | app.database | Database connection established
+2026-07-11 19:48:42 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 19:48:42 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=18.30ms | success=True
+2026-07-11 19:48:42 | INFO | app.metrics | TOOL | get_open_issues | 19.05ms | success=True
+2026-07-11 19:48:42 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 593.89ms | success=True
+2026-07-11 19:48:42 | INFO | app.agent.agent | Agent LLM call successful | duration=593.89ms
+2026-07-11 19:48:42 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1433.80ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 19:48:42 | INFO | app.metrics | API | POST /api/query | 200 | 1456.09ms | role=unknown
+2026-07-11 19:48:44 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:48:44 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:48:44 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Summarise all open issues for TechStart Ltd
+2026-07-11 19:48:44 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Summarise all open issues for TechStart Ltd
+2026-07-11 19:48:45 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 670.60ms | success=True
+2026-07-11 19:48:45 | INFO | app.agent.agent | Agent LLM call successful | duration=670.60ms
+2026-07-11 19:48:45 | INFO | app.database | Database connection established
+2026-07-11 19:48:45 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 19:48:45 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=18.30ms | success=True
+2026-07-11 19:48:45 | INFO | app.metrics | TOOL | get_customer_profile | 20.90ms | success=True
+2026-07-11 19:48:45 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 499.65ms | success=True
+2026-07-11 19:48:45 | INFO | app.agent.agent | Agent LLM call successful | duration=499.65ms
+2026-07-11 19:48:45 | INFO | app.database | Database connection established
+2026-07-11 19:48:45 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 19:48:45 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=11.48ms | success=True
+2026-07-11 19:48:45 | INFO | app.metrics | TOOL | get_open_issues | 12.73ms | success=True
+2026-07-11 19:48:46 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 789.62ms | success=True
+2026-07-11 19:48:46 | INFO | app.agent.agent | Agent LLM call successful | duration=789.62ms
+2026-07-11 19:48:46 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=2042.46ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 19:48:46 | INFO | app.metrics | API | POST /api/query | 200 | 2062.08ms | role=unknown
+2026-07-11 19:48:48 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:48:48 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:48:48 | INFO | app.api.routes | Query received | user=carol | role=admin | query=What is the status of issue 1 for Acme Corp?
+2026-07-11 19:48:48 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=What is the status of issue 1 for Acme Corp?
+2026-07-11 19:48:49 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 703.39ms | success=True
+2026-07-11 19:48:49 | INFO | app.agent.agent | Agent LLM call successful | duration=703.39ms
+2026-07-11 19:48:49 | INFO | app.database | Database connection established
+2026-07-11 19:48:49 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 19:48:49 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=10.82ms | success=True
+2026-07-11 19:48:49 | INFO | app.metrics | TOOL | get_customer_profile | 11.82ms | success=True
+2026-07-11 19:48:49 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 146.36ms | success=True
+2026-07-11 19:48:49 | INFO | app.agent.agent | Agent LLM call successful | duration=146.36ms
+2026-07-11 19:48:49 | INFO | app.database | Database connection established
+2026-07-11 19:48:49 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 19:48:49 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=14.59ms | success=True
+2026-07-11 19:48:49 | INFO | app.metrics | TOOL | get_open_issues | 15.58ms | success=True
+2026-07-11 19:48:49 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 146.89ms | success=True
+2026-07-11 19:48:49 | INFO | app.agent.agent | Agent LLM call successful | duration=146.89ms
+2026-07-11 19:48:49 | INFO | app.database | Database connection established
+2026-07-11 19:48:49 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 19:48:49 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=17.50ms | success=True
+2026-07-11 19:48:49 | INFO | app.metrics | TOOL | get_issue_history | 18.92ms | success=True
+2026-07-11 19:48:50 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 510.62ms | success=True
+2026-07-11 19:48:50 | INFO | app.agent.agent | Agent LLM call successful | duration=510.62ms
+2026-07-11 19:48:50 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1610.55ms | success=True | tools=['get_customer_profile', 'get_open_issues', 'get_issue_history']
+2026-07-11 19:48:50 | INFO | app.metrics | API | POST /api/query | 200 | 1646.53ms | role=unknown
+2026-07-11 19:50:24 | INFO | app.metrics | API | OPTIONS /api/query | 200 | 2.75ms | role=unknown
+2026-07-11 19:50:24 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 19:50:24 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 19:50:24 | WARNING | app.api.routes | Sensitive data detected in query | types=['email'] | user=carol
+2026-07-11 19:50:24 | WARNING | app.security.data_sanitiser | HUMAN APPROVAL REQUIRED | approval_id=b04b3f78-d289-486d-bedb-c9bd7591f9ad | sensitive_types=['email'] | requested_by=carol | timeout=60s
+2026-07-11 19:50:24 | WARNING | app.metrics | SECURITY | approval_requested | approval_id=b04b3f78-d289-486d-bedb-c9bd7591f9ad | types=['email'] | requested_by=carol | outcome=pending | approved_by=None
+2026-07-11 19:51:24 | ERROR | app.security.data_sanitiser | HUMAN APPROVAL TIMEOUT | approval_id=b04b3f78-d289-486d-bedb-c9bd7591f9ad | timeout=60s | requested_by=carol | PROCESS STOPPED
+2026-07-11 19:51:24 | WARNING | app.metrics | SECURITY | approval_timeout | approval_id=b04b3f78-d289-486d-bedb-c9bd7591f9ad | types=['email'] | requested_by=carol | outcome=timeout | approved_by=None
+2026-07-11 19:51:24 | INFO | app.metrics | API | POST /api/query | 403 | 60090.09ms | role=unknown
+2026-07-11 20:00:41 | INFO | app.metrics | API | GET /ui | 200 | 7.21ms | role=unknown
+2026-07-11 20:00:49 | INFO | app.metrics | API | POST /login | 200 | 343.98ms | role=unknown
+2026-07-11 20:00:49 | INFO | app.metrics | API | OPTIONS /me | 200 | 0.15ms | role=unknown
+2026-07-11 20:00:49 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 20:00:49 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 20:00:49 | INFO | app.metrics | API | GET /me | 200 | 33.64ms | role=unknown
+2026-07-11 20:00:52 | INFO | app.metrics | API | OPTIONS /api/query | 200 | 0.14ms | role=unknown
+2026-07-11 20:00:52 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 20:00:52 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 20:00:52 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 20:00:52 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-11 20:00:52 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 350.20ms | success=True
+2026-07-11 20:00:52 | INFO | app.agent.agent | Agent LLM call successful | duration=350.20ms
+2026-07-11 20:00:53 | INFO | app.database | Database connection established
+2026-07-11 20:00:53 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 20:00:53 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=37.37ms | success=True
+2026-07-11 20:00:53 | INFO | app.metrics | TOOL | get_customer_profile | 37.76ms | success=True
+2026-07-11 20:00:53 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 119.26ms | success=True
+2026-07-11 20:00:53 | INFO | app.agent.agent | Agent LLM call successful | duration=119.26ms
+2026-07-11 20:00:53 | INFO | app.database | Database connection established
+2026-07-11 20:00:53 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 20:00:53 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=14.89ms | success=True
+2026-07-11 20:00:53 | INFO | app.metrics | TOOL | get_open_issues | 15.27ms | success=True
+2026-07-11 20:00:53 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 294.29ms | success=True
+2026-07-11 20:00:53 | INFO | app.agent.agent | Agent LLM call successful | duration=294.29ms
+2026-07-11 20:00:53 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=897.33ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 20:00:53 | INFO | app.metrics | API | POST /api/query | 200 | 918.68ms | role=unknown
+2026-07-11 20:00:56 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 20:00:56 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 20:00:56 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 20:00:56 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open issues for Global Finance Inc
+2026-07-11 20:00:56 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 315.08ms | success=True
+2026-07-11 20:00:56 | INFO | app.agent.agent | Agent LLM call successful | duration=315.08ms
+2026-07-11 20:00:56 | INFO | app.database | Database connection established
+2026-07-11 20:00:56 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 20:00:56 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=9.55ms | success=True
+2026-07-11 20:00:56 | INFO | app.metrics | TOOL | get_customer_profile | 9.98ms | success=True
+2026-07-11 20:00:57 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 123.85ms | success=True
+2026-07-11 20:00:57 | INFO | app.agent.agent | Agent LLM call successful | duration=123.85ms
+2026-07-11 20:00:57 | INFO | app.database | Database connection established
+2026-07-11 20:00:57 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 20:00:57 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=9.71ms | success=True
+2026-07-11 20:00:57 | INFO | app.metrics | TOOL | get_open_issues | 10.21ms | success=True
+2026-07-11 20:00:57 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 325.28ms | success=True
+2026-07-11 20:00:57 | INFO | app.agent.agent | Agent LLM call successful | duration=325.28ms
+2026-07-11 20:00:57 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=825.06ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 20:00:57 | INFO | app.metrics | API | POST /api/query | 200 | 855.61ms | role=unknown
+2026-07-11 20:00:57 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 20:00:57 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 20:00:57 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Summarise all open issues for TechStart Ltd
+2026-07-11 20:00:57 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Summarise all open issues for TechStart Ltd
+2026-07-11 20:00:58 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 412.63ms | success=True
+2026-07-11 20:00:58 | INFO | app.agent.agent | Agent LLM call successful | duration=412.63ms
+2026-07-11 20:00:58 | INFO | app.database | Database connection established
+2026-07-11 20:00:58 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 20:00:58 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=15.31ms | success=True
+2026-07-11 20:00:58 | INFO | app.metrics | TOOL | get_customer_profile | 15.94ms | success=True
+2026-07-11 20:00:58 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 387.83ms | success=True
+2026-07-11 20:00:58 | INFO | app.agent.agent | Agent LLM call successful | duration=387.83ms
+2026-07-11 20:00:58 | INFO | app.database | Database connection established
+2026-07-11 20:00:58 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 20:00:58 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=8.87ms | success=True
+2026-07-11 20:00:58 | INFO | app.metrics | TOOL | get_open_issues | 9.41ms | success=True
+2026-07-11 20:00:59 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 602.36ms | success=True
+2026-07-11 20:00:59 | INFO | app.agent.agent | Agent LLM call successful | duration=602.36ms
+2026-07-11 20:00:59 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1478.82ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-11 20:00:59 | INFO | app.metrics | API | POST /api/query | 200 | 1500.05ms | role=unknown
+2026-07-11 20:01:00 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 20:01:00 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 20:01:00 | INFO | app.api.routes | Query received | user=carol | role=admin | query=What is the status of issue 1 for Acme Corp?
+2026-07-11 20:01:00 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=What is the status of issue 1 for Acme Corp?
+2026-07-11 20:01:01 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 633.67ms | success=True
+2026-07-11 20:01:01 | INFO | app.agent.agent | Agent LLM call successful | duration=633.67ms
+2026-07-11 20:01:01 | INFO | app.database | Database connection established
+2026-07-11 20:01:01 | INFO | app.database | Query executed successfully | rows=1
+2026-07-11 20:01:01 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=10.18ms | success=True
+2026-07-11 20:01:01 | INFO | app.metrics | TOOL | get_customer_profile | 10.91ms | success=True
+2026-07-11 20:01:01 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 584.79ms | success=True
+2026-07-11 20:01:01 | INFO | app.agent.agent | Agent LLM call successful | duration=584.79ms
+2026-07-11 20:01:01 | INFO | app.database | Database connection established
+2026-07-11 20:01:01 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 20:01:01 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=15.56ms | success=True
+2026-07-11 20:01:01 | INFO | app.metrics | TOOL | get_open_issues | 16.65ms | success=True
+2026-07-11 20:01:02 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 196.28ms | success=True
+2026-07-11 20:01:02 | INFO | app.agent.agent | Agent LLM call successful | duration=196.28ms
+2026-07-11 20:01:02 | INFO | app.database | Database connection established
+2026-07-11 20:01:02 | INFO | app.database | Query executed successfully | rows=2
+2026-07-11 20:01:02 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=10.85ms | success=True
+2026-07-11 20:01:02 | INFO | app.metrics | TOOL | get_issue_history | 11.36ms | success=True
+2026-07-11 20:01:02 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 547.75ms | success=True
+2026-07-11 20:01:02 | INFO | app.agent.agent | Agent LLM call successful | duration=547.75ms
+2026-07-11 20:01:02 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=2045.13ms | success=True | tools=['get_customer_profile', 'get_open_issues', 'get_issue_history']
+2026-07-11 20:01:02 | INFO | app.metrics | API | POST /api/query | 200 | 2099.49ms | role=unknown
+2026-07-11 20:01:18 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 20:01:18 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 20:01:18 | WARNING | app.api.routes | Sensitive data detected in query | types=['email'] | user=carol
+2026-07-11 20:01:18 | WARNING | app.metrics | SECURITY | approval_requested | approval_id=030c4423-a7a1-4aaf-b072-0fc84f3d5f9f | types=['email'] | requested_by=carol | outcome=pending | approved_by=None
+2026-07-11 20:01:18 | INFO | app.metrics | API | POST /api/query | 403 | 22.61ms | role=unknown
+2026-07-11 20:01:20 | INFO | app.metrics | API | OPTIONS /api/security/self-approve/030c4423-a7a1-4aaf-b072-0fc84f3d5f9f | 200 | 0.21ms | role=unknown
+2026-07-11 20:01:20 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 20:01:20 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 20:01:20 | INFO | app.security.data_sanitiser | APPROVAL GRANTED | approval_id=030c4423-a7a1-4aaf-b072-0fc84f3d5f9f | approved_by=carol | approved_at=2026-07-11T20:01:20.115749
+2026-07-11 20:01:20 | WARNING | app.metrics | SECURITY | self_approval_granted | approval_id=030c4423-a7a1-4aaf-b072-0fc84f3d5f9f | types=[] | requested_by=carol | outcome=approved | approved_by=carol
+2026-07-11 20:01:20 | INFO | app.api.routes | SELF APPROVAL | user=carol | approval_id=030c4423-a7a1-4aaf-b072-0fc84f3d5f9f
+2026-07-11 20:01:20 | INFO | app.metrics | API | POST /api/security/self-approve/030c4423-a7a1-4aaf-b072-0fc84f3d5f9f | 200 | 28.97ms | role=unknown
+2026-07-11 20:01:20 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-11 20:01:20 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-11 20:01:20 | WARNING | app.api.routes | Sensitive data detected in query | types=['email'] | user=carol
+2026-07-11 20:01:20 | WARNING | app.metrics | SECURITY | approval_requested | approval_id=9c0f722f-1ca6-4fd4-8ddc-4ed7a10498bf | types=['email'] | requested_by=carol | outcome=pending | approved_by=None
+2026-07-11 20:01:20 | INFO | app.metrics | API | POST /api/query | 403 | 21.16ms | role=unknown

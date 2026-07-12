@@ -9,6 +9,10 @@ from app.auth.auth import get_current_user
 from app.database import get_customer_by_name
 from app.api.routes import router
 
+import os
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 load_dotenv()
 logger = get_logger(__name__)
 
@@ -90,3 +94,44 @@ async def get_customer(
     if not customer:
         raise HTTPException(status_code=404, detail="Customer not found")
     return customer
+
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+@app.get("/ui", tags=["System"])
+async def serve_ui():
+    return FileResponse("app/static/index.html")
+
+@app.get("/config", tags=["System"])
+async def get_config():
+    return {
+        "client_secret": os.getenv("KEYCLOAK_CLIENT_SECRET", "acme-secret")
+    }
+
+@app.post("/login", tags=["Auth"])
+async def login(request: Request):
+    """
+    Proxy login endpoint — browser calls this instead of Keycloak directly.
+    Avoids CORS issues with Keycloak.
+    """
+    import httpx
+    body = await request.form()
+    username = body.get("username")
+    password = body.get("password")
+    
+    async with httpx.AsyncClient() as client:
+        resp = await client.post(
+            f"{os.getenv('KEYCLOAK_URL')}/realms/{os.getenv('KEYCLOAK_REALM')}/protocol/openid-connect/token",
+            data={
+                "grant_type": "password",
+                "client_id": os.getenv("KEYCLOAK_CLIENT_ID"),
+                "client_secret": os.getenv("KEYCLOAK_CLIENT_SECRET"),
+                "username": username,
+                "password": password
+            }
+        )
+    
+    if resp.status_code == 200:
+        return resp.json()
+    else:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=401, detail="Invalid credentials")

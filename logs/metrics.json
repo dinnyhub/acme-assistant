@@ -1,287 +1,362 @@
 {
-  "generated_at": "2026-07-11T10:28:05.809336",
+  "generated_at": "2026-07-12T11:26:08.398174",
   "summary": {
-    "total_api_requests": 12,
-    "successful_api_requests": 9,
-    "failed_api_requests": 3,
-    "avg_api_latency_ms": 12424.97,
-    "total_llm_calls": 5,
-    "successful_llm_calls": 5,
+    "total_api_requests": 15,
+    "successful_api_requests": 11,
+    "failed_api_requests": 4,
+    "avg_api_latency_ms": 280.44,
+    "total_llm_calls": 10,
+    "successful_llm_calls": 10,
     "total_tokens_used": 0,
-    "avg_llm_latency_ms": 479.94,
-    "total_tool_calls": 3,
-    "successful_tool_calls": 2,
+    "avg_llm_latency_ms": 290.74,
+    "total_tool_calls": 7,
+    "successful_tool_calls": 7,
     "total_mcp_calls": 0,
     "successful_mcp_calls": 0,
     "total_errors": 0
   },
   "tool_call_breakdown": {
-    "get_customer_profile": 2,
-    "get_open_issues": 1
+    "get_customer_profile": 3,
+    "get_open_issues": 3,
+    "get_issue_history": 1
   },
   "api_endpoint_breakdown": {
-    "/docs": 1,
-    "/openapi.json": 1,
-    "/api/query": 5,
-    "/metrics": 1,
-    "/api/security/pending-approvals": 2,
-    "/api/security/approve/1feb1315-e62e-4aea-b1bd-699745984d7c": 1,
-    "/api/security/approve/e3303797-4ba9-433f-81fd-7f7765f10ff8": 1
+    "/api/query": 4,
+    "/ui": 2,
+    "/favicon.ico": 1,
+    "/.well-known/appspecific/com.chrome.devtools.json": 2,
+    "/login": 3,
+    "/me": 3
   },
   "error_breakdown": {},
   "raw": {
     "api_requests": [
       {
-        "timestamp": "2026-07-11T10:17:03.422736",
-        "type": "api_request",
-        "endpoint": "/docs",
-        "method": "GET",
-        "status_code": 200,
-        "duration_ms": 0.55,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-11T10:17:03.508756",
-        "type": "api_request",
-        "endpoint": "/openapi.json",
-        "method": "GET",
-        "status_code": 200,
-        "duration_ms": 14.55,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-11T10:18:08.274966",
-        "type": "api_request",
-        "endpoint": "/api/query",
-        "method": "POST",
-        "status_code": 200,
-        "duration_ms": 2033.54,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-11T10:18:31.294084",
-        "type": "api_request",
-        "endpoint": "/metrics",
-        "method": "GET",
-        "status_code": 200,
-        "duration_ms": 2.39,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-11T10:22:32.787831",
-        "type": "api_request",
-        "endpoint": "/api/query",
-        "method": "POST",
-        "status_code": 403,
-        "duration_ms": 60079.47,
-        "user_role": "unknown",
-        "success": false
-      },
-      {
-        "timestamp": "2026-07-11T10:24:18.245493",
+        "timestamp": "2026-07-12T11:07:09.528266",
         "type": "api_request",
         "endpoint": "/api/query",
         "method": "POST",
         "status_code": 401,
-        "duration_ms": 32.26,
+        "duration_ms": 95.94,
         "user_role": "unknown",
         "success": false
       },
       {
-        "timestamp": "2026-07-11T10:26:05.449193",
+        "timestamp": "2026-07-12T11:08:45.854766",
         "type": "api_request",
-        "endpoint": "/api/security/pending-approvals",
+        "endpoint": "/ui",
         "method": "GET",
         "status_code": 200,
-        "duration_ms": 19.31,
+        "duration_ms": 43.66,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-11T10:26:46.694229",
+        "timestamp": "2026-07-12T11:08:45.965361",
         "type": "api_request",
-        "endpoint": "/api/security/approve/1feb1315-e62e-4aea-b1bd-699745984d7c",
-        "method": "POST",
-        "status_code": 200,
-        "duration_ms": 33.9,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-11T10:26:48.054814",
-        "type": "api_request",
-        "endpoint": "/api/query",
-        "method": "POST",
-        "status_code": 403,
-        "duration_ms": 60056.23,
+        "endpoint": "/favicon.ico",
+        "method": "GET",
+        "status_code": 404,
+        "duration_ms": 0.72,
         "user_role": "unknown",
         "success": false
       },
       {
-        "timestamp": "2026-07-11T10:27:44.976202",
+        "timestamp": "2026-07-12T11:08:55.617997",
         "type": "api_request",
-        "endpoint": "/api/security/pending-approvals",
+        "endpoint": "/.well-known/appspecific/com.chrome.devtools.json",
         "method": "GET",
-        "status_code": 200,
-        "duration_ms": 40.32,
+        "status_code": 404,
+        "duration_ms": 0.34,
         "user_role": "unknown",
-        "success": true
+        "success": false
       },
       {
-        "timestamp": "2026-07-11T10:28:04.917954",
+        "timestamp": "2026-07-12T11:09:09.298911",
         "type": "api_request",
-        "endpoint": "/api/security/approve/e3303797-4ba9-433f-81fd-7f7765f10ff8",
+        "endpoint": "/login",
         "method": "POST",
         "status_code": 200,
-        "duration_ms": 24.49,
+        "duration_ms": 260.17,
         "user_role": "unknown",
         "success": true
       },
       {
-        "timestamp": "2026-07-11T10:28:05.809014",
+        "timestamp": "2026-07-12T11:09:09.332618",
+        "type": "api_request",
+        "endpoint": "/me",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 28.57,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T11:14:27.042234",
+        "type": "api_request",
+        "endpoint": "/ui",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 1.1,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T11:14:30.477476",
+        "type": "api_request",
+        "endpoint": "/.well-known/appspecific/com.chrome.devtools.json",
+        "method": "GET",
+        "status_code": 404,
+        "duration_ms": 0.69,
+        "user_role": "unknown",
+        "success": false
+      },
+      {
+        "timestamp": "2026-07-12T11:14:39.563636",
+        "type": "api_request",
+        "endpoint": "/login",
+        "method": "POST",
+        "status_code": 200,
+        "duration_ms": 206.32,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T11:14:39.588393",
+        "type": "api_request",
+        "endpoint": "/me",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 19.58,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T11:25:58.406927",
+        "type": "api_request",
+        "endpoint": "/login",
+        "method": "POST",
+        "status_code": 200,
+        "duration_ms": 195.56,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T11:25:58.437801",
+        "type": "api_request",
+        "endpoint": "/me",
+        "method": "GET",
+        "status_code": 200,
+        "duration_ms": 24.32,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T11:26:02.149978",
         "type": "api_request",
         "endpoint": "/api/query",
         "method": "POST",
         "status_code": 200,
-        "duration_ms": 26762.64,
+        "duration_ms": 1275.2,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T11:26:05.115417",
+        "type": "api_request",
+        "endpoint": "/api/query",
+        "method": "POST",
+        "status_code": 200,
+        "duration_ms": 802.48,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T11:26:08.398112",
+        "type": "api_request",
+        "endpoint": "/api/query",
+        "method": "POST",
+        "status_code": 200,
+        "duration_ms": 1251.92,
         "user_role": "unknown",
         "success": true
       }
     ],
     "llm_calls": [
       {
-        "timestamp": "2026-07-11T10:18:06.923904",
+        "timestamp": "2026-07-12T11:26:01.439181",
         "type": "llm_call",
         "model": "llama-3.3-70b-versatile",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 558.84,
+        "duration_ms": 448.23,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:18:07.763438",
+        "timestamp": "2026-07-12T11:26:01.699708",
         "type": "llm_call",
         "model": "llama-3.3-70b-versatile",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 716.21,
+        "duration_ms": 208.01,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:18:08.273363",
+        "timestamp": "2026-07-12T11:26:02.147945",
         "type": "llm_call",
         "model": "llama-3.3-70b-versatile",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 487.18,
+        "duration_ms": 433.63,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:28:05.430073",
+        "timestamp": "2026-07-12T11:26:04.730739",
         "type": "llm_call",
         "model": "llama-3.3-70b-versatile",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 284.63,
+        "duration_ms": 342.37,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:28:05.803787",
+        "timestamp": "2026-07-12T11:26:04.877686",
         "type": "llm_call",
         "model": "llama-3.3-70b-versatile",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 352.86,
+        "duration_ms": 125.06,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:05.113601",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 223.58,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:07.570673",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 355.05,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:07.711668",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 123.93,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:07.949344",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 215.24,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:08.396576",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 432.33,
         "success": true,
         "error": null
       }
     ],
     "tool_calls": [
       {
-        "timestamp": "2026-07-11T10:18:07.046554",
+        "timestamp": "2026-07-12T11:26:01.490772",
         "type": "tool_call",
         "tool_name": "get_customer_profile",
-        "duration_ms": 118.02,
+        "duration_ms": 49.3,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:18:07.785152",
+        "timestamp": "2026-07-12T11:26:01.713589",
         "type": "tool_call",
         "tool_name": "get_open_issues",
-        "duration_ms": 18.29,
+        "duration_ms": 12.4,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:28:05.449207",
+        "timestamp": "2026-07-12T11:26:04.750595",
         "type": "tool_call",
         "tool_name": "get_customer_profile",
-        "duration_ms": 14.38,
-        "success": false,
-        "error": "Customer not found"
+        "duration_ms": 15.66,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:04.889354",
+        "type": "tool_call",
+        "tool_name": "get_open_issues",
+        "duration_ms": 10.38,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:07.586625",
+        "type": "tool_call",
+        "tool_name": "get_customer_profile",
+        "duration_ms": 13.79,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:07.732349",
+        "type": "tool_call",
+        "tool_name": "get_open_issues",
+        "duration_ms": 17.21,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:07.963494",
+        "type": "tool_call",
+        "tool_name": "get_issue_history",
+        "duration_ms": 12.0,
+        "success": true,
+        "error": null
       }
     ],
     "mcp_calls": [],
     "errors": [],
     "security_events": [
       {
-        "timestamp": "2026-07-11T10:18:06.296900",
-        "type": "auth_event",
-        "event_type": "login_success",
-        "username": "carol",
-        "user_role": "['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']",
-        "success": true,
-        "error": null
-      },
-      {
-        "timestamp": "2026-07-11T10:21:32.752093",
-        "type": "auth_event",
-        "event_type": "login_success",
-        "username": "carol",
-        "user_role": "['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']",
-        "success": true,
-        "error": null
-      },
-      {
-        "timestamp": "2026-07-11T10:21:32.753943",
-        "type": "security_event",
-        "event_type": "approval_requested",
-        "approval_id": "da102aa7-ea51-43a4-a8e7-1015132632f2",
-        "sensitive_data_types": [
-          "email"
-        ],
-        "requested_by": "carol",
-        "outcome": "pending",
-        "approved_by": null
-      },
-      {
-        "timestamp": "2026-07-11T10:22:32.785926",
-        "type": "security_event",
-        "event_type": "approval_timeout",
-        "approval_id": "da102aa7-ea51-43a4-a8e7-1015132632f2",
-        "sensitive_data_types": [
-          "email"
-        ],
-        "requested_by": "carol",
-        "outcome": "timeout",
-        "approved_by": null
-      },
-      {
-        "timestamp": "2026-07-11T10:24:18.244183",
+        "timestamp": "2026-07-12T11:07:09.527530",
         "type": "auth_event",
         "event_type": "login_failed",
         "username": "unknown",
@@ -290,7 +365,7 @@
         "error": "Signature has expired."
       },
       {
-        "timestamp": "2026-07-11T10:25:48.020512",
+        "timestamp": "2026-07-12T11:09:09.332200",
         "type": "auth_event",
         "event_type": "login_success",
         "username": "carol",
@@ -299,19 +374,7 @@
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:25:48.021330",
-        "type": "security_event",
-        "event_type": "approval_requested",
-        "approval_id": "1feb1315-e62e-4aea-b1bd-699745984d7c",
-        "sensitive_data_types": [
-          "email"
-        ],
-        "requested_by": "carol",
-        "outcome": "pending",
-        "approved_by": null
-      },
-      {
-        "timestamp": "2026-07-11T10:26:05.448677",
+        "timestamp": "2026-07-12T11:14:39.587925",
         "type": "auth_event",
         "event_type": "login_success",
         "username": "carol",
@@ -320,7 +383,7 @@
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:26:46.693499",
+        "timestamp": "2026-07-12T11:25:58.437338",
         "type": "auth_event",
         "event_type": "login_success",
         "username": "carol",
@@ -329,19 +392,7 @@
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:26:48.053894",
-        "type": "security_event",
-        "event_type": "approval_timeout",
-        "approval_id": "1feb1315-e62e-4aea-b1bd-699745984d7c",
-        "sensitive_data_types": [
-          "email"
-        ],
-        "requested_by": "carol",
-        "outcome": "timeout",
-        "approved_by": null
-      },
-      {
-        "timestamp": "2026-07-11T10:27:39.083317",
+        "timestamp": "2026-07-12T11:26:00.911008",
         "type": "auth_event",
         "event_type": "login_success",
         "username": "carol",
@@ -350,19 +401,7 @@
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:27:39.085083",
-        "type": "security_event",
-        "event_type": "approval_requested",
-        "approval_id": "e3303797-4ba9-433f-81fd-7f7765f10ff8",
-        "sensitive_data_types": [
-          "email"
-        ],
-        "requested_by": "carol",
-        "outcome": "pending",
-        "approved_by": null
-      },
-      {
-        "timestamp": "2026-07-11T10:27:44.974988",
+        "timestamp": "2026-07-12T11:26:04.349936",
         "type": "auth_event",
         "event_type": "login_success",
         "username": "carol",
@@ -371,74 +410,90 @@
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:28:04.917265",
+        "timestamp": "2026-07-12T11:26:07.180034",
         "type": "auth_event",
         "event_type": "login_success",
         "username": "carol",
         "user_role": "['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']",
         "success": true,
         "error": null
-      },
-      {
-        "timestamp": "2026-07-11T10:28:05.110528",
-        "type": "security_event",
-        "event_type": "approval_granted",
-        "approval_id": "e3303797-4ba9-433f-81fd-7f7765f10ff8",
-        "sensitive_data_types": [
-          "email"
-        ],
-        "requested_by": "carol",
-        "outcome": "approved",
-        "approved_by": "carol"
-      },
-      {
-        "timestamp": "2026-07-11T10:28:05.111049",
-        "type": "security_event",
-        "event_type": "data_redacted",
-        "approval_id": "auto-redact",
-        "sensitive_data_types": [
-          "email"
-        ],
-        "requested_by": "carol",
-        "outcome": "redacted",
-        "approved_by": null
       }
     ],
     "database_events": [
       {
-        "timestamp": "2026-07-11T10:18:07.046298",
+        "timestamp": "2026-07-12T11:26:01.490457",
         "type": "database_event",
         "operation": "SELECT",
         "table": "customers",
-        "duration_ms": 117.7,
+        "duration_ms": 48.93,
         "rows_returned": 1,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:18:07.784665",
+        "timestamp": "2026-07-12T11:26:01.713209",
         "type": "database_event",
         "operation": "SELECT",
         "table": "issues",
-        "duration_ms": 17.69,
+        "duration_ms": 11.96,
         "rows_returned": 2,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-11T10:28:05.448070",
+        "timestamp": "2026-07-12T11:26:04.749430",
         "type": "database_event",
         "operation": "SELECT",
         "table": "customers",
-        "duration_ms": 13.09,
-        "rows_returned": 0,
+        "duration_ms": 14.32,
+        "rows_returned": 1,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:04.889029",
+        "type": "database_event",
+        "operation": "SELECT",
+        "table": "issues",
+        "duration_ms": 10.03,
+        "rows_returned": 1,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:07.585996",
+        "type": "database_event",
+        "operation": "SELECT",
+        "table": "customers",
+        "duration_ms": 13.11,
+        "rows_returned": 1,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:07.730954",
+        "type": "database_event",
+        "operation": "SELECT",
+        "table": "issues",
+        "duration_ms": 15.69,
+        "rows_returned": 2,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T11:26:07.963065",
+        "type": "database_event",
+        "operation": "SELECT",
+        "table": "issue_updates",
+        "duration_ms": 11.46,
+        "rows_returned": 2,
         "success": true,
         "error": null
       }
     ]
   },
-  "total_agent_calls": 2,
-  "successful_agent_calls": 2,
-  "total_auth_events": 16,
-  "total_database_events": 3
+  "total_agent_calls": 3,
+  "successful_agent_calls": 3,
+  "total_auth_events": 7,
+  "total_database_events": 7
 }

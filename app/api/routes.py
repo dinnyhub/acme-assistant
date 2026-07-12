@@ -1,5 +1,7 @@
+import re
 import time
 import uuid
+from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from app.auth.auth import get_current_user, require_role, get_user_role
@@ -9,8 +11,7 @@ from app.metrics import log_security_event
 from app.security.data_sanitiser import (
     detect_sensitive_data,
     sanitise_for_llm,
-    request_human_approval,
-    HumanApprovalTimeout,
+    pending_approvals,
     get_pending_approvals,
     approve_request,
     reject_request
@@ -49,20 +50,51 @@ async def query_agent(
 ):
     """
     Main endpoint — sends a query to the AI agent.
-    Checks for sensitive data before hitting the LLM.
-    Requests human approval if sensitive data is detected.
-    Sanitises data before sending to LLM.
-    All authenticated users can use this endpoint.
+
+    Security flow:
+    Step 1: Check if query was pre-approved (contains [approved:UUID] marker)
+            If yes — skip sensitive data check, sanitise and run agent.
+    Step 2: Detect sensitive data in original query.
+            If found — store approval request and return 403 immediately.
+    Step 3: User approves via /security/self-approve endpoint.
+    Step 4: User resends query with [approved:UUID] marker — goes to Step 1.
+    Step 5: Sanitise query and run agent.
     """
     start = time.time()
     user_role = get_user_role(user)
     username = user["username"]
 
     try:
-        # Step 1 — Detect sensitive data in query
+        # Step 1 — Check if query was pre-approved by user
+        approval_match = re.search(r'\[approved:([a-f0-9-]+)\]', request.query)
+        if approval_match:
+            # Remove the approval marker but keep the real data
+            # User has approved — pass original query to LLM as is
+            clean_query = request.query.replace(
+                approval_match.group(0), ''
+            ).strip()
+
+            logger.info(
+                f"Pre-approved query — passing original data to LLM | "
+                f"user={username} | approval_id={approval_match.group(1)}"
+            )
+            response = await run_agent(
+                query=clean_query,
+                user_role=user_role,
+                username=username
+            )
+            duration = (time.time() - start) * 1000
+            return QueryResponse(
+                response=response,
+                username=username,
+                role=user_role,
+                duration_ms=round(duration, 2)
+            )
+
+        # Step 2 — Detect sensitive data in original query
         sensitive_data = detect_sensitive_data(request.query)
 
-        # Step 2 — If sensitive data found request human approval
+        # Step 3 — If sensitive data found return 403 immediately with approval ID
         if sensitive_data:
             approval_id = str(uuid.uuid4())
             logger.warning(
@@ -70,29 +102,43 @@ async def query_agent(
                 f"types={list(sensitive_data.keys())} | "
                 f"user={username}"
             )
-            try:
-                approved = await request_human_approval(
-                    approval_id=approval_id,
-                    query=request.query,
-                    sensitive_data=sensitive_data,
-                    username=username,
-                    timeout_seconds=60
-                )
-                if not approved:
-                    raise HTTPException(
-                        status_code=403,
-                        detail="Query rejected by security officer — contains sensitive data."
-                    )
-            except HumanApprovalTimeout as e:
-                raise HTTPException(status_code=403, detail=str(e))
 
-        # Step 3 — Sanitise query before sending to LLM
+            # Store pending approval immediately
+            pending_approvals[approval_id] = {
+                "status": "pending",
+                "query": request.query[:100],
+                "sensitive_data_types": list(sensitive_data.keys()),
+                "requested_by": username,
+                "requested_at": datetime.now().isoformat(),
+                "approved_by": None,
+                "approved_at": None,
+                "timeout_seconds": 60
+            }
+
+            # Log to Power BI metrics
+            log_security_event(
+                event_type="approval_requested",
+                approval_id=approval_id,
+                sensitive_data_types=list(sensitive_data.keys()),
+                requested_by=username,
+                outcome="pending"
+            )
+
+            # Return 403 immediately — do not wait 60 seconds
+            raise HTTPException(
+                status_code=403,
+                detail=f"Query contains sensitive data types: "
+                       f"{list(sensitive_data.keys())}. "
+                       f"Approval ID: {approval_id}"
+            )
+
+        # Step 4 — Sanitise query before sending to LLM
         sanitised_query = sanitise_for_llm(
             request.query,
             {"username": username, "role": user_role}
         )
 
-        # Step 4 — Run agent with sanitised query
+        # Step 5 — Run agent with sanitised query
         logger.info(
             f"Query received | user={username} | "
             f"role={user_role} | query={sanitised_query[:50]}"
@@ -234,26 +280,19 @@ async def call_mcp_tool(
 async def list_pending_approvals(
     user: dict = Depends(require_role("admin"))
 ):
-    """
-    Returns all queries waiting for human approval.
-    Admin only — security officers use this to review and approve.
-    """
+    """Returns all queries waiting for human approval. Admin only."""
     return {"pending_approvals": get_pending_approvals()}
 
 
 @router.post("/security/approve/{approval_id}",
     tags=["Security"],
-    summary="Approve a pending query"
+    summary="Approve a pending query — Admin only"
 )
 async def approve_query(
     approval_id: str,
     user: dict = Depends(require_role("admin"))
 ):
-    """
-    Security officer approves a pending query.
-    Logs who approved and when.
-    Admin only.
-    """
+    """Security officer approves a pending query. Admin only."""
     success = approve_request(approval_id, user["username"])
     if not success:
         raise HTTPException(status_code=404, detail="Approval request not found")
@@ -266,17 +305,13 @@ async def approve_query(
 
 @router.post("/security/reject/{approval_id}",
     tags=["Security"],
-    summary="Reject a pending query"
+    summary="Reject a pending query — Admin only"
 )
 async def reject_query(
     approval_id: str,
     user: dict = Depends(require_role("admin"))
 ):
-    """
-    Security officer rejects a pending query.
-    Logs who rejected and when.
-    Admin only.
-    """
+    """Security officer rejects a pending query. Admin only."""
     success = reject_request(approval_id, user["username"])
     if not success:
         raise HTTPException(status_code=404, detail="Approval request not found")
@@ -284,4 +319,37 @@ async def reject_query(
         "rejected": True,
         "approval_id": approval_id,
         "rejected_by": user["username"]
+    }
+
+
+@router.post("/security/self-approve/{approval_id}",
+    tags=["Security"],
+    summary="User self-approves their own sensitive query"
+)
+async def self_approve_query(
+    approval_id: str,
+    user: dict = Depends(get_current_user)
+):
+    """
+    User approves their own query after seeing the sensitive data warning.
+    Logs who approved and when for full audit trail.
+    """
+    success = approve_request(approval_id, user["username"])
+    if not success:
+        raise HTTPException(status_code=404, detail="Approval request not found")
+    log_security_event(
+        event_type="self_approval_granted",
+        approval_id=approval_id,
+        sensitive_data_types=[],
+        requested_by=user["username"],
+        outcome="approved",
+        approved_by=user["username"]
+    )
+    logger.info(
+        f"SELF APPROVAL | user={user['username']} | approval_id={approval_id}"
+    )
+    return {
+        "approved": True,
+        "approval_id": approval_id,
+        "approved_by": user["username"]
     }
