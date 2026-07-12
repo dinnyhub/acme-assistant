@@ -224,7 +224,7 @@ All code was reviewed, tested, and understood before inclusion. Architecture dec
 - `data_sanitiser.py` — Sensitive data detection and human-in-the-loop approval
 
 **app/static/** — Frontend
-- `index.html` — ChatGPT-style chat UI
+- `index.html` — chat UI
 
 **infra/** — Infrastructure configuration
 - `postgres/init.sql` — Database schema and seed data
