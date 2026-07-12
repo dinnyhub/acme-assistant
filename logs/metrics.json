@@ -1,57 +1,199 @@
 {
-  "generated_at": "2026-07-12T11:40:00.677650",
+  "generated_at": "2026-07-12T12:22:39.303850",
   "summary": {
-    "total_api_requests": 1,
-    "successful_api_requests": 1,
+    "total_api_requests": 3,
+    "successful_api_requests": 3,
     "failed_api_requests": 0,
-    "avg_api_latency_ms": 921.57,
-    "total_llm_calls": 1,
-    "successful_llm_calls": 1,
+    "avg_api_latency_ms": 932.86,
+    "total_llm_calls": 7,
+    "successful_llm_calls": 7,
     "total_tokens_used": 0,
-    "avg_llm_latency_ms": 746.09,
-    "total_tool_calls": 0,
-    "successful_tool_calls": 0,
+    "avg_llm_latency_ms": 348.8,
+    "total_tool_calls": 4,
+    "successful_tool_calls": 4,
     "total_mcp_calls": 0,
     "successful_mcp_calls": 0,
     "total_errors": 0
   },
-  "tool_call_breakdown": {},
+  "tool_call_breakdown": {
+    "create_next_action": 1,
+    "get_customer_profile": 1,
+    "get_open_issues": 1,
+    "get_issue_history": 1
+  },
   "api_endpoint_breakdown": {
-    "/api/skills/escalation/Acme Corp": 1
+    "/api/query": 3
   },
   "error_breakdown": {},
   "raw": {
     "api_requests": [
       {
-        "timestamp": "2026-07-12T11:40:00.677564",
+        "timestamp": "2026-07-12T12:21:54.997742",
         "type": "api_request",
-        "endpoint": "/api/skills/escalation/Acme Corp",
+        "endpoint": "/api/query",
         "method": "POST",
         "status_code": 200,
-        "duration_ms": 921.57,
+        "duration_ms": 957.12,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T12:22:29.377536",
+        "type": "api_request",
+        "endpoint": "/api/query",
+        "method": "POST",
+        "status_code": 200,
+        "duration_ms": 1031.28,
+        "user_role": "unknown",
+        "success": true
+      },
+      {
+        "timestamp": "2026-07-12T12:22:39.303543",
+        "type": "api_request",
+        "endpoint": "/api/query",
+        "method": "POST",
+        "status_code": 200,
+        "duration_ms": 810.19,
         "user_role": "unknown",
         "success": true
       }
     ],
     "llm_calls": [
       {
-        "timestamp": "2026-07-12T11:40:00.676718",
+        "timestamp": "2026-07-12T12:21:54.767263",
         "type": "llm_call",
         "model": "llama-3.3-70b-versatile",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 746.09,
+        "duration_ms": 587.68,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:21:54.988243",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 191.68,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:28.606259",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 205.03,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:28.851262",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 225.56,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:29.372885",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 507.45,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:38.771176",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 225.99,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:39.293856",
+        "type": "llm_call",
+        "model": "llama-3.3-70b-versatile",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 498.22,
         "success": true,
         "error": null
       }
     ],
-    "tool_calls": [],
+    "tool_calls": [
+      {
+        "timestamp": "2026-07-12T12:21:54.795950",
+        "type": "tool_call",
+        "tool_name": "create_next_action",
+        "duration_ms": 27.02,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:28.624802",
+        "type": "tool_call",
+        "tool_name": "get_customer_profile",
+        "duration_ms": 16.16,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:28.864741",
+        "type": "tool_call",
+        "tool_name": "get_open_issues",
+        "duration_ms": 12.14,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:38.793687",
+        "type": "tool_call",
+        "tool_name": "get_issue_history",
+        "duration_ms": 18.3,
+        "success": true,
+        "error": null
+      }
+    ],
     "mcp_calls": [],
     "errors": [],
     "security_events": [
       {
-        "timestamp": "2026-07-12T11:39:59.825500",
+        "timestamp": "2026-07-12T12:21:54.113558",
+        "type": "auth_event",
+        "event_type": "login_success",
+        "username": "carol",
+        "user_role": "['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']",
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:28.368238",
+        "type": "auth_event",
+        "event_type": "login_success",
+        "username": "carol",
+        "user_role": "['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']",
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:38.510580",
         "type": "auth_event",
         "event_type": "login_success",
         "username": "carol",
@@ -62,49 +204,49 @@
     ],
     "database_events": [
       {
-        "timestamp": "2026-07-12T11:39:59.864567",
+        "timestamp": "2026-07-12T12:21:54.795735",
+        "type": "database_event",
+        "operation": "WRITE",
+        "table": "next_actions",
+        "duration_ms": 26.73,
+        "rows_returned": 0,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:28.624461",
         "type": "database_event",
         "operation": "SELECT",
         "table": "customers",
-        "duration_ms": 35.14,
+        "duration_ms": 15.77,
         "rows_returned": 1,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T11:39:59.872618",
+        "timestamp": "2026-07-12T12:22:28.864377",
         "type": "database_event",
         "operation": "SELECT",
         "table": "issues",
-        "duration_ms": 7.47,
-        "rows_returned": 2,
-        "success": true,
-        "error": null
-      },
-      {
-        "timestamp": "2026-07-12T11:39:59.878593",
-        "type": "database_event",
-        "operation": "SELECT",
-        "table": "issue_updates",
-        "duration_ms": 5.64,
-        "rows_returned": 2,
-        "success": true,
-        "error": null
-      },
-      {
-        "timestamp": "2026-07-12T11:39:59.883894",
-        "type": "database_event",
-        "operation": "SELECT",
-        "table": "issue_updates",
-        "duration_ms": 5.01,
+        "duration_ms": 11.73,
         "rows_returned": 1,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T12:22:38.792398",
+        "type": "database_event",
+        "operation": "SELECT",
+        "table": "issue_updates",
+        "duration_ms": 16.72,
+        "rows_returned": 2,
         "success": true,
         "error": null
       }
     ]
   },
-  "total_agent_calls": 0,
-  "successful_agent_calls": 0,
-  "total_auth_events": 1,
+  "total_agent_calls": 3,
+  "successful_agent_calls": 3,
+  "total_auth_events": 3,
   "total_database_events": 4
 }

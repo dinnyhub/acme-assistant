@@ -13,7 +13,7 @@ SENSITIVE_PATTERNS = {
     "phone": r'\b(\+44|0044|0)[0-9\s\-]{9,13}\b',
     "credit_card": r'\b(?:\d{4}[\s\-]?){3}\d{4}\b',
     "national_insurance": r'\b[A-Z]{2}[0-9]{6}[A-Z]\b',
-    "sort_code": r'\b\d{2}[-\s]?\d{2}[-\s]?\d{2}\b',
+    "sort_code": r'\b\d{2}-\d{2}-\d{2}\b(?!\d)',
     "bank_account": r'\b\d{8}\b',
     "passport": r'\b[A-Z]{2}[0-9]{7}\b',
     "ip_address": r'\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b',

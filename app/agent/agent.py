@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_core.utils.utils import convert_to_secret_str
 from langchain_core.tools import StructuredTool
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
 from typing import TypedDict, Annotated, Any
@@ -20,6 +20,7 @@ from app.agent.tools import (
 )
 from app.metrics import log_llm_call, log_agent_event
 from app.logger import get_logger
+from app.memory import get_session_history, append_to_session
 
 load_dotenv()
 logger = get_logger(__name__)
@@ -156,7 +157,7 @@ def build_agent(user_role: str = "sales_user", username: str = "unknown") -> Any
 
     graph.add_node(
         "agent",
-        lambda state: agent_node(state, llm_with_tools)  # type: ignore
+        lambda state: agent_node(state, llm_with_tools) # type: ignore
     )
     graph.add_node("tools", ToolNode(tools))
 
@@ -169,30 +170,54 @@ def build_agent(user_role: str = "sales_user", username: str = "unknown") -> Any
     )
     graph.add_edge("tools", "agent")
 
-    return graph.compile()
-
+    # Add recursion limit to prevent infinite loops
+    return graph.compile(checkpointer=None)
 
 async def run_agent(
     query: str,
     user_role: str = "sales_user",
-    username: str = "unknown"
+    username: str = "unknown",
+    session_id: str | None = None
 ) -> str:
+    from app.memory import get_session_history, append_to_session
+
     start = time.time()
     logger.info(
         f"Agent query | user={username} | role={user_role} | query={query[:50]}"
     )
 
     try:
+        # Get conversation history from Redis
+        session_key = session_id or username
+        history = get_session_history(session_key)
+
+        # Build conversation context from history
+        history_context = ""
+        if history:
+            history_context = "\n\nPrevious conversation:\n"
+            for msg in history[-4:]:  # Last 2 exchanges only
+                role = "User" if msg["role"] == "user" else "Assistant"
+                history_context += f"{role}: {msg['content'][:150]}\n"
+
         agent = build_agent(user_role, username)
+
+        # Pass history as context in the query, not as messages
+        contextual_query = query
+        if history_context:
+            contextual_query = f"{history_context}\nCurrent question: {query}"
+
         initial_state: AgentState = {
-            "messages": [HumanMessage(content=query)],
+            "messages": [HumanMessage(content=contextual_query)],
             "user_role": user_role,
             "username": username
         }
-        result = await agent.ainvoke(initial_state)  # type: ignore
+
+        result = await agent.ainvoke(
+            initial_state,
+            config={"recursion_limit": 10}  # type: ignore
+        )
         final_message = result["messages"][-1]
 
-        # Count how many tool calls were made
         tools_called = [
             m.name for m in result["messages"]
             if hasattr(m, "name") and m.name is not None
@@ -209,9 +234,16 @@ async def run_agent(
             tools_called=tools_called
         )
 
-        if hasattr(final_message, "content"):
-            return final_message.content
-        return str(final_message)
+        response_content = str(
+            final_message.content if hasattr(final_message, "content")
+            else final_message
+        )
+
+        # Save to Redis — only the original query and response
+        append_to_session(session_key, "user", query)
+        append_to_session(session_key, "assistant", response_content[:500])
+
+        return response_content
 
     except Exception as e:
         duration = (time.time() - start) * 1000

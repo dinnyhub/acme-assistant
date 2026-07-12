@@ -12,6 +12,7 @@ from app.api.routes import router
 import os
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from app.memory import get_redis_health
 
 load_dotenv()
 logger = get_logger(__name__)
@@ -58,7 +59,9 @@ async def root():
 
 @app.get("/health", tags = ["System"], summary="Health check endpoint")
 async def health():
-    return {"status": "healthy"}
+    return {"status": "healthy",
+            "redis": "connected" if get_redis_health() else "disconnected"
+            }
 
 @app.get("/metrics", tags = ["Monitoring"], summary="Get real-time metrics for API requests, LLM calls, tool calls, MCP calls and errors")
 async def metrics():

@@ -191,3 +191,607 @@
 2026-07-12 11:40:00 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 746.09ms | success=True
 2026-07-12 11:40:00 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=High | issues=2 | duration=847.95ms
 2026-07-12 11:40:00 | INFO | app.metrics | API | POST /api/skills/escalation/Acme Corp | 200 | 921.57ms | role=unknown
+2026-07-12 11:42:38 | INFO | app.metrics | API | POST /login | 200 | 176.04ms | role=unknown
+2026-07-12 11:42:38 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 11:42:38 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 11:42:38 | INFO | app.metrics | API | GET /me | 200 | 22.37ms | role=unknown
+2026-07-12 11:42:51 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 11:42:51 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 11:42:51 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Run escalation summary for Acme Corp
+2026-07-12 11:42:51 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Run escalation summary for Acme Corp
+2026-07-12 11:42:51 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 198.32ms | success=True
+2026-07-12 11:42:51 | INFO | app.agent.agent | Agent LLM call successful | duration=198.32ms
+2026-07-12 11:42:51 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 11:42:51 | INFO | app.database | Database connection established
+2026-07-12 11:42:51 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 11:42:51 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=12.17ms | success=True
+2026-07-12 11:42:51 | INFO | app.database | Database connection established
+2026-07-12 11:42:51 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 11:42:51 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=10.03ms | success=True
+2026-07-12 11:42:51 | INFO | app.database | Database connection established
+2026-07-12 11:42:51 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 11:42:51 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=8.44ms | success=True
+2026-07-12 11:42:51 | INFO | app.database | Database connection established
+2026-07-12 11:42:51 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 11:42:51 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=6.98ms | success=True
+2026-07-12 11:42:52 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 936.04ms | success=True
+2026-07-12 11:42:52 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=High | issues=2 | duration=995.98ms
+2026-07-12 11:42:52 | INFO | app.metrics | TOOL | escalation_summary | 996.05ms | success=True
+2026-07-12 11:42:52 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 245.68ms | success=True
+2026-07-12 11:42:52 | INFO | app.agent.agent | Agent LLM call successful | duration=245.68ms
+2026-07-12 11:42:52 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1482.87ms | success=True | tools=['escalation_summary']
+2026-07-12 11:42:52 | INFO | app.metrics | API | POST /api/query | 200 | 1509.55ms | role=unknown
+2026-07-12 12:04:49 | INFO | app.metrics | API | GET /docs | 200 | 0.37ms | role=unknown
+2026-07-12 12:04:49 | INFO | app.metrics | API | GET /openapi.json | 200 | 10.23ms | role=unknown
+2026-07-12 12:05:00 | INFO | app.metrics | API | GET /health | 200 | 10.93ms | role=unknown
+2026-07-12 12:05:20 | INFO | app.metrics | API | POST /login | 200 | 202.41ms | role=unknown
+2026-07-12 12:05:20 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:05:20 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:05:20 | INFO | app.metrics | API | GET /me | 200 | 35.90ms | role=unknown
+2026-07-12 12:05:30 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:05:30 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:05:30 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open issues for Acme Corp
+2026-07-12 12:05:30 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open issues for Acme Corp
+2026-07-12 12:05:30 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 331.20ms | success=True
+2026-07-12 12:05:30 | INFO | app.agent.agent | Agent LLM call successful | duration=331.20ms
+2026-07-12 12:05:30 | INFO | app.database | Database connection established
+2026-07-12 12:05:30 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:05:30 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=47.48ms | success=True
+2026-07-12 12:05:30 | INFO | app.metrics | TOOL | get_customer_profile | 47.81ms | success=True
+2026-07-12 12:05:30 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 137.56ms | success=True
+2026-07-12 12:05:30 | INFO | app.agent.agent | Agent LLM call successful | duration=137.56ms
+2026-07-12 12:05:30 | INFO | app.database | Database connection established
+2026-07-12 12:05:30 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:30 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=10.14ms | success=True
+2026-07-12 12:05:30 | INFO | app.metrics | TOOL | get_open_issues | 10.43ms | success=True
+2026-07-12 12:05:31 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 367.70ms | success=True
+2026-07-12 12:05:31 | INFO | app.agent.agent | Agent LLM call successful | duration=367.70ms
+2026-07-12 12:05:31 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=976.79ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 12:05:31 | INFO | app.memory | Session history saved | session=carol | messages=1
+2026-07-12 12:05:31 | INFO | app.memory | Session history retrieved | session=carol | messages=1
+2026-07-12 12:05:31 | INFO | app.memory | Session history saved | session=carol | messages=2
+2026-07-12 12:05:31 | INFO | app.metrics | API | POST /api/query | 200 | 1021.94ms | role=unknown
+2026-07-12 12:05:56 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:05:56 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:05:56 | INFO | app.api.routes | Query received | user=carol | role=admin | query=What is the priority of issue 1?
+2026-07-12 12:05:56 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=What is the priority of issue 1?
+2026-07-12 12:05:56 | INFO | app.memory | Session history retrieved | session=carol | messages=2
+2026-07-12 12:05:57 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 347.78ms | success=True
+2026-07-12 12:05:57 | INFO | app.agent.agent | Agent LLM call successful | duration=347.78ms
+2026-07-12 12:05:57 | INFO | app.database | Database connection established
+2026-07-12 12:05:57 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:57 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=12.13ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | TOOL | get_issue_history | 12.60ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 295.44ms | success=True
+2026-07-12 12:05:57 | INFO | app.agent.agent | Agent LLM call successful | duration=295.44ms
+2026-07-12 12:05:57 | INFO | app.database | Database connection established
+2026-07-12 12:05:57 | INFO | app.database | Database connection established
+2026-07-12 12:05:57 | INFO | app.database | Database connection established
+2026-07-12 12:05:57 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:05:57 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=10.56ms | success=True
+2026-07-12 12:05:57 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:57 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=10.35ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | TOOL | get_customer_profile | 10.94ms | success=True
+2026-07-12 12:05:57 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 12:05:57 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=11.05ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | TOOL | get_issue_history | 11.06ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | TOOL | get_open_issues | 11.72ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 266.35ms | success=True
+2026-07-12 12:05:57 | INFO | app.agent.agent | Agent LLM call successful | duration=266.35ms
+2026-07-12 12:05:57 | INFO | app.database | Database connection established
+2026-07-12 12:05:57 | INFO | app.database | Database connection established
+2026-07-12 12:05:57 | INFO | app.database | Database connection established
+2026-07-12 12:05:57 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:57 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:05:57 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=12.79ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=14.23ms | success=True
+2026-07-12 12:05:57 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:57 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=14.11ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | TOOL | get_customer_profile | 15.72ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | TOOL | get_issue_history | 14.46ms | success=True
+2026-07-12 12:05:57 | INFO | app.metrics | TOOL | get_open_issues | 15.41ms | success=True
+2026-07-12 12:05:58 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 495.79ms | success=True
+2026-07-12 12:05:58 | INFO | app.agent.agent | Agent LLM call successful | duration=495.79ms
+2026-07-12 12:05:58 | INFO | app.database | Database connection established
+2026-07-12 12:05:58 | INFO | app.database | Database connection established
+2026-07-12 12:05:58 | INFO | app.database | Database connection established
+2026-07-12 12:05:58 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:05:58 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:58 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=18.11ms | success=True
+2026-07-12 12:05:58 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=17.36ms | success=True
+2026-07-12 12:05:58 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:58 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=17.93ms | success=True
+2026-07-12 12:05:58 | INFO | app.metrics | TOOL | get_customer_profile | 21.21ms | success=True
+2026-07-12 12:05:58 | INFO | app.metrics | TOOL | get_open_issues | 20.75ms | success=True
+2026-07-12 12:05:58 | INFO | app.metrics | TOOL | get_issue_history | 22.23ms | success=True
+2026-07-12 12:05:58 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 396.70ms | success=True
+2026-07-12 12:05:58 | INFO | app.agent.agent | Agent LLM call successful | duration=396.70ms
+2026-07-12 12:05:58 | INFO | app.database | Database connection established
+2026-07-12 12:05:58 | INFO | app.database | Database connection established
+2026-07-12 12:05:58 | INFO | app.database | Database connection established
+2026-07-12 12:05:58 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:05:58 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=17.92ms | success=True
+2026-07-12 12:05:58 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:58 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=16.87ms | success=True
+2026-07-12 12:05:58 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:58 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=17.74ms | success=True
+2026-07-12 12:05:58 | INFO | app.metrics | TOOL | get_issue_history | 19.32ms | success=True
+2026-07-12 12:05:58 | INFO | app.metrics | TOOL | get_open_issues | 19.95ms | success=True
+2026-07-12 12:05:58 | INFO | app.metrics | TOOL | get_customer_profile | 20.96ms | success=True
+2026-07-12 12:05:59 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 380.74ms | success=True
+2026-07-12 12:05:59 | INFO | app.agent.agent | Agent LLM call successful | duration=380.74ms
+2026-07-12 12:05:59 | INFO | app.database | Database connection established
+2026-07-12 12:05:59 | INFO | app.database | Database connection established
+2026-07-12 12:05:59 | INFO | app.database | Database connection established
+2026-07-12 12:05:59 | INFO | app.database | Database connection established
+2026-07-12 12:05:59 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:05:59 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=10.73ms | success=True
+2026-07-12 12:05:59 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:59 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=10.35ms | success=True
+2026-07-12 12:05:59 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:59 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=11.09ms | success=True
+2026-07-12 12:05:59 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:05:59 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=11.02ms | success=True
+2026-07-12 12:05:59 | INFO | app.metrics | TOOL | get_customer_profile | 11.92ms | success=True
+2026-07-12 12:05:59 | INFO | app.metrics | TOOL | get_open_issues | 12.25ms | success=True
+2026-07-12 12:05:59 | INFO | app.metrics | TOOL | get_issue_history | 11.89ms | success=True
+2026-07-12 12:05:59 | INFO | app.metrics | TOOL | get_issue_history | 12.95ms | success=True
+2026-07-12 12:06:16 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 17005.60ms | success=True
+2026-07-12 12:06:16 | INFO | app.agent.agent | Agent LLM call successful | duration=17005.60ms
+2026-07-12 12:06:16 | INFO | app.database | Database connection established
+2026-07-12 12:06:16 | INFO | app.database | Database connection established
+2026-07-12 12:06:16 | INFO | app.database | Database connection established
+2026-07-12 12:06:16 | INFO | app.database | Database connection established
+2026-07-12 12:06:16 | INFO | app.database | Database connection established
+2026-07-12 12:06:16 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:06:16 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=22.01ms | success=True
+2026-07-12 12:06:16 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:06:16 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=21.55ms | success=True
+2026-07-12 12:06:16 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:06:16 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=23.62ms | success=True
+2026-07-12 12:06:16 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:06:16 | INFO | app.metrics | TOOL | get_issue_history | 23.65ms | success=True
+2026-07-12 12:06:16 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=23.67ms | success=True
+2026-07-12 12:06:16 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:06:16 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=23.05ms | success=True
+2026-07-12 12:06:16 | INFO | app.metrics | TOOL | get_customer_profile | 25.71ms | success=True
+2026-07-12 12:06:16 | INFO | app.metrics | TOOL | get_issue_history | 25.63ms | success=True
+2026-07-12 12:06:16 | INFO | app.metrics | TOOL | get_issue_history | 26.62ms | success=True
+2026-07-12 12:06:16 | INFO | app.metrics | TOOL | get_open_issues | 27.39ms | success=True
+2026-07-12 12:06:40 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 24004.57ms | success=True
+2026-07-12 12:06:40 | INFO | app.agent.agent | Agent LLM call successful | duration=24004.57ms
+2026-07-12 12:06:40 | INFO | app.database | Database connection established
+2026-07-12 12:06:40 | INFO | app.database | Database connection established
+2026-07-12 12:06:40 | INFO | app.database | Database connection established
+2026-07-12 12:06:40 | INFO | app.database | Database connection established
+2026-07-12 12:06:40 | INFO | app.database | Database connection established
+2026-07-12 12:06:40 | INFO | app.database | Database connection established
+2026-07-12 12:06:40 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:06:40 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=19.66ms | success=True
+2026-07-12 12:06:40 | INFO | app.metrics | TOOL | get_issue_history | 20.28ms | success=True
+2026-07-12 12:06:40 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:06:40 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=21.51ms | success=True
+2026-07-12 12:06:40 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:06:40 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=20.98ms | success=True
+2026-07-12 12:06:40 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:06:40 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=22.13ms | success=True
+2026-07-12 12:06:40 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:06:40 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=21.56ms | success=True
+2026-07-12 12:06:40 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:06:40 | INFO | app.metrics | TOOL | get_issue_history | 22.71ms | success=True
+2026-07-12 12:06:40 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=21.96ms | success=True
+2026-07-12 12:06:40 | INFO | app.metrics | TOOL | get_customer_profile | 22.40ms | success=True
+2026-07-12 12:06:40 | INFO | app.metrics | TOOL | get_issue_history | 24.43ms | success=True
+2026-07-12 12:06:40 | INFO | app.metrics | TOOL | get_issue_history | 24.52ms | success=True
+2026-07-12 12:06:40 | INFO | app.metrics | TOOL | get_open_issues | 26.14ms | success=True
+2026-07-12 12:07:09 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 29826.09ms | success=True
+2026-07-12 12:07:09 | INFO | app.agent.agent | Agent LLM call successful | duration=29826.09ms
+2026-07-12 12:07:10 | INFO | app.database | Database connection established
+2026-07-12 12:07:10 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:07:10 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=15.07ms | success=True
+2026-07-12 12:07:10 | INFO | app.database | Database connection established
+2026-07-12 12:07:10 | INFO | app.metrics | TOOL | get_customer_profile | 16.46ms | success=True
+2026-07-12 12:07:10 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:10 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=17.39ms | success=True
+2026-07-12 12:07:10 | INFO | app.database | Database connection established
+2026-07-12 12:07:10 | INFO | app.metrics | TOOL | get_issue_history | 18.33ms | success=True
+2026-07-12 12:07:10 | INFO | app.database | Database connection established
+2026-07-12 12:07:10 | INFO | app.database | Database connection established
+2026-07-12 12:07:10 | INFO | app.database | Database connection established
+2026-07-12 12:07:10 | INFO | app.database | Database connection established
+2026-07-12 12:07:10 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:10 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=20.07ms | success=True
+2026-07-12 12:07:10 | INFO | app.metrics | TOOL | get_issue_history | 20.51ms | success=True
+2026-07-12 12:07:10 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:10 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:10 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=21.30ms | success=True
+2026-07-12 12:07:10 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=20.45ms | success=True
+2026-07-12 12:07:10 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:10 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:10 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=21.08ms | success=True
+2026-07-12 12:07:10 | INFO | app.metrics | TOOL | get_issue_history | 21.40ms | success=True
+2026-07-12 12:07:10 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=21.27ms | success=True
+2026-07-12 12:07:10 | INFO | app.metrics | TOOL | get_open_issues | 22.49ms | success=True
+2026-07-12 12:07:10 | INFO | app.metrics | TOOL | get_issue_history | 22.13ms | success=True
+2026-07-12 12:07:10 | INFO | app.metrics | TOOL | get_issue_history | 23.80ms | success=True
+2026-07-12 12:07:46 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 36980.43ms | success=True
+2026-07-12 12:07:46 | INFO | app.agent.agent | Agent LLM call successful | duration=36980.43ms
+2026-07-12 12:07:47 | INFO | app.database | Database connection established
+2026-07-12 12:07:47 | INFO | app.database | Database connection established
+2026-07-12 12:07:47 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:07:47 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=25.77ms | success=True
+2026-07-12 12:07:47 | INFO | app.database | Database connection established
+2026-07-12 12:07:47 | INFO | app.database | Database connection established
+2026-07-12 12:07:47 | INFO | app.database | Database connection established
+2026-07-12 12:07:47 | INFO | app.metrics | TOOL | get_customer_profile | 26.56ms | success=True
+2026-07-12 12:07:47 | INFO | app.database | Database connection established
+2026-07-12 12:07:47 | INFO | app.database | Database connection established
+2026-07-12 12:07:47 | INFO | app.database | Database connection established
+2026-07-12 12:07:47 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:47 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:47 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=28.79ms | success=True
+2026-07-12 12:07:47 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:47 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:47 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=29.46ms | success=True
+2026-07-12 12:07:47 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:47 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:47 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:07:47 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=28.67ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=29.75ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=29.16ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=29.32ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | TOOL | get_issue_history | 30.12ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | TOOL | get_issue_history | 30.79ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=29.52ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | TOOL | get_issue_history | 30.47ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | TOOL | get_issue_history | 36.28ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | TOOL | get_issue_history | 36.51ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | TOOL | get_open_issues | 37.23ms | success=True
+2026-07-12 12:07:47 | INFO | app.metrics | TOOL | get_issue_history | 39.79ms | success=True
+2026-07-12 12:08:31 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 43974.00ms | success=True
+2026-07-12 12:08:31 | INFO | app.agent.agent | Agent LLM call successful | duration=43974.00ms
+2026-07-12 12:08:31 | INFO | app.database | Database connection established
+2026-07-12 12:08:31 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:08:31 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=19.25ms | success=True
+2026-07-12 12:08:31 | INFO | app.database | Database connection established
+2026-07-12 12:08:31 | INFO | app.metrics | TOOL | get_customer_profile | 20.98ms | success=True
+2026-07-12 12:08:31 | INFO | app.database | Database connection established
+2026-07-12 12:08:31 | INFO | app.database | Database connection established
+2026-07-12 12:08:31 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:08:31 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=23.40ms | success=True
+2026-07-12 12:08:31 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:08:31 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=23.56ms | success=True
+2026-07-12 12:08:31 | INFO | app.database | Database connection established
+2026-07-12 12:08:31 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:08:31 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=24.11ms | success=True
+2026-07-12 12:08:31 | INFO | app.metrics | TOOL | get_open_issues | 25.06ms | success=True
+2026-07-12 12:08:31 | INFO | app.database | Database connection established
+2026-07-12 12:08:31 | INFO | app.database | Database connection established
+2026-07-12 12:08:31 | INFO | app.database | Database connection established
+2026-07-12 12:08:31 | INFO | app.database | Database connection established
+2026-07-12 12:08:31 | INFO | app.metrics | TOOL | get_issue_history | 25.88ms | success=True
+2026-07-12 12:08:31 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:08:31 | INFO | app.metrics | TOOL | get_issue_history | 25.80ms | success=True
+2026-07-12 12:08:31 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=25.55ms | success=True
+2026-07-12 12:08:31 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:08:31 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=26.31ms | success=True
+2026-07-12 12:08:31 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:08:31 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:08:31 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=27.02ms | success=True
+2026-07-12 12:08:31 | INFO | app.metrics | TOOL | get_issue_history | 27.71ms | success=True
+2026-07-12 12:08:31 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:08:31 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=28.11ms | success=True
+2026-07-12 12:08:31 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=28.30ms | success=True
+2026-07-12 12:08:31 | INFO | app.metrics | TOOL | get_issue_history | 28.88ms | success=True
+2026-07-12 12:08:31 | INFO | app.metrics | TOOL | get_issue_history | 29.39ms | success=True
+2026-07-12 12:08:31 | INFO | app.metrics | TOOL | get_issue_history | 30.94ms | success=True
+2026-07-12 12:08:31 | INFO | app.metrics | TOOL | get_issue_history | 31.11ms | success=True
+2026-07-12 12:08:57 | INFO | app.metrics | API | GET /health | 200 | 2.98ms | role=unknown
+2026-07-12 12:09:24 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 52974.26ms | success=True
+2026-07-12 12:09:24 | INFO | app.agent.agent | Agent LLM call successful | duration=52974.26ms
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=21.23ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_issue_history | 22.77ms | success=True
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=25.95ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_open_issues | 27.10ms | success=True
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=28.01ms | success=True
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_issue_history | 28.75ms | success=True
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.database | Database connection established
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=29.55ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_issue_history | 30.12ms | success=True
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=29.99ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=31.52ms | success=True
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_issue_history | 31.11ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=31.30ms | success=True
+2026-07-12 12:09:24 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=31.39ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=30.53ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_customer_profile | 33.67ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=30.85ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_issue_history | 33.60ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_issue_history | 34.38ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_issue_history | 35.34ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | TOOL | get_issue_history | 35.19ms | success=True
+2026-07-12 12:09:24 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 67.22ms | success=False
+2026-07-12 12:09:24 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12405, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:09:24 | INFO | app.metrics | AGENT | agent_failed | user=carol | role=admin | duration=207397.29ms | success=False | tools=None
+2026-07-12 12:09:24 | WARNING | app.metrics | SECURITY | query_error | approval_id=none | types=[] | requested_by=carol | outcome=error | approved_by=None
+2026-07-12 12:09:24 | ERROR | app.api.routes | QueryError | Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12405, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:09:24 | INFO | app.metrics | API | POST /api/query | 500 | 207428.40ms | role=unknown
+2026-07-12 12:16:42 | INFO | app.metrics | API | POST /login | 200 | 249.86ms | role=unknown
+2026-07-12 12:16:42 | INFO | app.auth.auth | User authenticated | username=alice | roles=['sales_user', 'default-roles-acme', 'offline_access', 'uma_authorization']
+2026-07-12 12:16:42 | INFO | app.metrics | AUTH | login_success | user=alice | role=['sales_user', 'default-roles-acme', 'offline_access', 'uma_authorization'] | success=True
+2026-07-12 12:16:42 | INFO | app.metrics | API | GET /me | 200 | 35.39ms | role=unknown
+2026-07-12 12:16:55 | INFO | app.auth.auth | User authenticated | username=alice | roles=['sales_user', 'default-roles-acme', 'offline_access', 'uma_authorization']
+2026-07-12 12:16:55 | INFO | app.metrics | AUTH | login_success | user=alice | role=['sales_user', 'default-roles-acme', 'offline_access', 'uma_authorization'] | success=True
+2026-07-12 12:16:55 | INFO | app.api.routes | Query received | user=alice | role=sales_user | query=Show me open issues for Acme Corp
+2026-07-12 12:16:55 | INFO | app.agent.agent | Agent query | user=alice | role=sales_user | query=Show me open issues for Acme Corp
+2026-07-12 12:16:55 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 304.51ms | success=True
+2026-07-12 12:16:55 | INFO | app.agent.agent | Agent LLM call successful | duration=304.51ms
+2026-07-12 12:16:55 | INFO | app.database | Database connection established
+2026-07-12 12:16:55 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:16:55 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=26.75ms | success=True
+2026-07-12 12:16:55 | INFO | app.metrics | TOOL | get_customer_profile | 27.11ms | success=True
+2026-07-12 12:16:56 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 250.98ms | success=True
+2026-07-12 12:16:56 | INFO | app.agent.agent | Agent LLM call successful | duration=250.98ms
+2026-07-12 12:16:56 | INFO | app.database | Database connection established
+2026-07-12 12:16:56 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:16:56 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=12.79ms | success=True
+2026-07-12 12:16:56 | INFO | app.metrics | TOOL | get_open_issues | 13.20ms | success=True
+2026-07-12 12:16:56 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 404.97ms | success=True
+2026-07-12 12:16:56 | INFO | app.agent.agent | Agent LLM call successful | duration=404.97ms
+2026-07-12 12:16:56 | INFO | app.metrics | AGENT | agent_completed | user=alice | role=sales_user | duration=1070.19ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 12:16:56 | INFO | app.memory | Session history saved | session=alice | messages=1
+2026-07-12 12:16:56 | INFO | app.memory | Session history retrieved | session=alice | messages=1
+2026-07-12 12:16:56 | INFO | app.memory | Session history saved | session=alice | messages=2
+2026-07-12 12:16:56 | INFO | app.metrics | API | POST /api/query | 200 | 1093.31ms | role=unknown
+2026-07-12 12:17:08 | INFO | app.auth.auth | User authenticated | username=alice | roles=['sales_user', 'default-roles-acme', 'offline_access', 'uma_authorization']
+2026-07-12 12:17:08 | INFO | app.metrics | AUTH | login_success | user=alice | role=['sales_user', 'default-roles-acme', 'offline_access', 'uma_authorization'] | success=True
+2026-07-12 12:17:08 | INFO | app.api.routes | Query received | user=alice | role=sales_user | query=Update issue 1 status to resolved
+2026-07-12 12:17:08 | INFO | app.agent.agent | Agent query | user=alice | role=sales_user | query=Update issue 1 status to resolved
+2026-07-12 12:17:08 | INFO | app.memory | Session history retrieved | session=alice | messages=2
+2026-07-12 12:17:08 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 255.53ms | success=True
+2026-07-12 12:17:08 | INFO | app.agent.agent | Agent LLM call successful | duration=255.53ms
+2026-07-12 12:17:08 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 12:17:09 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 589.38ms | success=True
+2026-07-12 12:17:09 | INFO | app.agent.agent | Agent LLM call successful | duration=589.38ms
+2026-07-12 12:17:09 | INFO | app.metrics | AGENT | agent_completed | user=alice | role=sales_user | duration=882.33ms | success=True | tools=['update_issue_status']
+2026-07-12 12:17:09 | INFO | app.memory | Session history retrieved | session=alice | messages=2
+2026-07-12 12:17:09 | INFO | app.memory | Session history saved | session=alice | messages=3
+2026-07-12 12:17:09 | INFO | app.memory | Session history retrieved | session=alice | messages=3
+2026-07-12 12:17:09 | INFO | app.memory | Session history saved | session=alice | messages=4
+2026-07-12 12:17:09 | INFO | app.metrics | API | POST /api/query | 200 | 903.59ms | role=unknown
+2026-07-12 12:17:29 | INFO | app.auth.auth | User authenticated | username=alice | roles=['sales_user', 'default-roles-acme', 'offline_access', 'uma_authorization']
+2026-07-12 12:17:29 | INFO | app.metrics | AUTH | login_success | user=alice | role=['sales_user', 'default-roles-acme', 'offline_access', 'uma_authorization'] | success=True
+2026-07-12 12:17:29 | INFO | app.api.routes | Query received | user=alice | role=sales_user | query=Create next action for issue 1
+2026-07-12 12:17:29 | INFO | app.agent.agent | Agent query | user=alice | role=sales_user | query=Create next action for issue 1
+2026-07-12 12:17:29 | INFO | app.memory | Session history retrieved | session=alice | messages=4
+2026-07-12 12:17:30 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 291.15ms | success=True
+2026-07-12 12:17:30 | INFO | app.agent.agent | Agent LLM call successful | duration=291.15ms
+2026-07-12 12:17:30 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 12:17:30 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 544.39ms | success=True
+2026-07-12 12:17:30 | INFO | app.agent.agent | Agent LLM call successful | duration=544.39ms
+2026-07-12 12:17:30 | INFO | app.metrics | AGENT | agent_completed | user=alice | role=sales_user | duration=873.67ms | success=True | tools=['create_next_action']
+2026-07-12 12:17:30 | INFO | app.memory | Session history retrieved | session=alice | messages=4
+2026-07-12 12:17:30 | INFO | app.memory | Session history saved | session=alice | messages=5
+2026-07-12 12:17:30 | INFO | app.memory | Session history retrieved | session=alice | messages=5
+2026-07-12 12:17:30 | INFO | app.memory | Session history saved | session=alice | messages=6
+2026-07-12 12:17:30 | INFO | app.metrics | API | POST /api/query | 200 | 909.43ms | role=unknown
+2026-07-12 12:17:46 | INFO | app.metrics | API | POST /login | 200 | 207.14ms | role=unknown
+2026-07-12 12:17:46 | INFO | app.auth.auth | User authenticated | username=bob | roles=['default-roles-acme', 'offline_access', 'support_user', 'uma_authorization']
+2026-07-12 12:17:46 | INFO | app.metrics | AUTH | login_success | user=bob | role=['default-roles-acme', 'offline_access', 'support_user', 'uma_authorization'] | success=True
+2026-07-12 12:17:46 | INFO | app.metrics | API | GET /me | 200 | 14.31ms | role=unknown
+2026-07-12 12:17:56 | INFO | app.auth.auth | User authenticated | username=bob | roles=['default-roles-acme', 'offline_access', 'support_user', 'uma_authorization']
+2026-07-12 12:17:56 | INFO | app.metrics | AUTH | login_success | user=bob | role=['default-roles-acme', 'offline_access', 'support_user', 'uma_authorization'] | success=True
+2026-07-12 12:17:56 | INFO | app.api.routes | Query received | user=bob | role=support_user | query=Show me open issues for Acme Corp
+2026-07-12 12:17:56 | INFO | app.agent.agent | Agent query | user=bob | role=support_user | query=Show me open issues for Acme Corp
+2026-07-12 12:17:57 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 304.40ms | success=True
+2026-07-12 12:17:57 | INFO | app.agent.agent | Agent LLM call successful | duration=304.40ms
+2026-07-12 12:17:57 | INFO | app.database | Database connection established
+2026-07-12 12:17:57 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:17:57 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=11.65ms | success=True
+2026-07-12 12:17:57 | INFO | app.metrics | TOOL | get_customer_profile | 12.04ms | success=True
+2026-07-12 12:17:57 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 180.26ms | success=True
+2026-07-12 12:17:57 | INFO | app.agent.agent | Agent LLM call successful | duration=180.26ms
+2026-07-12 12:17:57 | INFO | app.database | Database connection established
+2026-07-12 12:17:57 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:17:57 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=15.77ms | success=True
+2026-07-12 12:17:57 | INFO | app.metrics | TOOL | get_open_issues | 16.76ms | success=True
+2026-07-12 12:17:57 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 293.92ms | success=True
+2026-07-12 12:17:57 | INFO | app.agent.agent | Agent LLM call successful | duration=293.92ms
+2026-07-12 12:17:57 | INFO | app.metrics | AGENT | agent_completed | user=bob | role=support_user | duration=852.64ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 12:17:57 | INFO | app.memory | Session history saved | session=bob | messages=1
+2026-07-12 12:17:57 | INFO | app.memory | Session history retrieved | session=bob | messages=1
+2026-07-12 12:17:57 | INFO | app.memory | Session history saved | session=bob | messages=2
+2026-07-12 12:17:57 | INFO | app.metrics | API | POST /api/query | 200 | 885.57ms | role=unknown
+2026-07-12 12:18:06 | INFO | app.auth.auth | User authenticated | username=bob | roles=['default-roles-acme', 'offline_access', 'support_user', 'uma_authorization']
+2026-07-12 12:18:06 | INFO | app.metrics | AUTH | login_success | user=bob | role=['default-roles-acme', 'offline_access', 'support_user', 'uma_authorization'] | success=True
+2026-07-12 12:18:06 | INFO | app.api.routes | Query received | user=bob | role=support_user | query=Update issue 1 status to in_progress
+2026-07-12 12:18:06 | INFO | app.agent.agent | Agent query | user=bob | role=support_user | query=Update issue 1 status to in_progress
+2026-07-12 12:18:06 | INFO | app.memory | Session history retrieved | session=bob | messages=2
+2026-07-12 12:18:07 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 262.31ms | success=True
+2026-07-12 12:18:07 | INFO | app.agent.agent | Agent LLM call successful | duration=262.31ms
+2026-07-12 12:18:07 | INFO | app.database | Database connection established
+2026-07-12 12:18:07 | INFO | app.database | Write query executed successfully
+2026-07-12 12:18:07 | INFO | app.metrics | DB | WRITE | table=issues | rows=0 | duration=14.49ms | success=True
+2026-07-12 12:18:07 | INFO | app.metrics | TOOL | update_issue_status | 14.90ms | success=True
+2026-07-12 12:18:08 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 1030.44ms | success=True
+2026-07-12 12:18:08 | INFO | app.agent.agent | Agent LLM call successful | duration=1030.44ms
+2026-07-12 12:18:08 | INFO | app.metrics | AGENT | agent_completed | user=bob | role=support_user | duration=1349.91ms | success=True | tools=['update_issue_status']
+2026-07-12 12:18:08 | INFO | app.memory | Session history retrieved | session=bob | messages=2
+2026-07-12 12:18:08 | INFO | app.memory | Session history saved | session=bob | messages=3
+2026-07-12 12:18:08 | INFO | app.memory | Session history retrieved | session=bob | messages=3
+2026-07-12 12:18:08 | INFO | app.memory | Session history saved | session=bob | messages=4
+2026-07-12 12:18:08 | INFO | app.metrics | API | POST /api/query | 200 | 1378.13ms | role=unknown
+2026-07-12 12:18:18 | INFO | app.auth.auth | User authenticated | username=bob | roles=['default-roles-acme', 'offline_access', 'support_user', 'uma_authorization']
+2026-07-12 12:18:18 | INFO | app.metrics | AUTH | login_success | user=bob | role=['default-roles-acme', 'offline_access', 'support_user', 'uma_authorization'] | success=True
+2026-07-12 12:18:18 | INFO | app.api.routes | Query received | user=bob | role=support_user | query=Create next action for issue 1
+2026-07-12 12:18:18 | INFO | app.agent.agent | Agent query | user=bob | role=support_user | query=Create next action for issue 1
+2026-07-12 12:18:18 | INFO | app.memory | Session history retrieved | session=bob | messages=4
+2026-07-12 12:18:18 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 394.20ms | success=True
+2026-07-12 12:18:18 | INFO | app.agent.agent | Agent LLM call successful | duration=394.20ms
+2026-07-12 12:18:18 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 12:18:18 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 313.16ms | success=True
+2026-07-12 12:18:18 | INFO | app.agent.agent | Agent LLM call successful | duration=313.16ms
+2026-07-12 12:18:18 | INFO | app.metrics | AGENT | agent_completed | user=bob | role=support_user | duration=748.46ms | success=True | tools=['create_next_action']
+2026-07-12 12:18:18 | INFO | app.memory | Session history retrieved | session=bob | messages=4
+2026-07-12 12:18:18 | INFO | app.memory | Session history saved | session=bob | messages=5
+2026-07-12 12:18:18 | INFO | app.memory | Session history retrieved | session=bob | messages=5
+2026-07-12 12:18:18 | INFO | app.memory | Session history saved | session=bob | messages=6
+2026-07-12 12:18:18 | INFO | app.metrics | API | POST /api/query | 200 | 778.67ms | role=unknown
+2026-07-12 12:18:43 | INFO | app.metrics | API | POST /login | 200 | 210.22ms | role=unknown
+2026-07-12 12:18:43 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:18:43 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:18:43 | INFO | app.metrics | API | GET /me | 200 | 14.28ms | role=unknown
+2026-07-12 12:18:54 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:18:54 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:18:54 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open issues for Acme Corp
+2026-07-12 12:18:54 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open issues for Acme Corp
+2026-07-12 12:18:54 | INFO | app.memory | Session history retrieved | session=carol | messages=2
+2026-07-12 12:18:54 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 270.21ms | success=True
+2026-07-12 12:18:54 | INFO | app.agent.agent | Agent LLM call successful | duration=270.21ms
+2026-07-12 12:18:54 | INFO | app.database | Database connection established
+2026-07-12 12:18:54 | INFO | app.database | Database connection established
+2026-07-12 12:18:54 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:18:54 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=14.81ms | success=True
+2026-07-12 12:18:54 | INFO | app.metrics | TOOL | get_customer_profile | 15.45ms | success=True
+2026-07-12 12:18:54 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:18:54 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=15.22ms | success=True
+2026-07-12 12:18:54 | INFO | app.metrics | TOOL | get_open_issues | 16.04ms | success=True
+2026-07-12 12:18:54 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 348.02ms | success=True
+2026-07-12 12:18:54 | INFO | app.agent.agent | Agent LLM call successful | duration=348.02ms
+2026-07-12 12:18:54 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=680.84ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 12:18:54 | INFO | app.memory | Session history retrieved | session=carol | messages=2
+2026-07-12 12:18:54 | INFO | app.memory | Session history saved | session=carol | messages=3
+2026-07-12 12:18:54 | INFO | app.memory | Session history retrieved | session=carol | messages=3
+2026-07-12 12:18:54 | INFO | app.memory | Session history saved | session=carol | messages=4
+2026-07-12 12:18:54 | INFO | app.metrics | API | POST /api/query | 200 | 722.27ms | role=unknown
+2026-07-12 12:19:04 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:19:04 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:19:04 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Update issue 1 status to resolved
+2026-07-12 12:19:04 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Update issue 1 status to resolved
+2026-07-12 12:19:04 | INFO | app.memory | Session history retrieved | session=carol | messages=4
+2026-07-12 12:19:05 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 383.64ms | success=True
+2026-07-12 12:19:05 | INFO | app.agent.agent | Agent LLM call successful | duration=383.64ms
+2026-07-12 12:19:05 | INFO | app.database | Database connection established
+2026-07-12 12:19:05 | INFO | app.database | Write query executed successfully
+2026-07-12 12:19:05 | INFO | app.metrics | DB | WRITE | table=issues | rows=0 | duration=15.16ms | success=True
+2026-07-12 12:19:05 | INFO | app.metrics | TOOL | update_issue_status | 15.96ms | success=True
+2026-07-12 12:19:05 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 282.58ms | success=True
+2026-07-12 12:19:05 | INFO | app.agent.agent | Agent LLM call successful | duration=282.58ms
+2026-07-12 12:19:05 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=715.82ms | success=True | tools=['update_issue_status']
+2026-07-12 12:19:05 | INFO | app.memory | Session history retrieved | session=carol | messages=4
+2026-07-12 12:19:05 | INFO | app.memory | Session history saved | session=carol | messages=5
+2026-07-12 12:19:05 | INFO | app.memory | Session history retrieved | session=carol | messages=5
+2026-07-12 12:19:05 | INFO | app.memory | Session history saved | session=carol | messages=6
+2026-07-12 12:19:05 | INFO | app.metrics | API | POST /api/query | 200 | 735.68ms | role=unknown
+2026-07-12 12:19:17 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:19:17 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:19:17 | WARNING | app.api.routes | Sensitive data detected in query | types=['sort_code'] | user=carol
+2026-07-12 12:19:17 | WARNING | app.metrics | SECURITY | approval_requested | approval_id=659b9130-df22-4df4-acf0-04650a49a759 | types=['sort_code'] | requested_by=carol | outcome=pending | approved_by=None
+2026-07-12 12:19:17 | INFO | app.metrics | API | POST /api/query | 403 | 22.39ms | role=unknown
+2026-07-12 12:19:19 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:19:19 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:19:19 | INFO | app.security.data_sanitiser | APPROVAL GRANTED | approval_id=659b9130-df22-4df4-acf0-04650a49a759 | approved_by=carol | approved_at=2026-07-12T12:19:19.475791
+2026-07-12 12:19:19 | WARNING | app.metrics | SECURITY | self_approval_granted | approval_id=659b9130-df22-4df4-acf0-04650a49a759 | types=[] | requested_by=carol | outcome=approved | approved_by=carol
+2026-07-12 12:19:19 | INFO | app.api.routes | SELF APPROVAL | user=carol | approval_id=659b9130-df22-4df4-acf0-04650a49a759
+2026-07-12 12:19:19 | INFO | app.metrics | API | POST /api/security/self-approve/659b9130-df22-4df4-acf0-04650a49a759 | 200 | 18.46ms | role=unknown
+2026-07-12 12:19:19 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:19:19 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:19:19 | INFO | app.api.routes | Pre-approved query — passing original data to LLM | user=carol | approval_id=659b9130-df22-4df4-acf0-04650a49a759
+2026-07-12 12:19:19 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Create next action for issue 1 assigned to dev_tea
+2026-07-12 12:19:19 | INFO | app.memory | Session history retrieved | session=carol | messages=6
+2026-07-12 12:19:19 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 289.55ms | success=True
+2026-07-12 12:19:19 | INFO | app.agent.agent | Agent LLM call successful | duration=289.55ms
+2026-07-12 12:19:19 | INFO | app.database | Database connection established
+2026-07-12 12:19:19 | INFO | app.database | Write query executed successfully
+2026-07-12 12:19:19 | INFO | app.metrics | DB | WRITE | table=next_actions | rows=0 | duration=32.65ms | success=True
+2026-07-12 12:19:19 | INFO | app.metrics | TOOL | create_next_action | 34.96ms | success=True
+2026-07-12 12:19:20 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 487.10ms | success=True
+2026-07-12 12:19:20 | INFO | app.agent.agent | Agent LLM call successful | duration=487.10ms
+2026-07-12 12:19:20 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=851.29ms | success=True | tools=['create_next_action']
+2026-07-12 12:19:20 | INFO | app.memory | Session history retrieved | session=carol | messages=6
+2026-07-12 12:19:20 | INFO | app.memory | Session history saved | session=carol | messages=7
+2026-07-12 12:19:20 | INFO | app.memory | Session history retrieved | session=carol | messages=7
+2026-07-12 12:19:20 | INFO | app.memory | Session history saved | session=carol | messages=8
+2026-07-12 12:19:20 | INFO | app.metrics | API | POST /api/query | 200 | 872.07ms | role=unknown
+2026-07-12 12:21:54 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:21:54 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:21:54 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Create next action for issue 1 assigned to dev_tea
+2026-07-12 12:21:54 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Create next action for issue 1 assigned to dev_tea
+2026-07-12 12:21:54 | INFO | app.memory | Session history retrieved | session=carol | messages=8
+2026-07-12 12:21:54 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 587.68ms | success=True
+2026-07-12 12:21:54 | INFO | app.agent.agent | Agent LLM call successful | duration=587.68ms
+2026-07-12 12:21:54 | INFO | app.database | Database connection established
+2026-07-12 12:21:54 | INFO | app.database | Write query executed successfully
+2026-07-12 12:21:54 | INFO | app.metrics | DB | WRITE | table=next_actions | rows=0 | duration=26.73ms | success=True
+2026-07-12 12:21:54 | INFO | app.metrics | TOOL | create_next_action | 27.02ms | success=True
+2026-07-12 12:21:54 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 191.68ms | success=True
+2026-07-12 12:21:54 | INFO | app.agent.agent | Agent LLM call successful | duration=191.68ms
+2026-07-12 12:21:54 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=876.47ms | success=True | tools=['create_next_action']
+2026-07-12 12:21:54 | INFO | app.memory | Session history retrieved | session=carol | messages=8
+2026-07-12 12:21:54 | INFO | app.memory | Session history saved | session=carol | messages=9
+2026-07-12 12:21:54 | INFO | app.memory | Session history retrieved | session=carol | messages=9
+2026-07-12 12:21:54 | INFO | app.memory | Session history saved | session=carol | messages=10
+2026-07-12 12:21:54 | INFO | app.metrics | API | POST /api/query | 200 | 957.12ms | role=unknown
+2026-07-12 12:22:28 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:22:28 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:22:28 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open issues for Acme Corp
+2026-07-12 12:22:28 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open issues for Acme Corp
+2026-07-12 12:22:28 | INFO | app.memory | Session history retrieved | session=carol | messages=10
+2026-07-12 12:22:28 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 205.03ms | success=True
+2026-07-12 12:22:28 | INFO | app.agent.agent | Agent LLM call successful | duration=205.03ms
+2026-07-12 12:22:28 | INFO | app.database | Database connection established
+2026-07-12 12:22:28 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:22:28 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=15.77ms | success=True
+2026-07-12 12:22:28 | INFO | app.metrics | TOOL | get_customer_profile | 16.16ms | success=True
+2026-07-12 12:22:28 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 225.56ms | success=True
+2026-07-12 12:22:28 | INFO | app.agent.agent | Agent LLM call successful | duration=225.56ms
+2026-07-12 12:22:28 | INFO | app.database | Database connection established
+2026-07-12 12:22:28 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:22:28 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=11.73ms | success=True
+2026-07-12 12:22:28 | INFO | app.metrics | TOOL | get_open_issues | 12.14ms | success=True
+2026-07-12 12:22:29 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 507.45ms | success=True
+2026-07-12 12:22:29 | INFO | app.agent.agent | Agent LLM call successful | duration=507.45ms
+2026-07-12 12:22:29 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1005.22ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 12:22:29 | INFO | app.memory | Session history retrieved | session=carol | messages=10
+2026-07-12 12:22:29 | INFO | app.memory | Session history saved | session=carol | messages=11
+2026-07-12 12:22:29 | INFO | app.memory | Session history retrieved | session=carol | messages=11
+2026-07-12 12:22:29 | INFO | app.memory | Session history saved | session=carol | messages=12
+2026-07-12 12:22:29 | INFO | app.metrics | API | POST /api/query | 200 | 1031.28ms | role=unknown
+2026-07-12 12:22:38 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 12:22:38 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 12:22:38 | INFO | app.api.routes | Query received | user=carol | role=admin | query=What is the priority of issue 1?
+2026-07-12 12:22:38 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=What is the priority of issue 1?
+2026-07-12 12:22:38 | INFO | app.memory | Session history retrieved | session=carol | messages=12
+2026-07-12 12:22:38 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 225.99ms | success=True
+2026-07-12 12:22:38 | INFO | app.agent.agent | Agent LLM call successful | duration=225.99ms
+2026-07-12 12:22:38 | INFO | app.database | Database connection established
+2026-07-12 12:22:38 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:22:38 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=16.72ms | success=True
+2026-07-12 12:22:38 | INFO | app.metrics | TOOL | get_issue_history | 18.30ms | success=True
+2026-07-12 12:22:39 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 498.22ms | success=True
+2026-07-12 12:22:39 | INFO | app.agent.agent | Agent LLM call successful | duration=498.22ms
+2026-07-12 12:22:39 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=786.54ms | success=True | tools=['get_issue_history']
+2026-07-12 12:22:39 | INFO | app.memory | Session history retrieved | session=carol | messages=12
+2026-07-12 12:22:39 | INFO | app.memory | Session history saved | session=carol | messages=13
+2026-07-12 12:22:39 | INFO | app.memory | Session history retrieved | session=carol | messages=13
+2026-07-12 12:22:39 | INFO | app.memory | Session history saved | session=carol | messages=14
+2026-07-12 12:22:39 | INFO | app.metrics | API | POST /api/query | 200 | 810.19ms | role=unknown

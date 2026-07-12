@@ -81,7 +81,8 @@ async def query_agent(
             response = await run_agent(
                 query=clean_query,
                 user_role=user_role,
-                username=username
+                username=username,
+                session_id=username
             )
             duration = (time.time() - start) * 1000
             return QueryResponse(
@@ -146,7 +147,8 @@ async def query_agent(
         response = await run_agent(
             query=sanitised_query,
             user_role=user_role,
-            username=username
+            username=username,
+            session_id=username
         )
         duration = (time.time() - start) * 1000
         return QueryResponse(
