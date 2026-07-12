@@ -176,3 +176,32 @@ def tool_update_issue_status(
                      {"issue_id": issue_id},
                      duration, False, str(e))
         return {"error": str(e)}
+
+async def tool_escalation_summary(customer_name: str) -> dict:
+    """
+    Tool 6: Run the Customer Escalation Summary Skill.
+    Returns executive summary, risk level, and recommended action.
+    Available to: all authenticated users.
+    """
+    from app.skills.escalation_skill import run_escalation_skill
+    start = time.time()
+    try:
+        result = await run_escalation_skill(customer_name)
+        duration = (time.time() - start) * 1000
+        log_tool_call("escalation_summary",
+                     {"customer_name": customer_name},
+                     duration, True)
+        return {
+            "customer_name": result.customer_name,
+            "executive_summary": result.executive_summary,
+            "risk_level": result.risk_level,
+            "recommended_next_action": result.recommended_next_action,
+            "missing_information": result.missing_information,
+            "total_open_issues": result.total_open_issues
+        }
+    except Exception as e:
+        duration = (time.time() - start) * 1000
+        log_tool_call("escalation_summary",
+                     {"customer_name": customer_name},
+                     duration, False, str(e))
+        return {"error": str(e)}

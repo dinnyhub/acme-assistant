@@ -9,13 +9,14 @@ from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
 from typing import TypedDict, Annotated, Any
 import operator
-
+import asyncio
 from app.agent.tools import (
     tool_get_customer_profile,
     tool_get_open_issues,
     tool_get_issue_history,
     tool_create_next_action,
-    tool_update_issue_status
+    tool_update_issue_status,
+    tool_escalation_summary
 )
 from app.metrics import log_llm_call, log_agent_event
 from app.logger import get_logger
@@ -71,6 +72,13 @@ def make_tools(user_role: str) -> list:
             ),
             name="update_issue_status",
             description="Update the status of an issue. Support user and admin only."
+        ),
+        StructuredTool.from_function(
+            func=lambda customer_name: asyncio.run(
+                tool_escalation_summary(customer_name)
+            ),
+            name="escalation_summary",
+            description="Run the Customer Escalation Summary Skill for a customer. Returns executive summary, risk level (Low/Medium/High/Critical), recommended next action, and missing information. Use when asked about escalation, risk assessment, or customer summary."
         ),
     ]
 

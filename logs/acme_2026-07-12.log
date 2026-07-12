@@ -158,3 +158,36 @@
 2026-07-12 11:26:08 | INFO | app.agent.agent | Agent LLM call successful | duration=432.33ms
 2026-07-12 11:26:08 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=1216.58ms | success=True | tools=['get_customer_profile', 'get_open_issues', 'get_issue_history']
 2026-07-12 11:26:08 | INFO | app.metrics | API | POST /api/query | 200 | 1251.92ms | role=unknown
+2026-07-12 11:37:45 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 11:37:45 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 11:37:45 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 11:37:45 | INFO | app.database | Database connection established
+2026-07-12 11:37:45 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 11:37:45 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=20.10ms | success=True
+2026-07-12 11:37:45 | INFO | app.database | Database connection established
+2026-07-12 11:37:45 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 11:37:45 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=7.78ms | success=True
+2026-07-12 11:37:45 | INFO | app.database | Database connection established
+2026-07-12 11:37:45 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 11:37:45 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=6.80ms | success=True
+2026-07-12 11:37:45 | INFO | app.database | Database connection established
+2026-07-12 11:37:45 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 11:37:45 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=6.45ms | success=True
+2026-07-12 11:39:59 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 11:39:59 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 11:39:59 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 11:39:59 | INFO | app.database | Database connection established
+2026-07-12 11:39:59 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 11:39:59 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=35.14ms | success=True
+2026-07-12 11:39:59 | INFO | app.database | Database connection established
+2026-07-12 11:39:59 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 11:39:59 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=7.47ms | success=True
+2026-07-12 11:39:59 | INFO | app.database | Database connection established
+2026-07-12 11:39:59 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 11:39:59 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=5.64ms | success=True
+2026-07-12 11:39:59 | INFO | app.database | Database connection established
+2026-07-12 11:39:59 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 11:39:59 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=5.01ms | success=True
+2026-07-12 11:40:00 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 746.09ms | success=True
+2026-07-12 11:40:00 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=High | issues=2 | duration=847.95ms
+2026-07-12 11:40:00 | INFO | app.metrics | API | POST /api/skills/escalation/Acme Corp | 200 | 921.57ms | role=unknown

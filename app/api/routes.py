@@ -353,3 +353,35 @@ async def self_approve_query(
         "approval_id": approval_id,
         "approved_by": user["username"]
     }
+
+# ── Skills routes ──────────────────────────────────────────────────
+@router.post("/skills/escalation/{customer_name}",
+    tags=["Skills"],
+    summary="Run Customer Escalation Summary Skill"
+)
+async def run_escalation(
+    customer_name: str,
+    user: dict = Depends(get_current_user)
+):
+    """
+    Customer Escalation Summary Skill.
+    A structured reusable workflow that analyses customer risk.
+    Returns executive summary, risk level, recommended action,
+    and missing information identification.
+    All authenticated users can invoke this skill.
+    """
+    from app.skills.escalation_skill import run_escalation_skill
+    result = await run_escalation_skill(customer_name)
+    return {
+        "customer_name": result.customer_name,
+        "executive_summary": result.executive_summary,
+        "risk_level": result.risk_level,
+        "recommended_next_action": result.recommended_next_action,
+        "missing_information": result.missing_information,
+        "metrics": {
+            "total_open_issues": result.total_open_issues,
+            "critical_issues": result.critical_issues,
+            "high_issues": result.high_issues,
+            "duration_ms": result.duration_ms
+        }
+    }
