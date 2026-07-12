@@ -28,32 +28,22 @@ open http://localhost:8502
 
 ---
 
-## Architecture
-┌─────────────────────────────────────────────────────┐
-│                   User Interface                    │
-│          HTML Chat UI (http://localhost:8000/ui)    │
-└─────────────────────┬───────────────────────────────┘
-│ HTTPS + JWT
-┌─────────────────────▼───────────────────────────────┐
-│                  FastAPI Application                │
-│  • JWT validation via Keycloak                      │
-│  • RBAC enforcement (sales/support/admin)           │
-│  • Sensitive data detection + human approval        │
-│  • Data sanitisation before LLM                     │
-│  • Observability: logs + /metrics endpoint          │
-└──────┬──────────────┬──────────────┬────────────────┘
-│              │              │
-┌──────▼──────┐ ┌─────▼──────┐ ┌───▼──────────────────┐
-│  LangGraph  │ │ MCP Server │ │  Escalation Skill    │
-│  Agent      │ │            │ │                      │
-│  6 tools    │ │  5 tools   │ │  Structured workflow │
-│  RBAC aware │ │  RBAC aware│ │  Risk assessment     │
-└──────┬──────┘ └─────┬──────┘ └───────────────────────┘
-│              │
-┌──────▼──────────────▼───────────────────────────────┐
-│              Infrastructure (Docker Compose)        │
-│  PostgreSQL 15  │  Redis 7  │  Keycloak 24          │
-└─────────────────────────────────────────────────────┘
+## Architecture Overview
+
+The system is composed of four layers:
+
+**1. User Interface**
+HTML/CSS/JS chat UI served by FastAPI at `/ui`. ChatGPT-style interface with fixed header, scrollable chat, and fixed input. Security alerts appear inline when sensitive data is detected.
+
+**2. API Layer — FastAPI**
+Handles authentication (Keycloak JWT), RBAC enforcement, sensitive data detection, human-in-the-loop approval, data sanitisation, and observability. All requests are logged and tracked.
+
+**3. Agent Layer — LangGraph**
+The LangGraph agent dynamically selects from 6 tools based on the user query. The MCP server exposes the same tools in a standardised format. The Escalation Skill provides a structured multi-step workflow for customer risk assessment.
+
+**4. Infrastructure — Docker Compose**
+PostgreSQL 15 (data), Redis 7 (conversation memory), Keycloak 24 (authentication). All services start with `docker compose up`. Keycloak realm auto-imports from `infra/keycloak/acme-realm.json`.
+
 ---
 
 ## Components
@@ -194,50 +184,58 @@ Pattern matching covers common UK financial data types. In production this would
 
 ## AI Usage
 
-This project was built with AI assistance throughout:
+AI tools were used during development of this project:
 
-- **Claude (Anthropic)** — architecture decisions, code generation, debugging, and iterative improvement across all components
-- **GitHub Copilot / Cursor** — inline code completion and refactoring
-- **Groq llama-3.3-70b-versatile** — production LLM for agent reasoning and tool calling
-- **Groq llama-3.1-8b-instant** — evaluation runs (higher daily quota)
+- **GitHub Copilot** — inline code completion and refactoring during development
+- **Groq llama-3.3-70b-versatile** — production LLM powering the agent reasoning, tool calling, and response generation
+- **Groq llama-3.1-8b-instant** — evaluation runs, chosen for higher daily token quota (500K vs 100K TPD)
 
-All AI-generated code was reviewed, tested, and understood before inclusion. The architecture decisions, trade-off analysis, and system design are my own.
+All code was reviewed, tested, and understood before inclusion. Architecture decisions, system design, and trade-off analysis are my own.
 
 ---
 
 ## Project Structure
-ey-acme-assistant/
-├── app/
-│   ├── main.py              # FastAPI entry point
-│   ├── logger.py            # Daily rotating logs
-│   ├── metrics.py           # Power BI metrics tracking
-│   ├── memory.py            # Redis conversation memory
-│   ├── database.py          # PostgreSQL connection and queries
-│   ├── dashboard.py         # Streamlit developer dashboard
-│   ├── agent/
-│   │   ├── agent.py         # LangGraph agent
-│   │   └── tools.py         # 6 agent tools with RBAC
-│   ├── api/
-│   │   └── routes.py        # All API routes
-│   ├── auth/
-│   │   └── auth.py          # Keycloak JWT validation
-│   ├── mcp_server/
-│   │   └── server.py        # Custom MCP server
-│   ├── skills/
-│   │   └── escalation_skill.py  # Customer Escalation Summary Skill
-│   ├── security/
-│   │   └── data_sanitiser.py    # Sensitive data detection
-│   └── static/
-│       └── index.html       # ChatGPT-style chat UI
-├── infra/
-│   ├── postgres/
-│   │   └── init.sql         # Schema and seed data
-│   └── keycloak/
-│       └── acme-realm.json  # Keycloak realm export (auto-imported)
-├── eval/
-│   ├── evaluation.py        # 10 test questions
-│   └── results.json         # Latest evaluation results
-├── logs/                    # Daily rotating log files (gitignored)
-├── docker-compose.yml       # Full stack orchestration
-├── Dockerfile               # Application container
-└── README.md
+
+**app/** — Application code
+- `main.py` — FastAPI entry point, middleware, routes
+- `logger.py` — Daily rotating log files with 7-day auto-delete
+- `metrics.py` — Real-time metrics tracking for all system events
+- `memory.py` — Redis conversation memory with 1-hour TTL
+- `database.py` — PostgreSQL connection and all query functions
+- `dashboard.py` — Streamlit developer monitoring dashboard
+
+**app/agent/** — LangGraph agent
+- `agent.py` — LangGraph agent with tool calling and Redis memory
+- `tools.py` — 6 agent tools with RBAC enforcement
+
+**app/api/** — API routes
+- `routes.py` — All FastAPI routes with Swagger tags
+
+**app/auth/** — Authentication
+- `auth.py` — Keycloak JWT validation and RBAC dependencies
+
+**app/mcp_server/** — MCP Server
+- `server.py` — Custom MCP server exposing 5 tools with standardised schemas
+
+**app/skills/** — Reusable skills
+- `escalation_skill.py` — Customer Escalation Summary Skill
+
+**app/security/** — Security layer
+- `data_sanitiser.py` — Sensitive data detection and human-in-the-loop approval
+
+**app/static/** — Frontend
+- `index.html` — ChatGPT-style chat UI
+
+**infra/** — Infrastructure configuration
+- `postgres/init.sql` — Database schema and seed data
+- `keycloak/acme-realm.json` — Keycloak realm export (auto-imported on startup)
+
+**eval/** — Evaluation
+- `evaluation.py` — 10 test questions (5 pass, 5 fail)
+- `results.json` — Latest evaluation results
+
+**Root files**
+- `docker-compose.yml` — Full stack orchestration
+- `Dockerfile` — Application container
+- `requirements.txt` — Python dependencies
+- `README.md` — This file
