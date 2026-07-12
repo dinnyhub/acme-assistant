@@ -11,9 +11,11 @@ An agentic AI assistant for Acme Operations — built for the EY Future Developm
 git clone https://github.com/dinnyhub/acme-assistant.git
 cd acme-assistant
 
-# Add your API key to .env
+# Copy the example env file and add your API keys
 cp .env.example .env
-# Edit .env and add your GROQ_API_KEY
+# Edit .env and add:
+# - GROQ_API_KEY (get free at console.groq.com)
+# - KEYCLOAK_CLIENT_SECRET (generated after first docker compose up)
 
 # Start everything
 docker compose up
@@ -25,6 +27,20 @@ open http://localhost:8000/ui
 streamlit run app/dashboard.py --server.port 8502
 open http://localhost:8502
 ```
+
+### Environment Variables
+
+| Variable | Description | Example |
+|---|---|---|
+| `GROQ_API_KEY` | Groq API key — get free at console.groq.com | `gsk_...` |
+| `GROQ_MODEL` | LLM model to use | `llama-3.3-70b-versatile` |
+| `DATABASE_URL` | PostgreSQL connection string | `postgresql://acme_user:acme_pass@localhost:5432/acme_db` |
+| `REDIS_URL` | Redis connection string | `redis://localhost:6379` |
+| `KEYCLOAK_URL` | Keycloak URL | `http://localhost:8080` |
+| `KEYCLOAK_REALM` | Keycloak realm name | `acme` |
+| `KEYCLOAK_CLIENT_ID` | Keycloak client ID | `acme-app` |
+| `KEYCLOAK_CLIENT_SECRET` | Keycloak client secret — copy from Keycloak admin after first run | `abc123...` |
+| `SECRET_KEY` | App secret key — any random string | `supersecretkey123` |
 
 ---
 
