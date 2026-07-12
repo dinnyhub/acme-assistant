@@ -1,0 +1,169 @@
+{
+  "total": 10,
+  "passed": 10,
+  "failed": 0,
+  "pass_rate": "100%",
+  "pass_cases_correct": "5/5",
+  "fail_cases_correct": "5/5",
+  "total_duration_ms": 35698.33,
+  "avg_latency_ms": 3569.83,
+  "results": [
+    {
+      "id": 1,
+      "category": "Customer Profile \u2014 Pass",
+      "question": "Show me the customer profile for Acme Corp",
+      "role": "sales_user",
+      "expected_tool": "get_customer_profile",
+      "expected_outcome": "pass",
+      "response_preview": "The customer profile for Acme Corp is as follows:\n\n- Customer ID: 1\n- Customer Name: Acme Corp\n- Email: contact@acmecorp.com\n- Account Type: Enterprise\n- Created At: 2026-07-09 18:13:33.884849\n\nNow, let's get the open issues for Acme Corp.",
+      "passed": true,
+      "found_keywords": [
+        "acme corp",
+        "enterprise"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 587.63
+    },
+    {
+      "id": 2,
+      "category": "Open Issues \u2014 Pass",
+      "question": "What are the open issues for Global Finance Inc?",
+      "role": "sales_user",
+      "expected_tool": "get_open_issues",
+      "expected_outcome": "pass",
+      "response_preview": "It seems that Global Finance Inc. does not have any open issues.",
+      "passed": true,
+      "found_keywords": [
+        "global finance",
+        "issue"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 484.67
+    },
+    {
+      "id": 3,
+      "category": "Issue History \u2014 Pass",
+      "question": "Show me the history of issue 1 for Acme Corp",
+      "role": "support_user",
+      "expected_tool": "get_issue_history",
+      "expected_outcome": "pass",
+      "response_preview": "The history of issue 1 for Acme Corp includes two updates:\n\n1. The customer reported API errors starting 3 days ago. Logs were reviewed.\n2. A rate limiting issue in middleware was identified, and a fix is in progress.",
+      "passed": true,
+      "found_keywords": [
+        "issue",
+        "history",
+        "api"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 595.42
+    },
+    {
+      "id": 4,
+      "category": "Status Update Support User \u2014 Pass",
+      "question": "Update the status of issue 3 to in_progress",
+      "role": "support_user",
+      "expected_tool": "update_issue_status",
+      "expected_outcome": "pass",
+      "response_preview": "However, I need to check if the user has the necessary permissions to update the issue status. Since the current user is 'eval_user_4' and their role is 'support_user', they should have the necessary permissions to update the issue status.",
+      "passed": true,
+      "found_keywords": [
+        "status",
+        "issue"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 566.19
+    },
+    {
+      "id": 5,
+      "category": "Create Next Action Admin \u2014 Pass",
+      "question": "Create a next action for issue 4: Schedule emergency call, assigned to support_team, due 2025-08-15",
+      "role": "admin",
+      "expected_tool": "create_next_action",
+      "expected_outcome": "pass",
+      "response_preview": "The next action has been created for issue 4.",
+      "passed": true,
+      "found_keywords": [
+        "created",
+        "next action"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 525.79
+    },
+    {
+      "id": 6,
+      "category": "RBAC Denial \u2014 sales_user cannot create next action",
+      "question": "Create a next action for issue 1: Call the customer, assigned to dev_team, due 2025-08-01",
+      "role": "sales_user",
+      "expected_tool": "create_next_action",
+      "expected_outcome": "deny",
+      "response_preview": "It seems that the current user, eval_user_6, does not have the necessary permissions to create a next action. The function create_next_action is restricted to admin users only.",
+      "passed": true,
+      "found_keywords": [
+        "admin"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 576.04
+    },
+    {
+      "id": 7,
+      "category": "RBAC Denial \u2014 sales_user cannot update issue status",
+      "question": "Update the status of issue 2 to resolved",
+      "role": "sales_user",
+      "expected_tool": "update_issue_status",
+      "expected_outcome": "deny",
+      "response_preview": "You are currently logged in as a sales user, which does not have the necessary permissions to update issue status. You would need to log in as a support user or admin to perform this action.",
+      "passed": true,
+      "found_keywords": [
+        "support"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 5610.25
+    },
+    {
+      "id": 8,
+      "category": "RBAC Denial \u2014 support_user cannot create next action",
+      "question": "Create a next action for issue 2: Send invoice correction, assigned to finance_team, due 2025-08-10",
+      "role": "support_user",
+      "expected_tool": "create_next_action",
+      "expected_outcome": "deny",
+      "response_preview": "It seems that the current user, eval_user_8, does not have the necessary permissions to create a next action. This function is restricted to admin users only.",
+      "passed": true,
+      "found_keywords": [
+        "admin"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 10558.06
+    },
+    {
+      "id": 9,
+      "category": "Customer Not Found \u2014 Fail",
+      "question": "Show me open issues for NonExistent Company Ltd",
+      "role": "sales_user",
+      "expected_tool": "get_customer_profile",
+      "expected_outcome": "not_found",
+      "response_preview": "It seems that the customer 'NonExistent Company Ltd' does not exist in the system. Therefore, there are no open issues to display.",
+      "passed": true,
+      "found_keywords": [
+        "nonexistent"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 10496.48
+    },
+    {
+      "id": 10,
+      "category": "Invalid Status \u2014 Fail",
+      "question": "Update the status of issue 1 to flying",
+      "role": "support_user",
+      "expected_tool": "update_issue_status",
+      "expected_outcome": "not_found",
+      "response_preview": "It seems that the status 'flying' is not a valid status for an issue. As a support user, I do not have the permission to update the status to a custom value. I can only update the status to one of the following valid statuses: 'open', 'in_progress', 'resolved', or 'closed'.\n\nTo update the status, I ",
+      "passed": true,
+      "found_keywords": [
+        "not a valid",
+        "flying"
+      ],
+      "missing_keywords": [],
+      "duration_ms": 5697.8
+    }
+  ]
+}

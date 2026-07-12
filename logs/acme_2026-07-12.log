@@ -795,3 +795,1187 @@
 2026-07-12 12:22:39 | INFO | app.memory | Session history retrieved | session=carol | messages=13
 2026-07-12 12:22:39 | INFO | app.memory | Session history saved | session=carol | messages=14
 2026-07-12 12:22:39 | INFO | app.metrics | API | POST /api/query | 200 | 810.19ms | role=unknown
+2026-07-12 12:37:00 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me the customer profile for Acme Corp
+2026-07-12 12:37:00 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 262.92ms | success=True
+2026-07-12 12:37:00 | INFO | app.agent.agent | Agent LLM call successful | duration=262.92ms
+2026-07-12 12:37:00 | INFO | app.database | Database connection established
+2026-07-12 12:37:00 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:37:00 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=33.70ms | success=True
+2026-07-12 12:37:00 | INFO | app.metrics | TOOL | get_customer_profile | 34.20ms | success=True
+2026-07-12 12:37:00 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 293.08ms | success=True
+2026-07-12 12:37:00 | INFO | app.agent.agent | Agent LLM call successful | duration=293.08ms
+2026-07-12 12:37:00 | INFO | app.database | Database connection established
+2026-07-12 12:37:00 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:37:00 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=15.75ms | success=True
+2026-07-12 12:37:00 | INFO | app.metrics | TOOL | get_open_issues | 16.46ms | success=True
+2026-07-12 12:37:01 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 508.20ms | success=True
+2026-07-12 12:37:01 | INFO | app.agent.agent | Agent LLM call successful | duration=508.20ms
+2026-07-12 12:37:01 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=1200.38ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 12:37:01 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=1
+2026-07-12 12:37:01 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=1
+2026-07-12 12:37:01 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=2
+2026-07-12 12:37:01 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=What are the open issues for Global Finance Inc?
+2026-07-12 12:37:01 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 271.63ms | success=True
+2026-07-12 12:37:01 | INFO | app.agent.agent | Agent LLM call successful | duration=271.63ms
+2026-07-12 12:37:01 | INFO | app.database | Database connection established
+2026-07-12 12:37:01 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:37:01 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=16.59ms | success=True
+2026-07-12 12:37:01 | INFO | app.metrics | TOOL | get_customer_profile | 17.79ms | success=True
+2026-07-12 12:37:02 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 180.59ms | success=True
+2026-07-12 12:37:02 | INFO | app.agent.agent | Agent LLM call successful | duration=180.59ms
+2026-07-12 12:37:02 | INFO | app.database | Database connection established
+2026-07-12 12:37:02 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 12:37:02 | INFO | app.metrics | DB | SELECT | table=issues | rows=2 | duration=12.93ms | success=True
+2026-07-12 12:37:02 | INFO | app.metrics | TOOL | get_open_issues | 14.01ms | success=True
+2026-07-12 12:37:02 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 367.78ms | success=True
+2026-07-12 12:37:02 | INFO | app.agent.agent | Agent LLM call successful | duration=367.78ms
+2026-07-12 12:37:02 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=899.83ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 12:37:02 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=1
+2026-07-12 12:37:02 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=1
+2026-07-12 12:37:02 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=2
+2026-07-12 12:37:02 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Run an escalation summary for Acme Corp
+2026-07-12 12:37:02 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 206.50ms | success=True
+2026-07-12 12:37:02 | INFO | app.agent.agent | Agent LLM call successful | duration=206.50ms
+2026-07-12 12:37:02 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 12:37:02 | INFO | app.database | Database connection established
+2026-07-12 12:37:02 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:37:02 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=14.33ms | success=True
+2026-07-12 12:37:02 | INFO | app.database | Database connection established
+2026-07-12 12:37:02 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:37:02 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=18.91ms | success=True
+2026-07-12 12:37:02 | INFO | app.database | Database connection established
+2026-07-12 12:37:02 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 12:37:02 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=17.99ms | success=True
+2026-07-12 12:37:03 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 879.34ms | success=True
+2026-07-12 12:37:03 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=Low | issues=1 | duration=962.13ms
+2026-07-12 12:37:03 | INFO | app.metrics | TOOL | escalation_summary | 962.29ms | success=True
+2026-07-12 12:37:03 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 29.83ms | success=False
+2026-07-12 12:37:03 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99551, Requested 1042. Please try again in 8m32.352s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:37:03 | INFO | app.metrics | AGENT | agent_failed | user=eval_sales_user | role=sales_user | duration=1249.31ms | success=False | tools=None
+2026-07-12 12:37:03 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 3 to in_progress
+2026-07-12 12:37:03 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 68.16ms | success=False
+2026-07-12 12:37:03 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99551, Requested 874. Please try again in 6m7.2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:37:03 | INFO | app.metrics | AGENT | agent_failed | user=eval_support_user | role=support_user | duration=121.05ms | success=False | tools=None
+2026-07-12 12:37:03 | INFO | app.agent.agent | Agent query | user=eval_admin | role=admin | query=Create a next action for issue 4: Schedule emergen
+2026-07-12 12:37:03 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 142.49ms | success=False
+2026-07-12 12:37:03 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99551, Requested 888. Please try again in 6m19.296s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:37:03 | INFO | app.metrics | AGENT | agent_failed | user=eval_admin | role=admin | duration=180.08ms | success=False | tools=None
+2026-07-12 12:37:03 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Create a next action for issue 1: Call the custome
+2026-07-12 12:37:04 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 53.74ms | success=False
+2026-07-12 12:37:04 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99551, Requested 890. Please try again in 6m21.024s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:37:04 | INFO | app.metrics | AGENT | agent_failed | user=eval_sales_user | role=sales_user | duration=87.75ms | success=False | tools=None
+2026-07-12 12:37:04 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Update the status of issue 2 to resolved
+2026-07-12 12:37:04 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 57.58ms | success=False
+2026-07-12 12:37:04 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99551, Requested 873. Please try again in 6m6.336s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:37:04 | INFO | app.metrics | AGENT | agent_failed | user=eval_sales_user | role=sales_user | duration=96.33ms | success=False | tools=None
+2026-07-12 12:37:04 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Create a next action for issue 2: Send invoice cor
+2026-07-12 12:37:04 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 55.99ms | success=False
+2026-07-12 12:37:04 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99551, Requested 890. Please try again in 6m21.024s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:37:04 | INFO | app.metrics | AGENT | agent_failed | user=eval_support_user | role=support_user | duration=90.92ms | success=False | tools=None
+2026-07-12 12:37:04 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me open issues for NonExistent Company Ltd
+2026-07-12 12:37:04 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 48.49ms | success=False
+2026-07-12 12:37:04 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99551, Requested 874. Please try again in 6m7.2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:37:04 | INFO | app.metrics | AGENT | agent_failed | user=eval_sales_user | role=sales_user | duration=81.84ms | success=False | tools=None
+2026-07-12 12:37:04 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 1 to flying
+2026-07-12 12:37:04 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 125.40ms | success=False
+2026-07-12 12:37:04 | ERROR | app.agent.agent | Agent LLM call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kx82vhtwf9e9z0sjg9scajr0` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99551, Requested 873. Please try again in 6m6.336s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-07-12 12:37:04 | INFO | app.metrics | AGENT | agent_failed | user=eval_support_user | role=support_user | duration=156.29ms | success=False | tools=None
+2026-07-12 13:01:00 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me the customer profile for Acme Corp
+2026-07-12 13:01:00 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=2
+2026-07-12 13:01:00 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 311.36ms | success=True
+2026-07-12 13:01:00 | INFO | app.agent.agent | Agent LLM call successful | duration=311.36ms
+2026-07-12 13:01:00 | INFO | app.database | Database connection established
+2026-07-12 13:01:00 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:01:00 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=104.08ms | success=True
+2026-07-12 13:01:00 | INFO | app.metrics | TOOL | get_customer_profile | 104.35ms | success=True
+2026-07-12 13:01:01 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 155.90ms | success=True
+2026-07-12 13:01:01 | INFO | app.agent.agent | Agent LLM call successful | duration=155.90ms
+2026-07-12 13:01:01 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=655.21ms | success=True | tools=['get_customer_profile']
+2026-07-12 13:01:01 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=2
+2026-07-12 13:01:01 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=3
+2026-07-12 13:01:01 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=3
+2026-07-12 13:01:01 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=4
+2026-07-12 13:01:09 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=What are the open issues for Global Finance Inc?
+2026-07-12 13:01:09 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=2
+2026-07-12 13:01:09 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 180.76ms | success=True
+2026-07-12 13:01:09 | INFO | app.agent.agent | Agent LLM call successful | duration=180.76ms
+2026-07-12 13:01:09 | INFO | app.database | Database connection established
+2026-07-12 13:01:09 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:01:09 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=13.10ms | success=True
+2026-07-12 13:01:09 | INFO | app.metrics | TOOL | get_open_issues | 14.27ms | success=True
+2026-07-12 13:01:09 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 137.84ms | success=True
+2026-07-12 13:01:09 | INFO | app.agent.agent | Agent LLM call successful | duration=137.84ms
+2026-07-12 13:01:09 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=383.15ms | success=True | tools=['get_open_issues']
+2026-07-12 13:01:09 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=2
+2026-07-12 13:01:09 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=3
+2026-07-12 13:01:09 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=3
+2026-07-12 13:01:09 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=4
+2026-07-12 13:01:17 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Run an escalation summary for Acme Corp
+2026-07-12 13:01:17 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 184.01ms | success=True
+2026-07-12 13:01:17 | INFO | app.agent.agent | Agent LLM call successful | duration=184.01ms
+2026-07-12 13:01:17 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 13:01:17 | INFO | app.database | Database connection established
+2026-07-12 13:01:17 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:01:17 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=19.35ms | success=True
+2026-07-12 13:01:17 | INFO | app.database | Database connection established
+2026-07-12 13:01:17 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:01:17 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=15.23ms | success=True
+2026-07-12 13:01:17 | INFO | app.database | Database connection established
+2026-07-12 13:01:17 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:01:17 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=12.72ms | success=True
+2026-07-12 13:01:18 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 1047.28ms | success=True
+2026-07-12 13:01:18 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=Low | issues=1 | duration=1135.00ms
+2026-07-12 13:01:18 | INFO | app.metrics | TOOL | escalation_summary | 1135.18ms | success=True
+2026-07-12 13:01:19 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 236.88ms | success=True
+2026-07-12 13:01:19 | INFO | app.agent.agent | Agent LLM call successful | duration=236.88ms
+2026-07-12 13:01:19 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 13:01:19 | INFO | app.database | Database connection established
+2026-07-12 13:01:19 | INFO | app.database | Database connection established
+2026-07-12 13:01:19 | INFO | app.database | Database connection established
+2026-07-12 13:01:19 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:01:19 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:01:19 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=22.37ms | success=True
+2026-07-12 13:01:19 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=0 | duration=20.75ms | success=True
+2026-07-12 13:01:19 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:01:19 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=22.01ms | success=True
+2026-07-12 13:01:19 | INFO | app.metrics | TOOL | get_open_issues | 23.71ms | success=True
+2026-07-12 13:01:19 | INFO | app.metrics | TOOL | get_issue_history | 22.88ms | success=True
+2026-07-12 13:01:19 | INFO | app.metrics | TOOL | get_customer_profile | 24.86ms | success=True
+2026-07-12 13:01:19 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 247.29ms | success=True
+2026-07-12 13:01:19 | INFO | app.agent.agent | Agent LLM call successful | duration=247.29ms
+2026-07-12 13:01:19 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=1923.65ms | success=True | tools=['escalation_summary', 'get_customer_profile', 'get_open_issues', 'get_issue_history', 'update_issue_status']
+2026-07-12 13:01:19 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=1
+2026-07-12 13:01:19 | INFO | app.memory | Session history retrieved | session=eval_session_3 | messages=1
+2026-07-12 13:01:19 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=2
+2026-07-12 13:01:27 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 3 to in_progress
+2026-07-12 13:01:27 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 330.06ms | success=True
+2026-07-12 13:01:27 | INFO | app.agent.agent | Agent LLM call successful | duration=330.06ms
+2026-07-12 13:01:27 | INFO | app.database | Database connection established
+2026-07-12 13:01:27 | INFO | app.database | Write query executed successfully
+2026-07-12 13:01:27 | INFO | app.metrics | DB | WRITE | table=issues | rows=0 | duration=21.99ms | success=True
+2026-07-12 13:01:27 | INFO | app.metrics | TOOL | update_issue_status | 23.08ms | success=True
+2026-07-12 13:01:30 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 2249.10ms | success=True
+2026-07-12 13:01:30 | INFO | app.agent.agent | Agent LLM call successful | duration=2249.10ms
+2026-07-12 13:01:30 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=2665.59ms | success=True | tools=['update_issue_status']
+2026-07-12 13:01:30 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=1
+2026-07-12 13:01:30 | INFO | app.memory | Session history retrieved | session=eval_session_4 | messages=1
+2026-07-12 13:01:30 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=2
+2026-07-12 13:01:38 | INFO | app.agent.agent | Agent query | user=eval_admin | role=admin | query=Create a next action for issue 4: Schedule emergen
+2026-07-12 13:01:38 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 178.40ms | success=True
+2026-07-12 13:01:38 | INFO | app.agent.agent | Agent LLM call successful | duration=178.40ms
+2026-07-12 13:01:38 | INFO | app.database | Database connection established
+2026-07-12 13:01:38 | INFO | app.database | Write query executed successfully
+2026-07-12 13:01:38 | INFO | app.metrics | DB | WRITE | table=next_actions | rows=0 | duration=11.37ms | success=True
+2026-07-12 13:01:38 | INFO | app.metrics | TOOL | create_next_action | 12.34ms | success=True
+2026-07-12 13:01:44 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 6242.50ms | success=True
+2026-07-12 13:01:44 | INFO | app.agent.agent | Agent LLM call successful | duration=6242.50ms
+2026-07-12 13:01:44 | INFO | app.metrics | AGENT | agent_completed | user=eval_admin | role=admin | duration=6492.33ms | success=True | tools=['create_next_action']
+2026-07-12 13:01:44 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=1
+2026-07-12 13:01:44 | INFO | app.memory | Session history retrieved | session=eval_session_5 | messages=1
+2026-07-12 13:01:44 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=2
+2026-07-12 13:01:52 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Create a next action for issue 1: Call the custome
+2026-07-12 13:01:53 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 1213.67ms | success=True
+2026-07-12 13:01:53 | INFO | app.agent.agent | Agent LLM call successful | duration=1213.67ms
+2026-07-12 13:01:53 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 13:02:03 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9293.29ms | success=True
+2026-07-12 13:02:03 | INFO | app.agent.agent | Agent LLM call successful | duration=9293.29ms
+2026-07-12 13:02:03 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10588.41ms | success=True | tools=['create_next_action']
+2026-07-12 13:02:03 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=1
+2026-07-12 13:02:03 | INFO | app.memory | Session history retrieved | session=eval_session_6 | messages=1
+2026-07-12 13:02:03 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=2
+2026-07-12 13:02:11 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Update the status of issue 2 to resolved
+2026-07-12 13:02:12 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 1251.65ms | success=True
+2026-07-12 13:02:12 | INFO | app.agent.agent | Agent LLM call successful | duration=1251.65ms
+2026-07-12 13:02:12 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 13:02:21 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9300.58ms | success=True
+2026-07-12 13:02:21 | INFO | app.agent.agent | Agent LLM call successful | duration=9300.58ms
+2026-07-12 13:02:21 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10634.62ms | success=True | tools=['update_issue_status']
+2026-07-12 13:02:21 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=1
+2026-07-12 13:02:21 | INFO | app.memory | Session history retrieved | session=eval_session_7 | messages=1
+2026-07-12 13:02:21 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=2
+2026-07-12 13:02:29 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Create a next action for issue 2: Send invoice cor
+2026-07-12 13:02:30 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 209.17ms | success=True
+2026-07-12 13:02:30 | INFO | app.agent.agent | Agent LLM call successful | duration=209.17ms
+2026-07-12 13:02:30 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 13:02:40 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10466.70ms | success=True
+2026-07-12 13:02:40 | INFO | app.agent.agent | Agent LLM call successful | duration=10466.70ms
+2026-07-12 13:02:40 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=10731.83ms | success=True | tools=['create_next_action']
+2026-07-12 13:02:40 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=1
+2026-07-12 13:02:40 | INFO | app.memory | Session history retrieved | session=eval_session_8 | messages=1
+2026-07-12 13:02:40 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=2
+2026-07-12 13:02:48 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me open issues for NonExistent Company Ltd
+2026-07-12 13:02:48 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 245.91ms | success=True
+2026-07-12 13:02:48 | INFO | app.agent.agent | Agent LLM call successful | duration=245.91ms
+2026-07-12 13:02:48 | INFO | app.database | Database connection established
+2026-07-12 13:02:48 | INFO | app.database | Database connection established
+2026-07-12 13:02:48 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:02:48 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=22.23ms | success=True
+2026-07-12 13:02:48 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:02:48 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=21.92ms | success=True
+2026-07-12 13:02:48 | INFO | app.metrics | TOOL | get_customer_profile | 24.21ms | success=False
+2026-07-12 13:02:48 | INFO | app.metrics | TOOL | get_open_issues | 23.98ms | success=True
+2026-07-12 13:02:59 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10332.66ms | success=True
+2026-07-12 13:02:59 | INFO | app.agent.agent | Agent LLM call successful | duration=10332.66ms
+2026-07-12 13:02:59 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10654.58ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 13:02:59 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=1
+2026-07-12 13:02:59 | INFO | app.memory | Session history retrieved | session=eval_session_9 | messages=1
+2026-07-12 13:02:59 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=2
+2026-07-12 13:03:07 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 1 to flying
+2026-07-12 13:03:07 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 229.76ms | success=True
+2026-07-12 13:03:07 | INFO | app.agent.agent | Agent LLM call successful | duration=229.76ms
+2026-07-12 13:03:16 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9361.19ms | success=True
+2026-07-12 13:03:16 | INFO | app.agent.agent | Agent LLM call successful | duration=9361.19ms
+2026-07-12 13:03:16 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=9645.27ms | success=True | tools=['update_issue_status']
+2026-07-12 13:03:16 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=1
+2026-07-12 13:03:16 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=1
+2026-07-12 13:03:16 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=2
+2026-07-12 13:21:05 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me the customer profile for Acme Corp
+2026-07-12 13:21:05 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=4
+2026-07-12 13:21:05 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 472.56ms | success=True
+2026-07-12 13:21:05 | INFO | app.agent.agent | Agent LLM call successful | duration=472.56ms
+2026-07-12 13:21:05 | INFO | app.database | Database connection established
+2026-07-12 13:21:05 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:21:05 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=26.64ms | success=True
+2026-07-12 13:21:05 | INFO | app.metrics | TOOL | get_customer_profile | 26.95ms | success=True
+2026-07-12 13:21:05 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 136.33ms | success=True
+2026-07-12 13:21:05 | INFO | app.agent.agent | Agent LLM call successful | duration=136.33ms
+2026-07-12 13:21:05 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=713.05ms | success=True | tools=['get_customer_profile']
+2026-07-12 13:21:05 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=4
+2026-07-12 13:21:05 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=5
+2026-07-12 13:21:05 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=5
+2026-07-12 13:21:05 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=6
+2026-07-12 13:21:13 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=What are the open issues for Global Finance Inc?
+2026-07-12 13:21:13 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=4
+2026-07-12 13:21:14 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 315.88ms | success=True
+2026-07-12 13:21:14 | INFO | app.agent.agent | Agent LLM call successful | duration=315.88ms
+2026-07-12 13:21:14 | INFO | app.database | Database connection established
+2026-07-12 13:21:14 | INFO | app.database | Database connection established
+2026-07-12 13:21:14 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:21:14 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=16.53ms | success=True
+2026-07-12 13:21:14 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:21:14 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=17.98ms | success=True
+2026-07-12 13:21:14 | INFO | app.metrics | TOOL | get_customer_profile | 17.79ms | success=False
+2026-07-12 13:21:14 | INFO | app.metrics | TOOL | get_open_issues | 18.81ms | success=True
+2026-07-12 13:21:14 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 139.95ms | success=True
+2026-07-12 13:21:14 | INFO | app.agent.agent | Agent LLM call successful | duration=139.95ms
+2026-07-12 13:21:14 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=536.45ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 13:21:14 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=4
+2026-07-12 13:21:14 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=5
+2026-07-12 13:21:14 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=5
+2026-07-12 13:21:14 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=6
+2026-07-12 13:21:22 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Run an escalation summary for Acme Corp
+2026-07-12 13:21:22 | INFO | app.memory | Session history retrieved | session=eval_session_3 | messages=2
+2026-07-12 13:21:22 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 151.28ms | success=True
+2026-07-12 13:21:22 | INFO | app.agent.agent | Agent LLM call successful | duration=151.28ms
+2026-07-12 13:21:22 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 13:21:22 | INFO | app.database | Database connection established
+2026-07-12 13:21:22 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:21:22 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=14.38ms | success=True
+2026-07-12 13:21:22 | INFO | app.database | Database connection established
+2026-07-12 13:21:22 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:21:22 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=13.48ms | success=True
+2026-07-12 13:21:22 | INFO | app.database | Database connection established
+2026-07-12 13:21:22 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:21:22 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=12.45ms | success=True
+2026-07-12 13:21:23 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 1021.39ms | success=True
+2026-07-12 13:21:23 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=Medium | issues=1 | duration=1087.74ms
+2026-07-12 13:21:23 | INFO | app.metrics | TOOL | escalation_summary | 1087.85ms | success=True
+2026-07-12 13:21:23 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 155.55ms | success=True
+2026-07-12 13:21:23 | INFO | app.agent.agent | Agent LLM call successful | duration=155.55ms
+2026-07-12 13:21:23 | INFO | app.database | Database connection established
+2026-07-12 13:21:23 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 13:21:23 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=19.72ms | success=True
+2026-07-12 13:21:23 | INFO | app.database | Database connection established
+2026-07-12 13:21:23 | INFO | app.metrics | TOOL | get_customer_profile | 20.64ms | success=True
+2026-07-12 13:21:23 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:21:23 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=18.33ms | success=True
+2026-07-12 13:21:23 | INFO | app.metrics | TOOL | get_open_issues | 19.25ms | success=True
+2026-07-12 13:21:24 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 496.84ms | success=True
+2026-07-12 13:21:24 | INFO | app.agent.agent | Agent LLM call successful | duration=496.84ms
+2026-07-12 13:21:24 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=1995.43ms | success=True | tools=['escalation_summary', 'get_customer_profile', 'get_open_issues']
+2026-07-12 13:21:24 | INFO | app.memory | Session history retrieved | session=eval_session_3 | messages=2
+2026-07-12 13:21:24 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=3
+2026-07-12 13:21:24 | INFO | app.memory | Session history retrieved | session=eval_session_3 | messages=3
+2026-07-12 13:21:24 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=4
+2026-07-12 13:21:32 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 3 to in_progress
+2026-07-12 13:21:32 | INFO | app.memory | Session history retrieved | session=eval_session_4 | messages=2
+2026-07-12 13:21:32 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 198.04ms | success=True
+2026-07-12 13:21:32 | INFO | app.agent.agent | Agent LLM call successful | duration=198.04ms
+2026-07-12 13:21:32 | INFO | app.database | Database connection established
+2026-07-12 13:21:32 | INFO | app.database | Write query executed successfully
+2026-07-12 13:21:32 | INFO | app.metrics | DB | WRITE | table=issues | rows=0 | duration=17.70ms | success=True
+2026-07-12 13:21:32 | INFO | app.metrics | TOOL | update_issue_status | 19.06ms | success=True
+2026-07-12 13:21:32 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 263.31ms | success=True
+2026-07-12 13:21:32 | INFO | app.agent.agent | Agent LLM call successful | duration=263.31ms
+2026-07-12 13:21:32 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=527.12ms | success=True | tools=['update_issue_status']
+2026-07-12 13:21:32 | INFO | app.memory | Session history retrieved | session=eval_session_4 | messages=2
+2026-07-12 13:21:32 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=3
+2026-07-12 13:21:32 | INFO | app.memory | Session history retrieved | session=eval_session_4 | messages=3
+2026-07-12 13:21:32 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=4
+2026-07-12 13:21:40 | INFO | app.agent.agent | Agent query | user=eval_admin | role=admin | query=Create a next action for issue 4: Schedule emergen
+2026-07-12 13:21:40 | INFO | app.memory | Session history retrieved | session=eval_session_5 | messages=2
+2026-07-12 13:21:41 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 209.21ms | success=True
+2026-07-12 13:21:41 | INFO | app.agent.agent | Agent LLM call successful | duration=209.21ms
+2026-07-12 13:21:41 | INFO | app.database | Database connection established
+2026-07-12 13:21:41 | INFO | app.database | Write query executed successfully
+2026-07-12 13:21:41 | INFO | app.metrics | DB | WRITE | table=next_actions | rows=0 | duration=14.33ms | success=True
+2026-07-12 13:21:41 | INFO | app.metrics | TOOL | create_next_action | 15.26ms | success=True
+2026-07-12 13:21:43 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 2330.53ms | success=True
+2026-07-12 13:21:43 | INFO | app.agent.agent | Agent LLM call successful | duration=2330.53ms
+2026-07-12 13:21:43 | INFO | app.metrics | AGENT | agent_completed | user=eval_admin | role=admin | duration=2615.50ms | success=True | tools=['create_next_action']
+2026-07-12 13:21:43 | INFO | app.memory | Session history retrieved | session=eval_session_5 | messages=2
+2026-07-12 13:21:43 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=3
+2026-07-12 13:21:43 | INFO | app.memory | Session history retrieved | session=eval_session_5 | messages=3
+2026-07-12 13:21:43 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=4
+2026-07-12 13:21:51 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Create a next action for issue 1: Call the custome
+2026-07-12 13:21:51 | INFO | app.memory | Session history retrieved | session=eval_session_6 | messages=2
+2026-07-12 13:21:53 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 2281.24ms | success=True
+2026-07-12 13:21:53 | INFO | app.agent.agent | Agent LLM call successful | duration=2281.24ms
+2026-07-12 13:21:53 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 13:21:58 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 4197.99ms | success=True
+2026-07-12 13:21:58 | INFO | app.agent.agent | Agent LLM call successful | duration=4197.99ms
+2026-07-12 13:21:58 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=6540.73ms | success=True | tools=['create_next_action']
+2026-07-12 13:21:58 | INFO | app.memory | Session history retrieved | session=eval_session_6 | messages=2
+2026-07-12 13:21:58 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=3
+2026-07-12 13:21:58 | INFO | app.memory | Session history retrieved | session=eval_session_6 | messages=3
+2026-07-12 13:21:58 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=4
+2026-07-12 13:22:06 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Update the status of issue 2 to resolved
+2026-07-12 13:22:06 | INFO | app.memory | Session history retrieved | session=eval_session_7 | messages=2
+2026-07-12 13:22:08 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 2414.21ms | success=True
+2026-07-12 13:22:08 | INFO | app.agent.agent | Agent LLM call successful | duration=2414.21ms
+2026-07-12 13:22:08 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 13:22:12 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 4208.66ms | success=True
+2026-07-12 13:22:12 | INFO | app.agent.agent | Agent LLM call successful | duration=4208.66ms
+2026-07-12 13:22:12 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=6674.59ms | success=True | tools=['update_issue_status']
+2026-07-12 13:22:12 | INFO | app.memory | Session history retrieved | session=eval_session_7 | messages=2
+2026-07-12 13:22:12 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=3
+2026-07-12 13:22:12 | INFO | app.memory | Session history retrieved | session=eval_session_7 | messages=3
+2026-07-12 13:22:12 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=4
+2026-07-12 13:22:20 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Create a next action for issue 2: Send invoice cor
+2026-07-12 13:22:20 | INFO | app.memory | Session history retrieved | session=eval_session_8 | messages=2
+2026-07-12 13:22:23 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 2309.62ms | success=True
+2026-07-12 13:22:23 | INFO | app.agent.agent | Agent LLM call successful | duration=2309.62ms
+2026-07-12 13:22:23 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 13:22:33 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10233.56ms | success=True
+2026-07-12 13:22:33 | INFO | app.agent.agent | Agent LLM call successful | duration=10233.56ms
+2026-07-12 13:22:33 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=12597.42ms | success=True | tools=['create_next_action']
+2026-07-12 13:22:33 | INFO | app.memory | Session history retrieved | session=eval_session_8 | messages=2
+2026-07-12 13:22:33 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=3
+2026-07-12 13:22:33 | INFO | app.memory | Session history retrieved | session=eval_session_8 | messages=3
+2026-07-12 13:22:33 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=4
+2026-07-12 13:22:41 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me open issues for NonExistent Company Ltd
+2026-07-12 13:22:41 | INFO | app.memory | Session history retrieved | session=eval_session_9 | messages=2
+2026-07-12 13:22:41 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 232.73ms | success=True
+2026-07-12 13:22:41 | INFO | app.agent.agent | Agent LLM call successful | duration=232.73ms
+2026-07-12 13:22:41 | INFO | app.database | Database connection established
+2026-07-12 13:22:41 | INFO | app.database | Database connection established
+2026-07-12 13:22:41 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:22:41 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=15.13ms | success=True
+2026-07-12 13:22:41 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 13:22:41 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=16.86ms | success=True
+2026-07-12 13:22:41 | INFO | app.metrics | TOOL | get_customer_profile | 18.04ms | success=False
+2026-07-12 13:22:41 | INFO | app.metrics | TOOL | get_open_issues | 18.89ms | success=True
+2026-07-12 13:22:46 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 5184.87ms | success=True
+2026-07-12 13:22:46 | INFO | app.agent.agent | Agent LLM call successful | duration=5184.87ms
+2026-07-12 13:22:46 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=5488.29ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 13:22:46 | INFO | app.memory | Session history retrieved | session=eval_session_9 | messages=2
+2026-07-12 13:22:46 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=3
+2026-07-12 13:22:46 | INFO | app.memory | Session history retrieved | session=eval_session_9 | messages=3
+2026-07-12 13:22:46 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=4
+2026-07-12 13:22:54 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 1 to flying
+2026-07-12 13:22:54 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=2
+2026-07-12 13:22:57 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 2468.72ms | success=True
+2026-07-12 13:22:57 | INFO | app.agent.agent | Agent LLM call successful | duration=2468.72ms
+2026-07-12 13:23:06 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9240.89ms | success=True
+2026-07-12 13:23:06 | INFO | app.agent.agent | Agent LLM call successful | duration=9240.89ms
+2026-07-12 13:23:06 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=11777.02ms | success=True | tools=['update_issue_status']
+2026-07-12 13:23:06 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=2
+2026-07-12 13:23:06 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=3
+2026-07-12 13:23:06 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=3
+2026-07-12 13:23:06 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=4
+2026-07-12 14:11:51 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me the customer profile for Acme Corp
+2026-07-12 14:11:51 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 256.15ms | success=True
+2026-07-12 14:11:51 | INFO | app.agent.agent | Agent LLM call successful | duration=256.15ms
+2026-07-12 14:11:51 | INFO | app.database | Database connection established
+2026-07-12 14:11:51 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:11:51 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=93.66ms | success=True
+2026-07-12 14:11:51 | INFO | app.metrics | TOOL | get_customer_profile | 94.30ms | success=True
+2026-07-12 14:11:52 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 211.64ms | success=True
+2026-07-12 14:11:52 | INFO | app.agent.agent | Agent LLM call successful | duration=211.64ms
+2026-07-12 14:11:52 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=638.44ms | success=True | tools=['get_customer_profile']
+2026-07-12 14:11:52 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=1
+2026-07-12 14:11:52 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=1
+2026-07-12 14:11:52 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=2
+2026-07-12 14:12:00 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=What are the open issues for Global Finance Inc?
+2026-07-12 14:12:00 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 160.36ms | success=True
+2026-07-12 14:12:00 | INFO | app.agent.agent | Agent LLM call successful | duration=160.36ms
+2026-07-12 14:12:00 | INFO | app.database | Database connection established
+2026-07-12 14:12:00 | INFO | app.database | Database connection established
+2026-07-12 14:12:00 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:12:00 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=19.03ms | success=True
+2026-07-12 14:12:00 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:12:00 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=19.12ms | success=True
+2026-07-12 14:12:00 | INFO | app.metrics | TOOL | get_customer_profile | 20.60ms | success=False
+2026-07-12 14:12:00 | INFO | app.metrics | TOOL | get_open_issues | 21.03ms | success=True
+2026-07-12 14:12:00 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 198.84ms | success=True
+2026-07-12 14:12:00 | INFO | app.agent.agent | Agent LLM call successful | duration=198.84ms
+2026-07-12 14:12:00 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=449.11ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:12:00 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=1
+2026-07-12 14:12:00 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=1
+2026-07-12 14:12:00 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=2
+2026-07-12 14:12:08 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Run an escalation summary for Acme Corp
+2026-07-12 14:12:08 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 213.93ms | success=True
+2026-07-12 14:12:08 | INFO | app.agent.agent | Agent LLM call successful | duration=213.93ms
+2026-07-12 14:12:08 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 14:12:08 | INFO | app.database | Database connection established
+2026-07-12 14:12:08 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:12:08 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=16.92ms | success=True
+2026-07-12 14:12:08 | INFO | app.database | Database connection established
+2026-07-12 14:12:08 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:12:08 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=16.32ms | success=True
+2026-07-12 14:12:08 | INFO | app.database | Database connection established
+2026-07-12 14:12:08 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:12:08 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=13.25ms | success=True
+2026-07-12 14:12:09 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 798.80ms | success=True
+2026-07-12 14:12:09 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=Low | issues=1 | duration=882.05ms
+2026-07-12 14:12:09 | INFO | app.metrics | TOOL | escalation_summary | 882.29ms | success=True
+2026-07-12 14:12:09 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 252.85ms | success=True
+2026-07-12 14:12:09 | INFO | app.agent.agent | Agent LLM call successful | duration=252.85ms
+2026-07-12 14:12:10 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 14:12:10 | INFO | app.database | Database connection established
+2026-07-12 14:12:10 | INFO | app.database | Database connection established
+2026-07-12 14:12:10 | INFO | app.database | Database connection established
+2026-07-12 14:12:10 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:12:10 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=17.30ms | success=True
+2026-07-12 14:12:10 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:12:10 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:12:10 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=16.82ms | success=True
+2026-07-12 14:12:10 | INFO | app.metrics | TOOL | get_customer_profile | 18.61ms | success=True
+2026-07-12 14:12:10 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=0 | duration=13.82ms | success=True
+2026-07-12 14:12:10 | INFO | app.metrics | TOOL | get_open_issues | 18.83ms | success=True
+2026-07-12 14:12:10 | INFO | app.metrics | TOOL | get_issue_history | 15.91ms | success=True
+2026-07-12 14:12:10 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 427.21ms | success=True
+2026-07-12 14:12:10 | INFO | app.agent.agent | Agent LLM call successful | duration=427.21ms
+2026-07-12 14:12:10 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=1891.55ms | success=True | tools=['escalation_summary', 'get_customer_profile', 'get_open_issues', 'get_issue_history', 'update_issue_status']
+2026-07-12 14:12:10 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=1
+2026-07-12 14:12:10 | INFO | app.memory | Session history retrieved | session=eval_session_3 | messages=1
+2026-07-12 14:12:10 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=2
+2026-07-12 14:12:18 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 3 to in_progress
+2026-07-12 14:12:18 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 168.46ms | success=True
+2026-07-12 14:12:18 | INFO | app.agent.agent | Agent LLM call successful | duration=168.46ms
+2026-07-12 14:12:18 | INFO | app.database | Database connection established
+2026-07-12 14:12:18 | INFO | app.database | Write query executed successfully
+2026-07-12 14:12:18 | INFO | app.metrics | DB | WRITE | table=issues | rows=0 | duration=14.96ms | success=True
+2026-07-12 14:12:18 | INFO | app.metrics | TOOL | update_issue_status | 16.15ms | success=True
+2026-07-12 14:12:20 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 1343.19ms | success=True
+2026-07-12 14:12:20 | INFO | app.agent.agent | Agent LLM call successful | duration=1343.19ms
+2026-07-12 14:12:20 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=1597.86ms | success=True | tools=['update_issue_status']
+2026-07-12 14:12:20 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=1
+2026-07-12 14:12:20 | INFO | app.memory | Session history retrieved | session=eval_session_4 | messages=1
+2026-07-12 14:12:20 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=2
+2026-07-12 14:12:28 | INFO | app.agent.agent | Agent query | user=eval_admin | role=admin | query=Create a next action for issue 4: Schedule emergen
+2026-07-12 14:12:29 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 1375.28ms | success=True
+2026-07-12 14:12:29 | INFO | app.agent.agent | Agent LLM call successful | duration=1375.28ms
+2026-07-12 14:12:29 | INFO | app.database | Database connection established
+2026-07-12 14:12:29 | INFO | app.database | Write query executed successfully
+2026-07-12 14:12:29 | INFO | app.metrics | DB | WRITE | table=next_actions | rows=0 | duration=19.20ms | success=True
+2026-07-12 14:12:29 | INFO | app.metrics | TOOL | create_next_action | 21.36ms | success=True
+2026-07-12 14:12:39 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10320.84ms | success=True
+2026-07-12 14:12:39 | INFO | app.agent.agent | Agent LLM call successful | duration=10320.84ms
+2026-07-12 14:12:39 | INFO | app.metrics | AGENT | agent_completed | user=eval_admin | role=admin | duration=11789.02ms | success=True | tools=['create_next_action']
+2026-07-12 14:12:39 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=1
+2026-07-12 14:12:39 | INFO | app.memory | Session history retrieved | session=eval_session_5 | messages=1
+2026-07-12 14:12:39 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=2
+2026-07-12 14:12:47 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Create a next action for issue 1: Call the custome
+2026-07-12 14:12:48 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 246.46ms | success=True
+2026-07-12 14:12:48 | INFO | app.agent.agent | Agent LLM call successful | duration=246.46ms
+2026-07-12 14:12:48 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:12:58 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10305.18ms | success=True
+2026-07-12 14:12:58 | INFO | app.agent.agent | Agent LLM call successful | duration=10305.18ms
+2026-07-12 14:12:58 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10624.09ms | success=True | tools=['create_next_action']
+2026-07-12 14:12:58 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=1
+2026-07-12 14:12:58 | INFO | app.memory | Session history retrieved | session=eval_session_6 | messages=1
+2026-07-12 14:12:58 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=2
+2026-07-12 14:13:06 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Update the status of issue 2 to resolved
+2026-07-12 14:13:06 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 148.18ms | success=True
+2026-07-12 14:13:06 | INFO | app.agent.agent | Agent LLM call successful | duration=148.18ms
+2026-07-12 14:13:06 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 14:13:15 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9259.01ms | success=True
+2026-07-12 14:13:15 | INFO | app.agent.agent | Agent LLM call successful | duration=9259.01ms
+2026-07-12 14:13:15 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=9466.46ms | success=True | tools=['update_issue_status']
+2026-07-12 14:13:15 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=1
+2026-07-12 14:13:15 | INFO | app.memory | Session history retrieved | session=eval_session_7 | messages=1
+2026-07-12 14:13:15 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=2
+2026-07-12 14:13:23 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Create a next action for issue 2: Send invoice cor
+2026-07-12 14:13:25 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 1204.63ms | success=True
+2026-07-12 14:13:25 | INFO | app.agent.agent | Agent LLM call successful | duration=1204.63ms
+2026-07-12 14:13:25 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:13:35 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10297.87ms | success=True
+2026-07-12 14:13:35 | INFO | app.agent.agent | Agent LLM call successful | duration=10297.87ms
+2026-07-12 14:13:35 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=11561.05ms | success=True | tools=['create_next_action']
+2026-07-12 14:13:35 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=1
+2026-07-12 14:13:35 | INFO | app.memory | Session history retrieved | session=eval_session_8 | messages=1
+2026-07-12 14:13:35 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=2
+2026-07-12 14:13:43 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me open issues for NonExistent Company Ltd
+2026-07-12 14:13:43 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 178.27ms | success=True
+2026-07-12 14:13:43 | INFO | app.agent.agent | Agent LLM call successful | duration=178.27ms
+2026-07-12 14:13:43 | INFO | app.database | Database connection established
+2026-07-12 14:13:43 | INFO | app.database | Database connection established
+2026-07-12 14:13:43 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:13:43 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=13.82ms | success=True
+2026-07-12 14:13:43 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:13:43 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=13.00ms | success=True
+2026-07-12 14:13:43 | INFO | app.metrics | TOOL | get_customer_profile | 15.63ms | success=False
+2026-07-12 14:13:43 | INFO | app.metrics | TOOL | get_open_issues | 14.97ms | success=True
+2026-07-12 14:13:54 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10293.88ms | success=True
+2026-07-12 14:13:54 | INFO | app.agent.agent | Agent LLM call successful | duration=10293.88ms
+2026-07-12 14:13:54 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10557.62ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:13:54 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=1
+2026-07-12 14:13:54 | INFO | app.memory | Session history retrieved | session=eval_session_9 | messages=1
+2026-07-12 14:13:54 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=2
+2026-07-12 14:14:02 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 1 to flying
+2026-07-12 14:14:02 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 235.13ms | success=True
+2026-07-12 14:14:02 | INFO | app.agent.agent | Agent LLM call successful | duration=235.13ms
+2026-07-12 14:14:11 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9341.30ms | success=True
+2026-07-12 14:14:11 | INFO | app.agent.agent | Agent LLM call successful | duration=9341.30ms
+2026-07-12 14:14:11 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=9657.64ms | success=True | tools=['update_issue_status']
+2026-07-12 14:14:11 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=1
+2026-07-12 14:14:11 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=1
+2026-07-12 14:14:11 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=2
+2026-07-12 14:25:12 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me the customer profile for Acme Corp
+2026-07-12 14:25:12 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 280.00ms | success=True
+2026-07-12 14:25:12 | INFO | app.agent.agent | Agent LLM call successful | duration=280.00ms
+2026-07-12 14:25:12 | INFO | app.database | Database connection established
+2026-07-12 14:25:12 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:12 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=32.98ms | success=True
+2026-07-12 14:25:12 | INFO | app.metrics | TOOL | get_customer_profile | 33.33ms | success=True
+2026-07-12 14:25:13 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 214.70ms | success=True
+2026-07-12 14:25:13 | INFO | app.agent.agent | Agent LLM call successful | duration=214.70ms
+2026-07-12 14:25:13 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=597.22ms | success=True | tools=['get_customer_profile']
+2026-07-12 14:25:13 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=1
+2026-07-12 14:25:13 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=1
+2026-07-12 14:25:13 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=2
+2026-07-12 14:25:21 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=What are the open issues for Global Finance Inc?
+2026-07-12 14:25:21 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 165.18ms | success=True
+2026-07-12 14:25:21 | INFO | app.agent.agent | Agent LLM call successful | duration=165.18ms
+2026-07-12 14:25:21 | INFO | app.database | Database connection established
+2026-07-12 14:25:21 | INFO | app.database | Database connection established
+2026-07-12 14:25:21 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:25:21 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=19.43ms | success=True
+2026-07-12 14:25:21 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:25:21 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=21.56ms | success=True
+2026-07-12 14:25:21 | INFO | app.metrics | TOOL | get_customer_profile | 20.90ms | success=False
+2026-07-12 14:25:21 | INFO | app.metrics | TOOL | get_open_issues | 22.84ms | success=True
+2026-07-12 14:25:21 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 101.75ms | success=True
+2026-07-12 14:25:21 | INFO | app.agent.agent | Agent LLM call successful | duration=101.75ms
+2026-07-12 14:25:21 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=345.57ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:25:21 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=1
+2026-07-12 14:25:21 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=1
+2026-07-12 14:25:21 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=2
+2026-07-12 14:25:29 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Give me the escalation summary for Acme Corp only
+2026-07-12 14:25:29 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 319.51ms | success=True
+2026-07-12 14:25:29 | INFO | app.agent.agent | Agent LLM call successful | duration=319.51ms
+2026-07-12 14:25:29 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 14:25:29 | INFO | app.database | Database connection established
+2026-07-12 14:25:29 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:29 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=9.11ms | success=True
+2026-07-12 14:25:29 | INFO | app.database | Database connection established
+2026-07-12 14:25:29 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:29 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=8.72ms | success=True
+2026-07-12 14:25:29 | INFO | app.database | Database connection established
+2026-07-12 14:25:29 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:29 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=9.53ms | success=True
+2026-07-12 14:25:30 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 843.46ms | success=True
+2026-07-12 14:25:30 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=Low | issues=1 | duration=899.57ms
+2026-07-12 14:25:30 | INFO | app.metrics | TOOL | escalation_summary | 899.79ms | success=True
+2026-07-12 14:25:31 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 336.54ms | success=True
+2026-07-12 14:25:31 | INFO | app.agent.agent | Agent LLM call successful | duration=336.54ms
+2026-07-12 14:25:31 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 14:25:31 | INFO | app.database | Database connection established
+2026-07-12 14:25:31 | INFO | app.database | Database connection established
+2026-07-12 14:25:31 | INFO | app.database | Database connection established
+2026-07-12 14:25:31 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:31 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=19.57ms | success=True
+2026-07-12 14:25:31 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:25:31 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=0 | duration=17.06ms | success=True
+2026-07-12 14:25:31 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:25:31 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=20.00ms | success=True
+2026-07-12 14:25:31 | INFO | app.database | Database connection established
+2026-07-12 14:25:31 | INFO | app.metrics | TOOL | get_customer_profile | 21.61ms | success=True
+2026-07-12 14:25:31 | INFO | app.metrics | TOOL | get_issue_history | 19.38ms | success=True
+2026-07-12 14:25:31 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:31 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=16.95ms | success=True
+2026-07-12 14:25:31 | INFO | app.metrics | TOOL | get_open_issues | 24.17ms | success=True
+2026-07-12 14:25:31 | INFO | app.database | Database connection established
+2026-07-12 14:25:31 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:31 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=12.51ms | success=True
+2026-07-12 14:25:31 | INFO | app.database | Database connection established
+2026-07-12 14:25:31 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:31 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=10.69ms | success=True
+2026-07-12 14:25:32 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 1016.01ms | success=True
+2026-07-12 14:25:32 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=Medium | issues=1 | duration=1098.94ms
+2026-07-12 14:25:32 | INFO | app.metrics | TOOL | escalation_summary | 1099.17ms | success=True
+2026-07-12 14:25:32 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 167.66ms | success=True
+2026-07-12 14:25:32 | INFO | app.agent.agent | Agent LLM call successful | duration=167.66ms
+2026-07-12 14:25:32 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 14:25:32 | INFO | app.database | Database connection established
+2026-07-12 14:25:32 | INFO | app.database | Database connection established
+2026-07-12 14:25:32 | INFO | app.database | Database connection established
+2026-07-12 14:25:32 | INFO | app.database | Database connection established
+2026-07-12 14:25:32 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:32 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=18.44ms | success=True
+2026-07-12 14:25:32 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:25:32 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=0 | duration=17.09ms | success=True
+2026-07-12 14:25:32 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:32 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:25:32 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=16.15ms | success=True
+2026-07-12 14:25:32 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=18.09ms | success=True
+2026-07-12 14:25:32 | INFO | app.metrics | TOOL | get_issue_history | 20.49ms | success=True
+2026-07-12 14:25:32 | INFO | app.metrics | TOOL | get_customer_profile | 22.15ms | success=True
+2026-07-12 14:25:32 | INFO | app.metrics | TOOL | get_open_issues | 22.15ms | success=True
+2026-07-12 14:25:32 | INFO | app.database | Database connection established
+2026-07-12 14:25:32 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:32 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=19.96ms | success=True
+2026-07-12 14:25:32 | INFO | app.database | Database connection established
+2026-07-12 14:25:32 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:32 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=11.91ms | success=True
+2026-07-12 14:25:32 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 545.44ms | success=True
+2026-07-12 14:25:32 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=Low | issues=1 | duration=637.80ms
+2026-07-12 14:25:32 | INFO | app.metrics | TOOL | escalation_summary | 638.14ms | success=True
+2026-07-12 14:25:36 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 3579.11ms | success=True
+2026-07-12 14:25:36 | INFO | app.agent.agent | Agent LLM call successful | duration=3579.11ms
+2026-07-12 14:25:36 | INFO | app.skills.escalation_skill | Escalation skill invoked | customer=Acme Corp
+2026-07-12 14:25:36 | INFO | app.database | Database connection established
+2026-07-12 14:25:36 | INFO | app.database | Database connection established
+2026-07-12 14:25:36 | INFO | app.database | Database connection established
+2026-07-12 14:25:36 | INFO | app.database | Database connection established
+2026-07-12 14:25:36 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:36 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:36 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=17.58ms | success=True
+2026-07-12 14:25:36 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:25:36 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=15.35ms | success=True
+2026-07-12 14:25:36 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=0 | duration=16.56ms | success=True
+2026-07-12 14:25:36 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:25:36 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=17.79ms | success=True
+2026-07-12 14:25:36 | INFO | app.metrics | TOOL | get_customer_profile | 20.67ms | success=True
+2026-07-12 14:25:36 | INFO | app.metrics | TOOL | get_open_issues | 22.11ms | success=True
+2026-07-12 14:25:36 | INFO | app.metrics | TOOL | get_issue_history | 21.67ms | success=True
+2026-07-12 14:25:36 | INFO | app.database | Database connection established
+2026-07-12 14:25:36 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:36 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=12.64ms | success=True
+2026-07-12 14:25:36 | INFO | app.database | Database connection established
+2026-07-12 14:25:36 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:25:36 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=1 | duration=10.61ms | success=True
+2026-07-12 14:25:37 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 742.40ms | success=True
+2026-07-12 14:25:37 | INFO | app.skills.escalation_skill | Escalation skill completed | customer=Acme Corp | risk=Medium | issues=1 | duration=816.69ms
+2026-07-12 14:25:37 | INFO | app.metrics | TOOL | escalation_summary | 817.01ms | success=True
+2026-07-12 14:25:57 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 20260.43ms | success=True
+2026-07-12 14:25:57 | INFO | app.agent.agent | Agent LLM call successful | duration=20260.43ms
+2026-07-12 14:25:57 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=28244.11ms | success=True | tools=['escalation_summary', 'get_customer_profile', 'get_open_issues', 'get_issue_history', 'escalation_summary', 'get_customer_profile', 'get_open_issues', 'get_issue_history', 'escalation_summary', 'get_customer_profile', 'get_open_issues', 'get_issue_history', 'escalation_summary']
+2026-07-12 14:25:57 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=1
+2026-07-12 14:25:57 | INFO | app.memory | Session history retrieved | session=eval_session_3 | messages=1
+2026-07-12 14:25:57 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=2
+2026-07-12 14:26:05 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 3 to in_progress
+2026-07-12 14:26:05 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 179.46ms | success=True
+2026-07-12 14:26:05 | INFO | app.agent.agent | Agent LLM call successful | duration=179.46ms
+2026-07-12 14:26:05 | INFO | app.database | Database connection established
+2026-07-12 14:26:05 | INFO | app.database | Write query executed successfully
+2026-07-12 14:26:05 | INFO | app.metrics | DB | WRITE | table=issues | rows=0 | duration=18.77ms | success=True
+2026-07-12 14:26:05 | INFO | app.metrics | TOOL | update_issue_status | 20.31ms | success=True
+2026-07-12 14:26:15 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9646.11ms | success=True
+2026-07-12 14:26:15 | INFO | app.agent.agent | Agent LLM call successful | duration=9646.11ms
+2026-07-12 14:26:15 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=9920.70ms | success=True | tools=['update_issue_status']
+2026-07-12 14:26:15 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=1
+2026-07-12 14:26:15 | INFO | app.memory | Session history retrieved | session=eval_session_4 | messages=1
+2026-07-12 14:26:15 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=2
+2026-07-12 14:26:23 | INFO | app.agent.agent | Agent query | user=eval_admin | role=admin | query=Create a next action for issue 4: Schedule emergen
+2026-07-12 14:26:24 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 1274.38ms | success=True
+2026-07-12 14:26:24 | INFO | app.agent.agent | Agent LLM call successful | duration=1274.38ms
+2026-07-12 14:26:24 | INFO | app.database | Database connection established
+2026-07-12 14:26:24 | INFO | app.database | Write query executed successfully
+2026-07-12 14:26:24 | INFO | app.metrics | DB | WRITE | table=next_actions | rows=0 | duration=19.07ms | success=True
+2026-07-12 14:26:24 | INFO | app.metrics | TOOL | create_next_action | 20.90ms | success=True
+2026-07-12 14:26:35 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10296.44ms | success=True
+2026-07-12 14:26:35 | INFO | app.agent.agent | Agent LLM call successful | duration=10296.44ms
+2026-07-12 14:26:35 | INFO | app.metrics | AGENT | agent_completed | user=eval_admin | role=admin | duration=11648.30ms | success=True | tools=['create_next_action']
+2026-07-12 14:26:35 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=1
+2026-07-12 14:26:35 | INFO | app.memory | Session history retrieved | session=eval_session_5 | messages=1
+2026-07-12 14:26:35 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=2
+2026-07-12 14:26:43 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Create a next action for issue 1: Call the custome
+2026-07-12 14:26:43 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 212.52ms | success=True
+2026-07-12 14:26:43 | INFO | app.agent.agent | Agent LLM call successful | duration=212.52ms
+2026-07-12 14:26:43 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:26:53 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10320.99ms | success=True
+2026-07-12 14:26:53 | INFO | app.agent.agent | Agent LLM call successful | duration=10320.99ms
+2026-07-12 14:26:53 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10606.12ms | success=True | tools=['create_next_action']
+2026-07-12 14:26:53 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=1
+2026-07-12 14:26:53 | INFO | app.memory | Session history retrieved | session=eval_session_6 | messages=1
+2026-07-12 14:26:53 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=2
+2026-07-12 14:27:01 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Update the status of issue 2 to resolved
+2026-07-12 14:27:02 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 142.40ms | success=True
+2026-07-12 14:27:02 | INFO | app.agent.agent | Agent LLM call successful | duration=142.40ms
+2026-07-12 14:27:02 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 14:27:11 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9270.67ms | success=True
+2026-07-12 14:27:11 | INFO | app.agent.agent | Agent LLM call successful | duration=9270.67ms
+2026-07-12 14:27:11 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=9484.43ms | success=True | tools=['update_issue_status']
+2026-07-12 14:27:11 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=1
+2026-07-12 14:27:11 | INFO | app.memory | Session history retrieved | session=eval_session_7 | messages=1
+2026-07-12 14:27:11 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=2
+2026-07-12 14:27:19 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Create a next action for issue 2: Send invoice cor
+2026-07-12 14:27:20 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 1354.64ms | success=True
+2026-07-12 14:27:20 | INFO | app.agent.agent | Agent LLM call successful | duration=1354.64ms
+2026-07-12 14:27:20 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:27:30 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9408.67ms | success=True
+2026-07-12 14:27:30 | INFO | app.agent.agent | Agent LLM call successful | duration=9408.67ms
+2026-07-12 14:27:30 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=10833.99ms | success=True | tools=['create_next_action']
+2026-07-12 14:27:30 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=1
+2026-07-12 14:27:30 | INFO | app.memory | Session history retrieved | session=eval_session_8 | messages=1
+2026-07-12 14:27:30 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=2
+2026-07-12 14:27:38 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me open issues for NonExistent Company Ltd
+2026-07-12 14:27:38 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 246.92ms | success=True
+2026-07-12 14:27:38 | INFO | app.agent.agent | Agent LLM call successful | duration=246.92ms
+2026-07-12 14:27:38 | INFO | app.database | Database connection established
+2026-07-12 14:27:38 | INFO | app.database | Database connection established
+2026-07-12 14:27:38 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:27:38 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=17.90ms | success=True
+2026-07-12 14:27:38 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:27:38 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=17.64ms | success=True
+2026-07-12 14:27:38 | INFO | app.metrics | TOOL | get_open_issues | 24.52ms | success=True
+2026-07-12 14:27:38 | INFO | app.metrics | TOOL | get_customer_profile | 44.77ms | success=False
+2026-07-12 14:27:48 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10183.92ms | success=True
+2026-07-12 14:27:48 | INFO | app.agent.agent | Agent LLM call successful | duration=10183.92ms
+2026-07-12 14:27:48 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10540.60ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:27:48 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=1
+2026-07-12 14:27:48 | INFO | app.memory | Session history retrieved | session=eval_session_9 | messages=1
+2026-07-12 14:27:48 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=2
+2026-07-12 14:27:56 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 1 to flying
+2026-07-12 14:27:58 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 1218.86ms | success=True
+2026-07-12 14:27:58 | INFO | app.agent.agent | Agent LLM call successful | duration=1218.86ms
+2026-07-12 14:28:07 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9294.91ms | success=True
+2026-07-12 14:28:07 | INFO | app.agent.agent | Agent LLM call successful | duration=9294.91ms
+2026-07-12 14:28:07 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=10576.62ms | success=True | tools=['update_issue_status']
+2026-07-12 14:28:07 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=1
+2026-07-12 14:28:07 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=1
+2026-07-12 14:28:07 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=2
+2026-07-12 14:31:42 | INFO | app.metrics | API | POST /login | 200 | 221.58ms | role=unknown
+2026-07-12 14:31:42 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 14:31:42 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 14:31:42 | INFO | app.metrics | API | GET /me | 200 | 28.20ms | role=unknown
+2026-07-12 14:31:56 | INFO | app.auth.auth | User authenticated | username=carol | roles=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']
+2026-07-12 14:31:56 | INFO | app.metrics | AUTH | login_success | user=carol | role=['default-roles-acme', 'offline_access', 'admin', 'uma_authorization'] | success=True
+2026-07-12 14:31:56 | INFO | app.api.routes | Query received | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-12 14:31:56 | INFO | app.agent.agent | Agent query | user=carol | role=admin | query=Show me open customer issues for Acme Corp and sum
+2026-07-12 14:31:56 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 485.04ms | success=True
+2026-07-12 14:31:56 | INFO | app.agent.agent | Agent LLM call successful | duration=485.04ms
+2026-07-12 14:31:56 | INFO | app.database | Database connection established
+2026-07-12 14:31:56 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:31:56 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=26.14ms | success=True
+2026-07-12 14:31:56 | INFO | app.metrics | TOOL | get_customer_profile | 26.44ms | success=True
+2026-07-12 14:31:56 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 144.55ms | success=True
+2026-07-12 14:31:56 | INFO | app.agent.agent | Agent LLM call successful | duration=144.55ms
+2026-07-12 14:31:56 | INFO | app.database | Database connection established
+2026-07-12 14:31:56 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:31:56 | INFO | app.metrics | DB | SELECT | table=issues | rows=1 | duration=15.24ms | success=True
+2026-07-12 14:31:56 | INFO | app.metrics | TOOL | get_open_issues | 15.80ms | success=True
+2026-07-12 14:31:57 | INFO | app.metrics | LLM | llama-3.3-70b-versatile | tokens=0 | 250.60ms | success=True
+2026-07-12 14:31:57 | INFO | app.agent.agent | Agent LLM call successful | duration=250.60ms
+2026-07-12 14:31:57 | INFO | app.metrics | AGENT | agent_completed | user=carol | role=admin | duration=989.63ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:31:57 | INFO | app.memory | Session history saved | session=carol | messages=1
+2026-07-12 14:31:57 | INFO | app.memory | Session history retrieved | session=carol | messages=1
+2026-07-12 14:31:57 | INFO | app.memory | Session history saved | session=carol | messages=2
+2026-07-12 14:31:57 | INFO | app.metrics | API | POST /api/query | 200 | 1013.71ms | role=unknown
+2026-07-12 14:33:55 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me the customer profile for Acme Corp
+2026-07-12 14:33:56 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 156.16ms | success=True
+2026-07-12 14:33:56 | INFO | app.agent.agent | Agent LLM call successful | duration=156.16ms
+2026-07-12 14:33:56 | INFO | app.database | Database connection established
+2026-07-12 14:33:56 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:33:56 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=29.77ms | success=True
+2026-07-12 14:33:56 | INFO | app.metrics | TOOL | get_customer_profile | 30.07ms | success=True
+2026-07-12 14:33:56 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 211.21ms | success=True
+2026-07-12 14:33:56 | INFO | app.agent.agent | Agent LLM call successful | duration=211.21ms
+2026-07-12 14:33:56 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=469.26ms | success=True | tools=['get_customer_profile']
+2026-07-12 14:33:56 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=1
+2026-07-12 14:33:56 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=1
+2026-07-12 14:33:56 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=2
+2026-07-12 14:34:04 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=What are the open issues for Global Finance Inc?
+2026-07-12 14:34:04 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 183.43ms | success=True
+2026-07-12 14:34:04 | INFO | app.agent.agent | Agent LLM call successful | duration=183.43ms
+2026-07-12 14:34:04 | INFO | app.database | Database connection established
+2026-07-12 14:34:04 | INFO | app.database | Database connection established
+2026-07-12 14:34:04 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:34:04 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=12.77ms | success=True
+2026-07-12 14:34:04 | INFO | app.metrics | TOOL | get_customer_profile | 14.60ms | success=False
+2026-07-12 14:34:04 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:34:04 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=16.38ms | success=True
+2026-07-12 14:34:04 | INFO | app.metrics | TOOL | get_open_issues | 17.24ms | success=True
+2026-07-12 14:34:04 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 133.70ms | success=True
+2026-07-12 14:34:04 | INFO | app.agent.agent | Agent LLM call successful | duration=133.70ms
+2026-07-12 14:34:04 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=388.83ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:34:04 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=1
+2026-07-12 14:34:04 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=1
+2026-07-12 14:34:04 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=2
+2026-07-12 14:34:12 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Show me the history of issue 1 for Acme Corp
+2026-07-12 14:34:13 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 159.57ms | success=True
+2026-07-12 14:34:13 | INFO | app.agent.agent | Agent LLM call successful | duration=159.57ms
+2026-07-12 14:34:13 | INFO | app.database | Database connection established
+2026-07-12 14:34:13 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 14:34:13 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=18.64ms | success=True
+2026-07-12 14:34:13 | INFO | app.metrics | TOOL | get_issue_history | 19.65ms | success=True
+2026-07-12 14:34:13 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 169.15ms | success=True
+2026-07-12 14:34:13 | INFO | app.agent.agent | Agent LLM call successful | duration=169.15ms
+2026-07-12 14:34:13 | INFO | app.database | Database connection established
+2026-07-12 14:34:13 | INFO | app.database | Database connection established
+2026-07-12 14:34:13 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:34:13 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=18.29ms | success=True
+2026-07-12 14:34:13 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:34:13 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=18.74ms | success=True
+2026-07-12 14:34:13 | INFO | app.metrics | TOOL | get_customer_profile | 19.93ms | success=True
+2026-07-12 14:34:13 | INFO | app.metrics | TOOL | get_open_issues | 20.11ms | success=True
+2026-07-12 14:34:13 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 165.94ms | success=True
+2026-07-12 14:34:13 | INFO | app.agent.agent | Agent LLM call successful | duration=165.94ms
+2026-07-12 14:34:13 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=604.67ms | success=True | tools=['get_issue_history', 'get_customer_profile', 'get_open_issues']
+2026-07-12 14:34:13 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=1
+2026-07-12 14:34:13 | INFO | app.memory | Session history retrieved | session=eval_session_3 | messages=1
+2026-07-12 14:34:13 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=2
+2026-07-12 14:34:21 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 3 to in_progress
+2026-07-12 14:34:21 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 262.09ms | success=True
+2026-07-12 14:34:21 | INFO | app.agent.agent | Agent LLM call successful | duration=262.09ms
+2026-07-12 14:34:21 | INFO | app.database | Database connection established
+2026-07-12 14:34:21 | INFO | app.database | Write query executed successfully
+2026-07-12 14:34:21 | INFO | app.metrics | DB | WRITE | table=issues | rows=0 | duration=21.18ms | success=True
+2026-07-12 14:34:21 | INFO | app.metrics | TOOL | update_issue_status | 23.72ms | success=True
+2026-07-12 14:34:22 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 320.91ms | success=True
+2026-07-12 14:34:22 | INFO | app.agent.agent | Agent LLM call successful | duration=320.91ms
+2026-07-12 14:34:22 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=682.98ms | success=True | tools=['update_issue_status']
+2026-07-12 14:34:22 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=1
+2026-07-12 14:34:22 | INFO | app.memory | Session history retrieved | session=eval_session_4 | messages=1
+2026-07-12 14:34:22 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=2
+2026-07-12 14:34:30 | INFO | app.agent.agent | Agent query | user=eval_admin | role=admin | query=Create a next action for issue 4: Schedule emergen
+2026-07-12 14:34:30 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 185.37ms | success=True
+2026-07-12 14:34:30 | INFO | app.agent.agent | Agent LLM call successful | duration=185.37ms
+2026-07-12 14:34:30 | INFO | app.database | Database connection established
+2026-07-12 14:34:30 | INFO | app.database | Write query executed successfully
+2026-07-12 14:34:30 | INFO | app.metrics | DB | WRITE | table=next_actions | rows=0 | duration=16.21ms | success=True
+2026-07-12 14:34:30 | INFO | app.metrics | TOOL | create_next_action | 17.33ms | success=True
+2026-07-12 14:34:30 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 110.34ms | success=True
+2026-07-12 14:34:30 | INFO | app.agent.agent | Agent LLM call successful | duration=110.34ms
+2026-07-12 14:34:30 | INFO | app.metrics | AGENT | agent_completed | user=eval_admin | role=admin | duration=383.20ms | success=True | tools=['create_next_action']
+2026-07-12 14:34:30 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=1
+2026-07-12 14:34:30 | INFO | app.memory | Session history retrieved | session=eval_session_5 | messages=1
+2026-07-12 14:34:30 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=2
+2026-07-12 14:34:38 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Create a next action for issue 1: Call the custome
+2026-07-12 14:34:38 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 198.86ms | success=True
+2026-07-12 14:34:38 | INFO | app.agent.agent | Agent LLM call successful | duration=198.86ms
+2026-07-12 14:34:38 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:34:38 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 182.21ms | success=True
+2026-07-12 14:34:38 | INFO | app.agent.agent | Agent LLM call successful | duration=182.21ms
+2026-07-12 14:34:38 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=452.05ms | success=True | tools=['create_next_action']
+2026-07-12 14:34:38 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=1
+2026-07-12 14:34:38 | INFO | app.memory | Session history retrieved | session=eval_session_6 | messages=1
+2026-07-12 14:34:38 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=2
+2026-07-12 14:34:46 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Update the status of issue 2 to resolved
+2026-07-12 14:34:47 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 267.00ms | success=True
+2026-07-12 14:34:47 | INFO | app.agent.agent | Agent LLM call successful | duration=267.00ms
+2026-07-12 14:34:47 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 14:34:49 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 2270.42ms | success=True
+2026-07-12 14:34:49 | INFO | app.agent.agent | Agent LLM call successful | duration=2270.42ms
+2026-07-12 14:34:49 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=2594.71ms | success=True | tools=['update_issue_status']
+2026-07-12 14:34:49 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=1
+2026-07-12 14:34:49 | INFO | app.memory | Session history retrieved | session=eval_session_7 | messages=1
+2026-07-12 14:34:49 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=2
+2026-07-12 14:34:57 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Create a next action for issue 2: Send invoice cor
+2026-07-12 14:34:57 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 267.61ms | success=True
+2026-07-12 14:34:57 | INFO | app.agent.agent | Agent LLM call successful | duration=267.61ms
+2026-07-12 14:34:57 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:35:08 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10244.61ms | success=True
+2026-07-12 14:35:08 | INFO | app.agent.agent | Agent LLM call successful | duration=10244.61ms
+2026-07-12 14:35:08 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=10574.80ms | success=True | tools=['create_next_action']
+2026-07-12 14:35:08 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=1
+2026-07-12 14:35:08 | INFO | app.memory | Session history retrieved | session=eval_session_8 | messages=1
+2026-07-12 14:35:08 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=2
+2026-07-12 14:35:16 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me open issues for NonExistent Company Ltd
+2026-07-12 14:35:16 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 246.95ms | success=True
+2026-07-12 14:35:16 | INFO | app.agent.agent | Agent LLM call successful | duration=246.95ms
+2026-07-12 14:35:16 | INFO | app.database | Database connection established
+2026-07-12 14:35:16 | INFO | app.database | Database connection established
+2026-07-12 14:35:16 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:35:16 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:35:16 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=22.37ms | success=True
+2026-07-12 14:35:16 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=23.43ms | success=True
+2026-07-12 14:35:16 | INFO | app.metrics | TOOL | get_customer_profile | 26.28ms | success=False
+2026-07-12 14:35:16 | INFO | app.metrics | TOOL | get_open_issues | 25.66ms | success=True
+2026-07-12 14:35:26 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10281.49ms | success=True
+2026-07-12 14:35:26 | INFO | app.agent.agent | Agent LLM call successful | duration=10281.49ms
+2026-07-12 14:35:26 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10615.75ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:35:26 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=1
+2026-07-12 14:35:26 | INFO | app.memory | Session history retrieved | session=eval_session_9 | messages=1
+2026-07-12 14:35:26 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=2
+2026-07-12 14:35:34 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 1 to flying
+2026-07-12 14:35:35 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 188.72ms | success=True
+2026-07-12 14:35:35 | INFO | app.agent.agent | Agent LLM call successful | duration=188.72ms
+2026-07-12 14:35:45 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10745.58ms | success=True
+2026-07-12 14:35:45 | INFO | app.agent.agent | Agent LLM call successful | duration=10745.58ms
+2026-07-12 14:35:45 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=11014.56ms | success=True | tools=['update_issue_status']
+2026-07-12 14:35:45 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=1
+2026-07-12 14:35:45 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=1
+2026-07-12 14:35:45 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=2
+2026-07-12 14:43:48 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me the customer profile for Acme Corp
+2026-07-12 14:43:48 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 277.88ms | success=True
+2026-07-12 14:43:48 | INFO | app.agent.agent | Agent LLM call successful | duration=277.88ms
+2026-07-12 14:43:48 | INFO | app.database | Database connection established
+2026-07-12 14:43:48 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:43:48 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=36.95ms | success=True
+2026-07-12 14:43:48 | INFO | app.metrics | TOOL | get_customer_profile | 37.35ms | success=True
+2026-07-12 14:43:49 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 236.55ms | success=True
+2026-07-12 14:43:49 | INFO | app.agent.agent | Agent LLM call successful | duration=236.55ms
+2026-07-12 14:43:49 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=627.53ms | success=True | tools=['get_customer_profile']
+2026-07-12 14:43:49 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=1
+2026-07-12 14:43:49 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=1
+2026-07-12 14:43:49 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=2
+2026-07-12 14:43:57 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=What are the open issues for Global Finance Inc?
+2026-07-12 14:43:57 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 171.49ms | success=True
+2026-07-12 14:43:57 | INFO | app.agent.agent | Agent LLM call successful | duration=171.49ms
+2026-07-12 14:43:57 | INFO | app.database | Database connection established
+2026-07-12 14:43:57 | INFO | app.database | Database connection established
+2026-07-12 14:43:57 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:43:57 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=11.90ms | success=True
+2026-07-12 14:43:57 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:43:57 | INFO | app.metrics | TOOL | get_customer_profile | 13.16ms | success=False
+2026-07-12 14:43:57 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=13.52ms | success=True
+2026-07-12 14:43:57 | INFO | app.metrics | TOOL | get_open_issues | 14.34ms | success=True
+2026-07-12 14:43:57 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 280.54ms | success=True
+2026-07-12 14:43:57 | INFO | app.agent.agent | Agent LLM call successful | duration=280.54ms
+2026-07-12 14:43:57 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=520.61ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:43:57 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=1
+2026-07-12 14:43:57 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=1
+2026-07-12 14:43:57 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=2
+2026-07-12 14:44:05 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Show me the history of issue 1 for Acme Corp
+2026-07-12 14:44:05 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 249.67ms | success=True
+2026-07-12 14:44:05 | INFO | app.agent.agent | Agent LLM call successful | duration=249.67ms
+2026-07-12 14:44:05 | INFO | app.database | Database connection established
+2026-07-12 14:44:05 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 14:44:05 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=19.14ms | success=True
+2026-07-12 14:44:05 | INFO | app.metrics | TOOL | get_issue_history | 20.79ms | success=True
+2026-07-12 14:44:06 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 124.53ms | success=True
+2026-07-12 14:44:06 | INFO | app.agent.agent | Agent LLM call successful | duration=124.53ms
+2026-07-12 14:44:06 | INFO | app.database | Database connection established
+2026-07-12 14:44:06 | INFO | app.database | Database connection established
+2026-07-12 14:44:06 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:44:06 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=16.75ms | success=True
+2026-07-12 14:44:06 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:44:06 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=17.22ms | success=True
+2026-07-12 14:44:06 | INFO | app.metrics | TOOL | get_customer_profile | 18.81ms | success=True
+2026-07-12 14:44:06 | INFO | app.metrics | TOOL | get_open_issues | 18.88ms | success=True
+2026-07-12 14:44:06 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 125.67ms | success=True
+2026-07-12 14:44:06 | INFO | app.agent.agent | Agent LLM call successful | duration=125.67ms
+2026-07-12 14:44:06 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=610.03ms | success=True | tools=['get_issue_history', 'get_customer_profile', 'get_open_issues']
+2026-07-12 14:44:06 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=1
+2026-07-12 14:44:06 | INFO | app.memory | Session history retrieved | session=eval_session_3 | messages=1
+2026-07-12 14:44:06 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=2
+2026-07-12 14:44:14 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 3 to in_progress
+2026-07-12 14:44:14 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 144.91ms | success=True
+2026-07-12 14:44:14 | INFO | app.agent.agent | Agent LLM call successful | duration=144.91ms
+2026-07-12 14:44:14 | INFO | app.database | Database connection established
+2026-07-12 14:44:14 | INFO | app.database | Write query executed successfully
+2026-07-12 14:44:14 | INFO | app.metrics | DB | WRITE | table=issues | rows=0 | duration=14.18ms | success=True
+2026-07-12 14:44:14 | INFO | app.metrics | TOOL | update_issue_status | 15.16ms | success=True
+2026-07-12 14:44:14 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 258.77ms | success=True
+2026-07-12 14:44:14 | INFO | app.agent.agent | Agent LLM call successful | duration=258.77ms
+2026-07-12 14:44:14 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=479.70ms | success=True | tools=['update_issue_status']
+2026-07-12 14:44:14 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=1
+2026-07-12 14:44:14 | INFO | app.memory | Session history retrieved | session=eval_session_4 | messages=1
+2026-07-12 14:44:14 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=2
+2026-07-12 14:44:22 | INFO | app.agent.agent | Agent query | user=eval_admin | role=admin | query=Create a next action for issue 4: Schedule emergen
+2026-07-12 14:44:22 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 244.04ms | success=True
+2026-07-12 14:44:22 | INFO | app.agent.agent | Agent LLM call successful | duration=244.04ms
+2026-07-12 14:44:22 | INFO | app.database | Database connection established
+2026-07-12 14:44:22 | INFO | app.database | Write query executed successfully
+2026-07-12 14:44:22 | INFO | app.metrics | DB | WRITE | table=next_actions | rows=0 | duration=16.66ms | success=True
+2026-07-12 14:44:22 | INFO | app.metrics | TOOL | create_next_action | 17.61ms | success=True
+2026-07-12 14:44:25 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 2440.76ms | success=True
+2026-07-12 14:44:25 | INFO | app.agent.agent | Agent LLM call successful | duration=2440.76ms
+2026-07-12 14:44:25 | INFO | app.metrics | AGENT | agent_completed | user=eval_admin | role=admin | duration=2745.16ms | success=True | tools=['create_next_action']
+2026-07-12 14:44:25 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=1
+2026-07-12 14:44:25 | INFO | app.memory | Session history retrieved | session=eval_session_5 | messages=1
+2026-07-12 14:44:25 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=2
+2026-07-12 14:44:33 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Create a next action for issue 1: Call the custome
+2026-07-12 14:44:33 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 226.02ms | success=True
+2026-07-12 14:44:33 | INFO | app.agent.agent | Agent LLM call successful | duration=226.02ms
+2026-07-12 14:44:33 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:44:44 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10341.39ms | success=True
+2026-07-12 14:44:44 | INFO | app.agent.agent | Agent LLM call successful | duration=10341.39ms
+2026-07-12 14:44:44 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10625.71ms | success=True | tools=['create_next_action']
+2026-07-12 14:44:44 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=1
+2026-07-12 14:44:44 | INFO | app.memory | Session history retrieved | session=eval_session_6 | messages=1
+2026-07-12 14:44:44 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=2
+2026-07-12 14:44:52 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Update the status of issue 2 to resolved
+2026-07-12 14:44:52 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 241.45ms | success=True
+2026-07-12 14:44:52 | INFO | app.agent.agent | Agent LLM call successful | duration=241.45ms
+2026-07-12 14:44:52 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 14:45:02 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10230.72ms | success=True
+2026-07-12 14:45:02 | INFO | app.agent.agent | Agent LLM call successful | duration=10230.72ms
+2026-07-12 14:45:02 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10537.28ms | success=True | tools=['update_issue_status']
+2026-07-12 14:45:02 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=1
+2026-07-12 14:45:02 | INFO | app.memory | Session history retrieved | session=eval_session_7 | messages=1
+2026-07-12 14:45:02 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=2
+2026-07-12 14:45:10 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Create a next action for issue 2: Send invoice cor
+2026-07-12 14:45:10 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 201.61ms | success=True
+2026-07-12 14:45:10 | INFO | app.agent.agent | Agent LLM call successful | duration=201.61ms
+2026-07-12 14:45:10 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:45:21 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10354.64ms | success=True
+2026-07-12 14:45:21 | INFO | app.agent.agent | Agent LLM call successful | duration=10354.64ms
+2026-07-12 14:45:21 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=10629.81ms | success=True | tools=['create_next_action']
+2026-07-12 14:45:21 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=1
+2026-07-12 14:45:21 | INFO | app.memory | Session history retrieved | session=eval_session_8 | messages=1
+2026-07-12 14:45:21 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=2
+2026-07-12 14:45:29 | INFO | app.agent.agent | Agent query | user=eval_sales_user | role=sales_user | query=Show me open issues for NonExistent Company Ltd
+2026-07-12 14:45:29 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 161.80ms | success=True
+2026-07-12 14:45:29 | INFO | app.agent.agent | Agent LLM call successful | duration=161.80ms
+2026-07-12 14:45:29 | INFO | app.database | Database connection established
+2026-07-12 14:45:29 | INFO | app.database | Database connection established
+2026-07-12 14:45:29 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:45:29 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=20.98ms | success=True
+2026-07-12 14:45:29 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:45:29 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=20.21ms | success=True
+2026-07-12 14:45:29 | INFO | app.metrics | TOOL | get_open_issues | 22.39ms | success=True
+2026-07-12 14:45:29 | INFO | app.metrics | TOOL | get_customer_profile | 23.68ms | success=False
+2026-07-12 14:45:39 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10240.29ms | success=True
+2026-07-12 14:45:39 | INFO | app.agent.agent | Agent LLM call successful | duration=10240.29ms
+2026-07-12 14:45:39 | INFO | app.metrics | AGENT | agent_completed | user=eval_sales_user | role=sales_user | duration=10490.63ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:45:39 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=1
+2026-07-12 14:45:39 | INFO | app.memory | Session history retrieved | session=eval_session_9 | messages=1
+2026-07-12 14:45:39 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=2
+2026-07-12 14:45:47 | INFO | app.agent.agent | Agent query | user=eval_support_user | role=support_user | query=Update the status of issue 1 to flying
+2026-07-12 14:45:48 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 309.64ms | success=True
+2026-07-12 14:45:48 | INFO | app.agent.agent | Agent LLM call successful | duration=309.64ms
+2026-07-12 14:45:57 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9280.40ms | success=True
+2026-07-12 14:45:57 | INFO | app.agent.agent | Agent LLM call successful | duration=9280.40ms
+2026-07-12 14:45:57 | INFO | app.metrics | AGENT | agent_completed | user=eval_support_user | role=support_user | duration=9642.59ms | success=True | tools=['update_issue_status']
+2026-07-12 14:45:57 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=1
+2026-07-12 14:45:57 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=1
+2026-07-12 14:45:57 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=2
+2026-07-12 14:48:22 | INFO | app.agent.agent | Agent query | user=eval_user_1 | role=sales_user | query=Show me the customer profile for Acme Corp
+2026-07-12 14:48:22 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 277.36ms | success=True
+2026-07-12 14:48:22 | INFO | app.agent.agent | Agent LLM call successful | duration=277.36ms
+2026-07-12 14:48:22 | INFO | app.database | Database connection established
+2026-07-12 14:48:22 | INFO | app.database | Query executed successfully | rows=1
+2026-07-12 14:48:22 | INFO | app.metrics | DB | SELECT | table=customers | rows=1 | duration=34.51ms | success=True
+2026-07-12 14:48:22 | INFO | app.metrics | TOOL | get_customer_profile | 35.05ms | success=True
+2026-07-12 14:48:22 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 198.89ms | success=True
+2026-07-12 14:48:22 | INFO | app.agent.agent | Agent LLM call successful | duration=198.89ms
+2026-07-12 14:48:22 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_1 | role=sales_user | duration=584.55ms | success=True | tools=['get_customer_profile']
+2026-07-12 14:48:22 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=1
+2026-07-12 14:48:22 | INFO | app.memory | Session history retrieved | session=eval_session_1 | messages=1
+2026-07-12 14:48:22 | INFO | app.memory | Session history saved | session=eval_session_1 | messages=2
+2026-07-12 14:48:30 | INFO | app.agent.agent | Agent query | user=eval_user_2 | role=sales_user | query=What are the open issues for Global Finance Inc?
+2026-07-12 14:48:31 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 229.78ms | success=True
+2026-07-12 14:48:31 | INFO | app.agent.agent | Agent LLM call successful | duration=229.78ms
+2026-07-12 14:48:31 | INFO | app.database | Database connection established
+2026-07-12 14:48:31 | INFO | app.database | Database connection established
+2026-07-12 14:48:31 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:48:31 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=14.15ms | success=True
+2026-07-12 14:48:31 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:48:31 | INFO | app.metrics | TOOL | get_customer_profile | 14.94ms | success=False
+2026-07-12 14:48:31 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=15.76ms | success=True
+2026-07-12 14:48:31 | INFO | app.metrics | TOOL | get_open_issues | 17.03ms | success=True
+2026-07-12 14:48:31 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 161.40ms | success=True
+2026-07-12 14:48:31 | INFO | app.agent.agent | Agent LLM call successful | duration=161.40ms
+2026-07-12 14:48:31 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_2 | role=sales_user | duration=479.98ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:48:31 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=1
+2026-07-12 14:48:31 | INFO | app.memory | Session history retrieved | session=eval_session_2 | messages=1
+2026-07-12 14:48:31 | INFO | app.memory | Session history saved | session=eval_session_2 | messages=2
+2026-07-12 14:48:39 | INFO | app.agent.agent | Agent query | user=eval_user_3 | role=support_user | query=Show me the history of issue 1 for Acme Corp
+2026-07-12 14:48:39 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 327.49ms | success=True
+2026-07-12 14:48:39 | INFO | app.agent.agent | Agent LLM call successful | duration=327.49ms
+2026-07-12 14:48:39 | INFO | app.database | Database connection established
+2026-07-12 14:48:39 | INFO | app.database | Query executed successfully | rows=2
+2026-07-12 14:48:39 | INFO | app.metrics | DB | SELECT | table=issue_updates | rows=2 | duration=17.68ms | success=True
+2026-07-12 14:48:39 | INFO | app.metrics | TOOL | get_issue_history | 19.08ms | success=True
+2026-07-12 14:48:40 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 180.35ms | success=True
+2026-07-12 14:48:40 | INFO | app.agent.agent | Agent LLM call successful | duration=180.35ms
+2026-07-12 14:48:40 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_3 | role=support_user | duration=591.89ms | success=True | tools=['get_issue_history']
+2026-07-12 14:48:40 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=1
+2026-07-12 14:48:40 | INFO | app.memory | Session history retrieved | session=eval_session_3 | messages=1
+2026-07-12 14:48:40 | INFO | app.memory | Session history saved | session=eval_session_3 | messages=2
+2026-07-12 14:48:48 | INFO | app.agent.agent | Agent query | user=eval_user_4 | role=support_user | query=Update the status of issue 3 to in_progress
+2026-07-12 14:48:48 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 302.94ms | success=True
+2026-07-12 14:48:48 | INFO | app.agent.agent | Agent LLM call successful | duration=302.94ms
+2026-07-12 14:48:48 | INFO | app.database | Database connection established
+2026-07-12 14:48:48 | INFO | app.database | Write query executed successfully
+2026-07-12 14:48:48 | INFO | app.metrics | DB | WRITE | table=issues | rows=0 | duration=20.14ms | success=True
+2026-07-12 14:48:48 | INFO | app.metrics | TOOL | update_issue_status | 21.70ms | success=True
+2026-07-12 14:48:48 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 165.31ms | success=True
+2026-07-12 14:48:48 | INFO | app.agent.agent | Agent LLM call successful | duration=165.31ms
+2026-07-12 14:48:48 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_4 | role=support_user | duration=562.23ms | success=True | tools=['update_issue_status']
+2026-07-12 14:48:48 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=1
+2026-07-12 14:48:48 | INFO | app.memory | Session history retrieved | session=eval_session_4 | messages=1
+2026-07-12 14:48:48 | INFO | app.memory | Session history saved | session=eval_session_4 | messages=2
+2026-07-12 14:48:56 | INFO | app.agent.agent | Agent query | user=eval_user_5 | role=admin | query=Create a next action for issue 4: Schedule emergen
+2026-07-12 14:48:56 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 206.89ms | success=True
+2026-07-12 14:48:56 | INFO | app.agent.agent | Agent LLM call successful | duration=206.89ms
+2026-07-12 14:48:56 | INFO | app.database | Database connection established
+2026-07-12 14:48:56 | INFO | app.database | Write query executed successfully
+2026-07-12 14:48:56 | INFO | app.metrics | DB | WRITE | table=next_actions | rows=0 | duration=19.16ms | success=True
+2026-07-12 14:48:56 | INFO | app.metrics | TOOL | create_next_action | 20.20ms | success=True
+2026-07-12 14:48:57 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 214.77ms | success=True
+2026-07-12 14:48:57 | INFO | app.agent.agent | Agent LLM call successful | duration=214.77ms
+2026-07-12 14:48:57 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_5 | role=admin | duration=519.13ms | success=True | tools=['create_next_action']
+2026-07-12 14:48:57 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=1
+2026-07-12 14:48:57 | INFO | app.memory | Session history retrieved | session=eval_session_5 | messages=1
+2026-07-12 14:48:57 | INFO | app.memory | Session history saved | session=eval_session_5 | messages=2
+2026-07-12 14:49:05 | INFO | app.agent.agent | Agent query | user=eval_user_6 | role=sales_user | query=Create a next action for issue 1: Call the custome
+2026-07-12 14:49:05 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 324.72ms | success=True
+2026-07-12 14:49:05 | INFO | app.agent.agent | Agent LLM call successful | duration=324.72ms
+2026-07-12 14:49:05 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:49:05 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 182.76ms | success=True
+2026-07-12 14:49:05 | INFO | app.agent.agent | Agent LLM call successful | duration=182.76ms
+2026-07-12 14:49:05 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_6 | role=sales_user | duration=573.01ms | success=True | tools=['create_next_action']
+2026-07-12 14:49:05 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=1
+2026-07-12 14:49:05 | INFO | app.memory | Session history retrieved | session=eval_session_6 | messages=1
+2026-07-12 14:49:05 | INFO | app.memory | Session history saved | session=eval_session_6 | messages=2
+2026-07-12 14:49:13 | INFO | app.agent.agent | Agent query | user=eval_user_7 | role=sales_user | query=Update the status of issue 2 to resolved
+2026-07-12 14:49:14 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 227.94ms | success=True
+2026-07-12 14:49:14 | INFO | app.agent.agent | Agent LLM call successful | duration=227.94ms
+2026-07-12 14:49:14 | INFO | app.metrics | TOOL | update_issue_status | 0.00ms | success=False
+2026-07-12 14:49:19 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 5298.53ms | success=True
+2026-07-12 14:49:19 | INFO | app.agent.agent | Agent LLM call successful | duration=5298.53ms
+2026-07-12 14:49:19 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_7 | role=sales_user | duration=5604.89ms | success=True | tools=['update_issue_status']
+2026-07-12 14:49:19 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=1
+2026-07-12 14:49:19 | INFO | app.memory | Session history retrieved | session=eval_session_7 | messages=1
+2026-07-12 14:49:19 | INFO | app.memory | Session history saved | session=eval_session_7 | messages=2
+2026-07-12 14:49:27 | INFO | app.agent.agent | Agent query | user=eval_user_8 | role=support_user | query=Create a next action for issue 2: Send invoice cor
+2026-07-12 14:49:27 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 206.33ms | success=True
+2026-07-12 14:49:27 | INFO | app.agent.agent | Agent LLM call successful | duration=206.33ms
+2026-07-12 14:49:27 | INFO | app.metrics | TOOL | create_next_action | 0.00ms | success=False
+2026-07-12 14:49:37 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 10272.13ms | success=True
+2026-07-12 14:49:37 | INFO | app.agent.agent | Agent LLM call successful | duration=10272.13ms
+2026-07-12 14:49:37 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_8 | role=support_user | duration=10554.62ms | success=True | tools=['create_next_action']
+2026-07-12 14:49:37 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=1
+2026-07-12 14:49:37 | INFO | app.memory | Session history retrieved | session=eval_session_8 | messages=1
+2026-07-12 14:49:37 | INFO | app.memory | Session history saved | session=eval_session_8 | messages=2
+2026-07-12 14:49:45 | INFO | app.agent.agent | Agent query | user=eval_user_9 | role=sales_user | query=Show me open issues for NonExistent Company Ltd
+2026-07-12 14:49:47 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 1214.51ms | success=True
+2026-07-12 14:49:47 | INFO | app.agent.agent | Agent LLM call successful | duration=1214.51ms
+2026-07-12 14:49:47 | INFO | app.database | Database connection established
+2026-07-12 14:49:47 | INFO | app.database | Database connection established
+2026-07-12 14:49:47 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:49:47 | INFO | app.metrics | DB | SELECT | table=customers | rows=0 | duration=21.40ms | success=True
+2026-07-12 14:49:47 | INFO | app.database | Query executed successfully | rows=0
+2026-07-12 14:49:47 | INFO | app.metrics | DB | SELECT | table=issues | rows=0 | duration=21.11ms | success=True
+2026-07-12 14:49:47 | INFO | app.metrics | TOOL | get_customer_profile | 23.57ms | success=False
+2026-07-12 14:49:47 | INFO | app.metrics | TOOL | get_open_issues | 24.26ms | success=True
+2026-07-12 14:49:56 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 9175.40ms | success=True
+2026-07-12 14:49:56 | INFO | app.agent.agent | Agent LLM call successful | duration=9175.40ms
+2026-07-12 14:49:56 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_9 | role=sales_user | duration=10489.51ms | success=True | tools=['get_customer_profile', 'get_open_issues']
+2026-07-12 14:49:56 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=1
+2026-07-12 14:49:56 | INFO | app.memory | Session history retrieved | session=eval_session_9 | messages=1
+2026-07-12 14:49:56 | INFO | app.memory | Session history saved | session=eval_session_9 | messages=2
+2026-07-12 14:50:04 | INFO | app.agent.agent | Agent query | user=eval_user_10 | role=support_user | query=Update the status of issue 1 to flying
+2026-07-12 14:50:04 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 138.56ms | success=True
+2026-07-12 14:50:04 | INFO | app.agent.agent | Agent LLM call successful | duration=138.56ms
+2026-07-12 14:50:10 | INFO | app.metrics | LLM | llama-3.1-8b-instant | tokens=0 | 5458.55ms | success=True
+2026-07-12 14:50:10 | INFO | app.agent.agent | Agent LLM call successful | duration=5458.55ms
+2026-07-12 14:50:10 | INFO | app.metrics | AGENT | agent_completed | user=eval_user_10 | role=support_user | duration=5691.40ms | success=True | tools=['update_issue_status']
+2026-07-12 14:50:10 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=1
+2026-07-12 14:50:10 | INFO | app.memory | Session history retrieved | session=eval_session_10 | messages=1
+2026-07-12 14:50:10 | INFO | app.memory | Session history saved | session=eval_session_10 | messages=2

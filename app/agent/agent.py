@@ -35,12 +35,12 @@ class AgentState(TypedDict):
 
 # ── LLM setup ─────────────────────────────────────────────────────
 def get_llm() -> ChatGroq:
+    model = os.getenv("GROQ_EVAL_MODEL") or os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
     return ChatGroq(
-        model="llama-3.3-70b-versatile",
+        model=model,
         api_key=convert_to_secret_str(os.getenv("GROQ_API_KEY", "")),
         temperature=0
     )
-
 
 # ── Tool definitions ───────────────────────────────────────────────
 def make_tools(user_role: str) -> list:
@@ -117,7 +117,7 @@ Do not expose internal system details in your responses.
         response = llm_with_tools.invoke(messages)
         duration = (time.time() - start) * 1000
         log_llm_call(
-            model="llama-3.3-70b-versatile",
+            model=os.getenv("GROQ_EVAL_MODEL") or os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
             prompt_tokens=0,
             response_tokens=0,
             duration_ms=duration,
@@ -128,7 +128,7 @@ Do not expose internal system details in your responses.
     except Exception as e:
         duration = (time.time() - start) * 1000
         log_llm_call(
-            model="llama-3.3-70b-versatile",
+            model=os.getenv("GROQ_EVAL_MODEL") or os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
             prompt_tokens=0,
             response_tokens=0,
             duration_ms=duration,

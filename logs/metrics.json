@@ -1,252 +1,431 @@
 {
-  "generated_at": "2026-07-12T12:22:39.303850",
+  "generated_at": "2026-07-12T14:50:10.108782",
   "summary": {
-    "total_api_requests": 3,
-    "successful_api_requests": 3,
+    "total_api_requests": 0,
+    "successful_api_requests": 0,
     "failed_api_requests": 0,
-    "avg_api_latency_ms": 932.86,
-    "total_llm_calls": 7,
-    "successful_llm_calls": 7,
+    "avg_api_latency_ms": 0,
+    "total_llm_calls": 20,
+    "successful_llm_calls": 20,
     "total_tokens_used": 0,
-    "avg_llm_latency_ms": 348.8,
-    "total_tool_calls": 4,
-    "successful_tool_calls": 4,
+    "avg_llm_latency_ms": 1738.23,
+    "total_tool_calls": 11,
+    "successful_tool_calls": 6,
     "total_mcp_calls": 0,
     "successful_mcp_calls": 0,
     "total_errors": 0
   },
   "tool_call_breakdown": {
-    "create_next_action": 1,
-    "get_customer_profile": 1,
-    "get_open_issues": 1,
-    "get_issue_history": 1
+    "get_customer_profile": 3,
+    "get_open_issues": 2,
+    "get_issue_history": 1,
+    "update_issue_status": 2,
+    "create_next_action": 3
   },
-  "api_endpoint_breakdown": {
-    "/api/query": 3
-  },
+  "api_endpoint_breakdown": {},
   "error_breakdown": {},
   "raw": {
-    "api_requests": [
-      {
-        "timestamp": "2026-07-12T12:21:54.997742",
-        "type": "api_request",
-        "endpoint": "/api/query",
-        "method": "POST",
-        "status_code": 200,
-        "duration_ms": 957.12,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-12T12:22:29.377536",
-        "type": "api_request",
-        "endpoint": "/api/query",
-        "method": "POST",
-        "status_code": 200,
-        "duration_ms": 1031.28,
-        "user_role": "unknown",
-        "success": true
-      },
-      {
-        "timestamp": "2026-07-12T12:22:39.303543",
-        "type": "api_request",
-        "endpoint": "/api/query",
-        "method": "POST",
-        "status_code": 200,
-        "duration_ms": 810.19,
-        "user_role": "unknown",
-        "success": true
-      }
-    ],
+    "api_requests": [],
     "llm_calls": [
       {
-        "timestamp": "2026-07-12T12:21:54.767263",
+        "timestamp": "2026-07-12T14:48:22.748569",
         "type": "llm_call",
-        "model": "llama-3.3-70b-versatile",
+        "model": "llama-3.1-8b-instant",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 587.68,
+        "duration_ms": 277.36,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:21:54.988243",
+        "timestamp": "2026-07-12T14:48:22.988169",
         "type": "llm_call",
-        "model": "llama-3.3-70b-versatile",
+        "model": "llama-3.1-8b-instant",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 191.68,
+        "duration_ms": 198.89,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:22:28.606259",
+        "timestamp": "2026-07-12T14:48:31.286622",
         "type": "llm_call",
-        "model": "llama-3.3-70b-versatile",
+        "model": "llama-3.1-8b-instant",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 205.03,
+        "duration_ms": 229.78,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:22:28.851262",
+        "timestamp": "2026-07-12T14:48:31.471347",
         "type": "llm_call",
-        "model": "llama-3.3-70b-versatile",
+        "model": "llama-3.1-8b-instant",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 225.56,
+        "duration_ms": 161.4,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:22:29.372885",
+        "timestamp": "2026-07-12T14:48:39.864247",
         "type": "llm_call",
-        "model": "llama-3.3-70b-versatile",
+        "model": "llama-3.1-8b-instant",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 507.45,
+        "duration_ms": 327.49,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:22:38.771176",
+        "timestamp": "2026-07-12T14:48:40.070584",
         "type": "llm_call",
-        "model": "llama-3.3-70b-versatile",
+        "model": "llama-3.1-8b-instant",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 225.99,
+        "duration_ms": 180.35,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:22:39.293856",
+        "timestamp": "2026-07-12T14:48:48.440911",
         "type": "llm_call",
-        "model": "llama-3.3-70b-versatile",
+        "model": "llama-3.1-8b-instant",
         "prompt_tokens": 0,
         "response_tokens": 0,
         "total_tokens": 0,
-        "duration_ms": 498.22,
+        "duration_ms": 302.94,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:48:48.636322",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 165.31,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:48:56.916791",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 206.89,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:48:57.158954",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 214.77,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:05.549414",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 324.72,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:05.741479",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 182.76,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:14.042841",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 227.94,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:19.349197",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 5298.53,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:27.631766",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 206.33,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:37.911287",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 10272.13,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:47.195354",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 1214.51,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:56.404220",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 9175.4,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:50:04.624140",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 138.56,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:50:10.103189",
+        "type": "llm_call",
+        "model": "llama-3.1-8b-instant",
+        "prompt_tokens": 0,
+        "response_tokens": 0,
+        "total_tokens": 0,
+        "duration_ms": 5458.55,
         "success": true,
         "error": null
       }
     ],
     "tool_calls": [
       {
-        "timestamp": "2026-07-12T12:21:54.795950",
-        "type": "tool_call",
-        "tool_name": "create_next_action",
-        "duration_ms": 27.02,
-        "success": true,
-        "error": null
-      },
-      {
-        "timestamp": "2026-07-12T12:22:28.624802",
+        "timestamp": "2026-07-12T14:48:22.788173",
         "type": "tool_call",
         "tool_name": "get_customer_profile",
-        "duration_ms": 16.16,
+        "duration_ms": 35.05,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:22:28.864741",
+        "timestamp": "2026-07-12T14:48:31.307209",
+        "type": "tool_call",
+        "tool_name": "get_customer_profile",
+        "duration_ms": 14.94,
+        "success": false,
+        "error": "Customer not found"
+      },
+      {
+        "timestamp": "2026-07-12T14:48:31.308362",
         "type": "tool_call",
         "tool_name": "get_open_issues",
-        "duration_ms": 12.14,
+        "duration_ms": 17.03,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:22:38.793687",
+        "timestamp": "2026-07-12T14:48:39.887852",
         "type": "tool_call",
         "tool_name": "get_issue_history",
-        "duration_ms": 18.3,
+        "duration_ms": 19.08,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:48:48.468788",
+        "type": "tool_call",
+        "tool_name": "update_issue_status",
+        "duration_ms": 21.7,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:48:56.942455",
+        "type": "tool_call",
+        "tool_name": "create_next_action",
+        "duration_ms": 20.2,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:05.555590",
+        "type": "tool_call",
+        "tool_name": "create_next_action",
+        "duration_ms": 0.0,
+        "success": false,
+        "error": "Insufficient permissions"
+      },
+      {
+        "timestamp": "2026-07-12T14:49:14.048038",
+        "type": "tool_call",
+        "tool_name": "update_issue_status",
+        "duration_ms": 0.0,
+        "success": false,
+        "error": "Insufficient permissions"
+      },
+      {
+        "timestamp": "2026-07-12T14:49:27.636326",
+        "type": "tool_call",
+        "tool_name": "create_next_action",
+        "duration_ms": 0.0,
+        "success": false,
+        "error": "Insufficient permissions"
+      },
+      {
+        "timestamp": "2026-07-12T14:49:47.224351",
+        "type": "tool_call",
+        "tool_name": "get_customer_profile",
+        "duration_ms": 23.57,
+        "success": false,
+        "error": "Customer not found"
+      },
+      {
+        "timestamp": "2026-07-12T14:49:47.225941",
+        "type": "tool_call",
+        "tool_name": "get_open_issues",
+        "duration_ms": 24.26,
         "success": true,
         "error": null
       }
     ],
     "mcp_calls": [],
     "errors": [],
-    "security_events": [
-      {
-        "timestamp": "2026-07-12T12:21:54.113558",
-        "type": "auth_event",
-        "event_type": "login_success",
-        "username": "carol",
-        "user_role": "['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']",
-        "success": true,
-        "error": null
-      },
-      {
-        "timestamp": "2026-07-12T12:22:28.368238",
-        "type": "auth_event",
-        "event_type": "login_success",
-        "username": "carol",
-        "user_role": "['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']",
-        "success": true,
-        "error": null
-      },
-      {
-        "timestamp": "2026-07-12T12:22:38.510580",
-        "type": "auth_event",
-        "event_type": "login_success",
-        "username": "carol",
-        "user_role": "['default-roles-acme', 'offline_access', 'admin', 'uma_authorization']",
-        "success": true,
-        "error": null
-      }
-    ],
+    "security_events": [],
     "database_events": [
       {
-        "timestamp": "2026-07-12T12:21:54.795735",
+        "timestamp": "2026-07-12T14:48:22.787722",
         "type": "database_event",
-        "operation": "WRITE",
-        "table": "next_actions",
-        "duration_ms": 26.73,
+        "operation": "SELECT",
+        "table": "customers",
+        "duration_ms": 34.51,
+        "rows_returned": 1,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:48:31.306525",
+        "type": "database_event",
+        "operation": "SELECT",
+        "table": "customers",
+        "duration_ms": 14.15,
         "rows_returned": 0,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:22:28.624461",
-        "type": "database_event",
-        "operation": "SELECT",
-        "table": "customers",
-        "duration_ms": 15.77,
-        "rows_returned": 1,
-        "success": true,
-        "error": null
-      },
-      {
-        "timestamp": "2026-07-12T12:22:28.864377",
+        "timestamp": "2026-07-12T14:48:31.307350",
         "type": "database_event",
         "operation": "SELECT",
         "table": "issues",
-        "duration_ms": 11.73,
-        "rows_returned": 1,
+        "duration_ms": 15.76,
+        "rows_returned": 0,
         "success": true,
         "error": null
       },
       {
-        "timestamp": "2026-07-12T12:22:38.792398",
+        "timestamp": "2026-07-12T14:48:39.886634",
         "type": "database_event",
         "operation": "SELECT",
         "table": "issue_updates",
-        "duration_ms": 16.72,
+        "duration_ms": 17.68,
         "rows_returned": 2,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:48:48.467466",
+        "type": "database_event",
+        "operation": "WRITE",
+        "table": "issues",
+        "duration_ms": 20.14,
+        "rows_returned": 0,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:48:56.941560",
+        "type": "database_event",
+        "operation": "WRITE",
+        "table": "next_actions",
+        "duration_ms": 19.16,
+        "rows_returned": 0,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:47.222392",
+        "type": "database_event",
+        "operation": "SELECT",
+        "table": "customers",
+        "duration_ms": 21.4,
+        "rows_returned": 0,
+        "success": true,
+        "error": null
+      },
+      {
+        "timestamp": "2026-07-12T14:49:47.223575",
+        "type": "database_event",
+        "operation": "SELECT",
+        "table": "issues",
+        "duration_ms": 21.11,
+        "rows_returned": 0,
         "success": true,
         "error": null
       }
     ]
   },
-  "total_agent_calls": 3,
-  "successful_agent_calls": 3,
-  "total_auth_events": 3,
-  "total_database_events": 4
+  "total_agent_calls": 10,
+  "successful_agent_calls": 10,
+  "total_auth_events": 0,
+  "total_database_events": 8
 }
