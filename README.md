@@ -30,19 +30,46 @@ open http://localhost:8502
 
 ## Architecture Overview
 
-The system is composed of four layers:
+```mermaid
+graph TD
+    User["👤 User Browser\nHTML Chat UI"] 
+    Dashboard["📊 Developer Dashboard\nStreamlit :8502"]
+    
+    User -->|HTTPS + JWT| FastAPI
+    Dashboard -->|GET /metrics| FastAPI
 
-**1. User Interface**
-HTML/CSS/JS chat UI served by FastAPI at `/ui`. ChatGPT-style interface with fixed header, scrollable chat, and fixed input. Security alerts appear inline when sensitive data is detected.
+    subgraph FastAPI ["⚡ FastAPI Application :8000"]
+        Auth["🔐 Keycloak JWT Auth\nRBAC Enforcement"]
+        Security["🛡️ Security Layer\nSensitive Data Detection\nHuman-in-the-Loop"]
+        Routes["📡 API Routes\n/api/query\n/api/mcp\n/api/skills"]
+        Metrics["📈 Metrics\n/metrics endpoint\nPower BI ready"]
+    end
 
-**2. API Layer — FastAPI**
-Handles authentication (Keycloak JWT), RBAC enforcement, sensitive data detection, human-in-the-loop approval, data sanitisation, and observability. All requests are logged and tracked.
+    Auth --> Security
+    Security --> Routes
+    Routes --> Agent
 
-**3. Agent Layer — LangGraph**
-The LangGraph agent dynamically selects from 6 tools based on the user query. The MCP server exposes the same tools in a standardised format. The Escalation Skill provides a structured multi-step workflow for customer risk assessment.
+    subgraph Agent ["🤖 LangGraph Agent"]
+        LLM["Groq llama-3.3-70b\nLLM Reasoning"]
+        Tools["6 Tools\nget_customer_profile\nget_open_issues\nget_issue_history\ncreate_next_action\nupdate_issue_status\nescalation_summary"]
+        MCP["MCP Server\nStandardised\nTool Definitions"]
+        Skill["Customer Escalation\nSummary Skill\nRisk Assessment"]
+    end
 
-**4. Infrastructure — Docker Compose**
-PostgreSQL 15 (data), Redis 7 (conversation memory), Keycloak 24 (authentication). All services start with `docker compose up`. Keycloak realm auto-imports from `infra/keycloak/acme-realm.json`.
+    LLM --> Tools
+    Tools --> MCP
+    Tools --> Skill
+
+    subgraph Infra ["🐳 Docker Compose Infrastructure"]
+        PG["PostgreSQL 15\n5 tables\nSeed data"]
+        Redis["Redis 7\nConversation Memory\n1hr TTL"]
+        KC["Keycloak 24\n3 Roles\n3 Users\nAuto-import"]
+    end
+
+    MCP --> PG
+    Agent --> Redis
+    FastAPI --> KC
+```
 
 ---
 
