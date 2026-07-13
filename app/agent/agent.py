@@ -1,5 +1,6 @@
 import os
 import time
+import re as _re
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_core.utils.utils import convert_to_secret_str
@@ -242,6 +243,8 @@ async def run_agent(
             final_message.content if hasattr(final_message, "content")
             else final_message
         )
+        # Strip XML tags added by some models (e.g. qwen adds <response> tags)
+        response_content = _re.sub(r'<[^>]+>', '', response_content).strip()
 
         # Save to Redis — only the original query and response
         append_to_session(session_key, "user", query)
