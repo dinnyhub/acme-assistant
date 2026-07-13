@@ -229,7 +229,7 @@ async def create_next_action(
     """Create a next action for an issue. Admin only."""
     from app.database import create_next_action
     success = create_next_action(issue_id, action_text, assigned_to, due_date)
-    return {"success": success, "message": "Next action created"}
+    return {"success": success, "message": f"Next action created successfully for issue {issue_id} — assigned to {assigned_to}, due {due_date}"}
 
 
 @router.put("/issues/{issue_id}/status",
@@ -244,7 +244,7 @@ async def update_issue_status(
     """Update issue status. Support user and admin only."""
     from app.database import update_issue_status
     success = update_issue_status(issue_id, new_status)
-    return {"success": success, "message": f"Status updated to {new_status}"}
+    return {"success": success, "message": f"Issue {issue_id} status successfully updated to '{new_status}'"}
 
 
 # ── MCP routes ─────────────────────────────────────────────────────
