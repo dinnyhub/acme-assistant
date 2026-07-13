@@ -184,7 +184,6 @@ async def run_agent(
     username: str = "unknown",
     session_id: str | None = None
 ) -> str:
-    from app.memory import get_session_history, append_to_session
 
     start = time.time()
     logger.info(
