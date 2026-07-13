@@ -51,7 +51,7 @@ INSERT INTO customers (name, email, account_type) VALUES
     ('HealthPlus', 'admin@healthplus.org', 'premium');
 
 INSERT INTO issues (customer_id, title, status, priority) VALUES
-    (1, 'API integration failing intermittently', 'open', 'high'),
+    (1, 'API integration failing intermittently', 'resolved', 'high'),
     (1, 'Invoice discrepancy for Q2 2025', 'open', 'medium'),
     (2, 'Onboarding documentation unclear', 'open', 'low'),
     (3, 'Data export not completing', 'open', 'critical'),
