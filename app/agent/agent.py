@@ -260,4 +260,11 @@ async def run_agent(
             success=False,
             error=str(e)
         )
+        error_str = str(e)
+        if "rate_limit_exceeded" in error_str or "429" in error_str:
+            raise Exception(
+                "The AI service has reached its daily token limit. "
+                "This resets every 24 hours. Please try again later or "
+                "contact your administrator to upgrade the API plan."
+            )
         raise
