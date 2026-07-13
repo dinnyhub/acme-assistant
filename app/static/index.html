@@ -597,6 +597,8 @@
                 } else {
                     addErrorMessage(detail);
                 }
+            } else if (resp.status === 429) {
+                addErrorMessage(data.detail || 'The AI service has reached its daily token limit. Please try again later.');
             } else {
                 addErrorMessage(data.detail || 'An error occurred. Please try again.');
             }

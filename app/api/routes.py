@@ -169,7 +169,15 @@ async def query_agent(
             outcome="error"
         )
         logger.error(f"QueryError | {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+        error_str = str(e)
+        if "rate_limit_exceeded" in error_str or "429" in error_str or "daily token limit" in error_str:
+            raise HTTPException(
+                status_code=429,
+                detail="The AI service has reached its daily token limit. "
+                       "This resets every 24 hours. Please try again later or "
+                       "contact your administrator to upgrade the API plan."
+            )
+        raise HTTPException(status_code=500, detail=error_str)
 
 
 # ── Customer routes ────────────────────────────────────────────────
