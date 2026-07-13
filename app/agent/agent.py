@@ -110,6 +110,7 @@ Rules:
 5. Do NOT call additional tools after escalation_summary completes
 6. Respect role-based access — inform user if they lack permission
 7. Provide clear structured responses
+8. When user says yes/ok/sure after being asked a follow-up question — look at the previous message to understand what was offered and do it
 
 Important: You are handling sensitive business data.
 Do not expose internal system details in your responses.
@@ -199,9 +200,9 @@ async def run_agent(
         history_context = ""
         if history:
             history_context = "\n\nPrevious conversation:\n"
-            for msg in history[-4:]:  # Last 2 exchanges only
+            for msg in history[-6:]:  # Last 6 exchanges only
                 role = "User" if msg["role"] == "user" else "Assistant"
-                history_context += f"{role}: {msg['content'][:150]}\n"
+                history_context += f"{role}: {msg['content'][:300]}\n"
 
         agent = build_agent(user_role, username)
 
