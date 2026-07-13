@@ -241,7 +241,7 @@ Pattern matching covers common UK financial data types (email, phone, credit car
 AI tools were used during development of this project:
 
 - **GitHub Copilot** — inline code completion and refactoring during development
-- **Groq llama-3.3-70b-versatile** — production LLM powering the agent reasoning, tool calling, and response generation
+- **Groq qwen/qwen3-32b** — primary production LLM powering the agent reasoning, tool calling, and response generation
 - **Groq llama-3.1-8b-instant** — evaluation runs, chosen for higher daily token quota (500K vs 100K TPD)
 
 **What was delegated to AI tools:** Code scaffolding, boilerplate generation, debugging suggestions, and documentation drafting were delegated to AI tools. This freed time for architecture decisions, system integration, and security design.
