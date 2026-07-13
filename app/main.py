@@ -13,6 +13,8 @@ import os
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from app.memory import get_redis_health
+import httpx
+from app.memory import clear_session
 
 load_dotenv()
 logger = get_logger(__name__)
@@ -112,15 +114,10 @@ async def get_config():
 
 @app.post("/login", tags=["Auth"])
 async def login(request: Request):
-    """
-    Proxy login endpoint — browser calls this instead of Keycloak directly.
-    Avoids CORS issues with Keycloak.
-    """
-    import httpx
     body = await request.form()
     username = body.get("username")
     password = body.get("password")
-    
+
     async with httpx.AsyncClient() as client:
         resp = await client.post(
             f"{os.getenv('KEYCLOAK_URL')}/realms/{os.getenv('KEYCLOAK_REALM')}/protocol/openid-connect/token",
@@ -132,9 +129,10 @@ async def login(request: Request):
                 "password": password
             }
         )
-    
+
     if resp.status_code == 200:
+        # Clear old Redis session on fresh login
+        clear_session(str(username))
         return resp.json()
     else:
-        from fastapi import HTTPException
         raise HTTPException(status_code=401, detail="Invalid credentials")

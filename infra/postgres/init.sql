@@ -77,3 +77,19 @@ INSERT INTO user_roles (username, role) VALUES
     ('alice', 'sales_user'),
     ('bob', 'support_user'),
     ('carol', 'admin');
+-- Additional issue updates for richer demo data
+INSERT INTO issue_updates (issue_id, update_text, created_by) VALUES
+(2, 'Finance team reviewed the discrepancy - awaiting sign off from CFO', 'bob'),
+(3, 'Documentation team assigned - first draft due Friday', 'carol'),
+(4, 'Backend team identified root cause - database query optimisation needed', 'bob'),
+(4, 'Fix deployed to staging - testing in progress', 'carol'),
+(5, 'Third party vendor contacted - awaiting response', 'bob'),
+(6, 'Performance profiling completed - CDN caching issue identified', 'bob'),
+(7, 'API credentials rotated - testing new integration', 'carol');
+
+-- Additional next actions for demo
+INSERT INTO next_actions (issue_id, action_text, assigned_to, due_date) VALUES
+(2, 'Schedule CFO sign off meeting', 'alice', '2025-08-01'),
+(4, 'Deploy fix to production after staging tests pass', 'bob', '2025-07-25'),
+(6, 'Implement CDN caching for dashboard assets', 'bob', '2025-07-30'),
+(7, 'Complete integration testing with new API credentials', 'bob', '2025-07-28');
