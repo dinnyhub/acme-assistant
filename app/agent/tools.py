@@ -45,6 +45,7 @@ def tool_get_open_issues(customer_id: int) -> dict:
     """
     start = time.time()
     try:
+        customer_id = int(customer_id)
         issues = get_open_issues(customer_id)
         duration = (time.time() - start) * 1000
         log_tool_call("get_open_issues",
@@ -71,6 +72,7 @@ def tool_get_issue_history(issue_id: int) -> dict:
     """
     start = time.time()
     try:
+        issue_id = int(issue_id)
         history = get_issue_history(issue_id)
         duration = (time.time() - start) * 1000
         log_tool_call("get_issue_history",
@@ -113,6 +115,7 @@ def tool_create_next_action(
         }
 
     try:
+        issue_id = int(issue_id)
         create_next_action(
             issue_id, action_text, assigned_to, due_date
         )
@@ -161,6 +164,7 @@ def tool_update_issue_status(
         return {"error": f"Invalid status. Must be one of: {valid_statuses}"}
 
     try:
+        issue_id = int(issue_id)
         update_issue_status(issue_id, new_status)
         duration = (time.time() - start) * 1000
         log_tool_call("update_issue_status",
