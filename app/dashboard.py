@@ -66,11 +66,11 @@ avg_llm_lat = s.get("avg_llm_latency_ms", 0)
 total_tools = s.get("total_tool_calls", 0)
 success_tools = s.get("successful_tool_calls", 0)
 total_errors = s.get("total_errors", 0)
-total_agent = s.get("total_agent_calls", 0)
-success_agent = s.get("successful_agent_calls", 0)
-total_security = s.get("total_security_events", 0)
+total_agent = data.get("total_agent_calls", 0)
+success_agent = data.get("successful_agent_calls", 0)
+total_security = data.get("total_auth_events", 0)
 pending_approvals = s.get("pending_approvals", 0)
-total_db = s.get("total_database_events", 0)
+total_db = data.get("total_database_events", 0)
 total_mcp = s.get("total_mcp_calls", 0)
 tool_success_rate = round(success_tools * 100 / total_tools) if total_tools > 0 else 0
 api_success_rate = round(success_api * 100 / total_api) if total_api > 0 else 0
@@ -226,10 +226,13 @@ with col_sec:
     if security_events:
         df_sec = pd.DataFrame(security_events[-10:][::-1])
         df_sec["time"] = pd.to_datetime(df_sec["timestamp"]).dt.strftime("%H:%M:%S")
+        available_cols = ["time", "event_type"]
+        for col in ["requested_by", "username", "outcome"]:
+            if col in df_sec.columns:
+                available_cols.append(col)
         st.dataframe(
-            df_sec[["time", "event_type", "requested_by", "outcome"]],
+            df_sec[available_cols],
             hide_index=True,
-            
         )
     else:
         st.success("No security events — all queries are clean")
