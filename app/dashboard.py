@@ -293,9 +293,8 @@ with col_mcp:
 st.divider()
 st.caption("Auto-refreshes every 30 seconds. Click 🔄 Refresh to update manually.")
 
-# Auto refresh
-if "last_refresh" not in st.session_state:
-    st.session_state.last_refresh = time.time()
-if time.time() - st.session_state.last_refresh > 30:
-    st.session_state.last_refresh = time.time()
-    st.rerun()
+# Auto refresh every 30 seconds using meta refresh
+st.markdown(
+    '<meta http-equiv="refresh" content="30">',
+    unsafe_allow_html=True
+)
