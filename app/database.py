@@ -88,11 +88,17 @@ def execute_write(query: str, params: tuple | None = None) -> bool:
             conn.close()
 # ── Database query functions used by agent tools ──────────────────
 
-def get_customer_by_name(name: str) -> dict | None:
-    """Get customer profile by name."""
+def get_customer_by_name(customer_name: str) -> dict | None:
+    """Get customer by name or email."""
     results = execute_query(
-        "SELECT * FROM customers WHERE LOWER(name) LIKE LOWER(%s)",
-        (f"%{name}%",)
+        """SELECT c.*, 
+           COUNT(i.id) as total_issues
+           FROM customers c
+           LEFT JOIN issues i ON c.id = i.customer_id
+           WHERE LOWER(c.name) = LOWER(%s) 
+           OR LOWER(c.email) = LOWER(%s)
+           GROUP BY c.id""",
+        (customer_name, customer_name)
     )
     return results[0] if results else None
 
