@@ -9,7 +9,7 @@ import sys
 import json
 import time
 import os
-os.environ["GROQ_EVAL_MODEL"] = "llama-3.1-8b-instant"
+os.environ["GROQ_EVAL_MODEL"] = "qwen/qwen3-32b"
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.agent.agent import run_agent
@@ -26,7 +26,7 @@ EVALUATION_SET = [
     {
         "id": 1,
         "category": "Customer Profile — Pass",
-        "question": "Show me the customer profile for Acme Corp",
+        "question": "Show me the details for Acme Corp customer",
         "expected_tool": "get_customer_profile",
         "expected_keywords": ["acme corp", "enterprise"],
         "expected_outcome": "pass",

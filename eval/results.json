@@ -5,24 +5,24 @@
   "pass_rate": "100%",
   "pass_cases_correct": "5/5",
   "fail_cases_correct": "5/5",
-  "total_duration_ms": 35698.33,
-  "avg_latency_ms": 3569.83,
+  "total_duration_ms": 94596.72,
+  "avg_latency_ms": 9459.67,
   "results": [
     {
       "id": 1,
       "category": "Customer Profile \u2014 Pass",
-      "question": "Show me the customer profile for Acme Corp",
+      "question": "Show me the details for Acme Corp customer",
       "role": "sales_user",
       "expected_tool": "get_customer_profile",
       "expected_outcome": "pass",
-      "response_preview": "The customer profile for Acme Corp is as follows:\n\n- Customer ID: 1\n- Customer Name: Acme Corp\n- Email: contact@acmecorp.com\n- Account Type: Enterprise\n- Created At: 2026-07-09 18:13:33.884849\n\nNow, let's get the open issues for Acme Corp.",
+      "response_preview": "Here are the details for the Acme Corp customer:\n\n**Customer Profile**\n- **ID**: 1\n- **Name**: Acme Corp\n- **Email**: contact@acmecorp.com\n- **Account Type**: Enterprise\n- **Created At**: July 9, 2026\n- **Total Issues**: 2\n\nWould you like me to check their open issues or provide additional details?",
       "passed": true,
       "found_keywords": [
         "acme corp",
         "enterprise"
       ],
       "missing_keywords": [],
-      "duration_ms": 587.63
+      "duration_ms": 1952.6
     },
     {
       "id": 2,
@@ -31,14 +31,14 @@
       "role": "sales_user",
       "expected_tool": "get_open_issues",
       "expected_outcome": "pass",
-      "response_preview": "It seems that Global Finance Inc. does not have any open issues.",
+      "response_preview": "Here are the current open issues for **Global Finance Inc**:\n\n1. **Issue ID 4**  \n   - **Title**: Data export not completing  \n   - **Status**: Open  \n   - **Priority**: Critical  \n   - **Created**: July 9, 2026  \n   - **Last Updated**: July 15, 2026  \n\n2. **Issue ID 5**  \n   - **Title**: User permi",
       "passed": true,
       "found_keywords": [
         "global finance",
         "issue"
       ],
       "missing_keywords": [],
-      "duration_ms": 484.67
+      "duration_ms": 12989.66
     },
     {
       "id": 3,
@@ -47,7 +47,7 @@
       "role": "support_user",
       "expected_tool": "get_issue_history",
       "expected_outcome": "pass",
-      "response_preview": "The history of issue 1 for Acme Corp includes two updates:\n\n1. The customer reported API errors starting 3 days ago. Logs were reviewed.\n2. A rate limiting issue in middleware was identified, and a fix is in progress.",
+      "response_preview": "Here is the history for issue #1:\n\n**Issue Title:** API integration failing intermittently  \n**Total Updates:** 2  \n\n1. **July 9, 2026 | 6:13:33 PM**  \n   *Updated by:* Support Team  \n   *Description:* Customer reported API errors starting 3 days ago. Logs reviewed.\n\n2. **July 9, 2026 | 6:13:33 PM**",
       "passed": true,
       "found_keywords": [
         "issue",
@@ -55,7 +55,7 @@
         "api"
       ],
       "missing_keywords": [],
-      "duration_ms": 595.42
+      "duration_ms": 18666.57
     },
     {
       "id": 4,
@@ -64,14 +64,14 @@
       "role": "support_user",
       "expected_tool": "update_issue_status",
       "expected_outcome": "pass",
-      "response_preview": "However, I need to check if the user has the necessary permissions to update the issue status. Since the current user is 'eval_user_4' and their role is 'support_user', they should have the necessary permissions to update the issue status.",
+      "response_preview": "The status of issue 3 has been successfully updated to **in_progress**. Let me know if you need further assistance with this issue or other customer matters.",
       "passed": true,
       "found_keywords": [
         "status",
         "issue"
       ],
       "missing_keywords": [],
-      "duration_ms": 566.19
+      "duration_ms": 14584.3
     },
     {
       "id": 5,
@@ -80,14 +80,14 @@
       "role": "admin",
       "expected_tool": "create_next_action",
       "expected_outcome": "pass",
-      "response_preview": "The next action has been created for issue 4.",
+      "response_preview": "The next action for issue 4 has been successfully created:\n\n**Action:** Schedule emergency call  \n**Assigned to:** support_team  \n**Due Date:** 2025-08-15  \n\nLet me know if you need further assistance with this issue.",
       "passed": true,
       "found_keywords": [
         "created",
         "next action"
       ],
       "missing_keywords": [],
-      "duration_ms": 525.79
+      "duration_ms": 13637.03
     },
     {
       "id": 6,
@@ -96,13 +96,13 @@
       "role": "sales_user",
       "expected_tool": "create_next_action",
       "expected_outcome": "deny",
-      "response_preview": "It seems that the current user, eval_user_6, does not have the necessary permissions to create a next action. The function create_next_action is restricted to admin users only.",
+      "response_preview": "The `create_next_action` function requires admin privileges. As a sales user, you don't have permission to create next actions. Would you like me to provide the parameters for an admin to execute this action? \n\nParameters would be:\n```json\n{\n  \"issue_id\": 1,\n  \"action_text\": \"Call the customer\",\n  \"",
       "passed": true,
       "found_keywords": [
         "admin"
       ],
       "missing_keywords": [],
-      "duration_ms": 576.04
+      "duration_ms": 3229.55
     },
     {
       "id": 7,
@@ -111,13 +111,13 @@
       "role": "sales_user",
       "expected_tool": "update_issue_status",
       "expected_outcome": "deny",
-      "response_preview": "You are currently logged in as a sales user, which does not have the necessary permissions to update issue status. You would need to log in as a support user or admin to perform this action.",
+      "response_preview": "The current user role (sales_user) does not have permission to update issue statuses. This action requires a support_user or admin role. Please contact your support team or an administrator to resolve this issue.",
       "passed": true,
       "found_keywords": [
         "support"
       ],
       "missing_keywords": [],
-      "duration_ms": 5610.25
+      "duration_ms": 1884.97
     },
     {
       "id": 8,
@@ -126,13 +126,13 @@
       "role": "support_user",
       "expected_tool": "create_next_action",
       "expected_outcome": "deny",
-      "response_preview": "It seems that the current user, eval_user_8, does not have the necessary permissions to create a next action. This function is restricted to admin users only.",
+      "response_preview": "You do not have permission to create next actions (admin only). Would you like me to check if an admin can assist with this request?",
       "passed": true,
       "found_keywords": [
         "admin"
       ],
       "missing_keywords": [],
-      "duration_ms": 10558.06
+      "duration_ms": 3211.35
     },
     {
       "id": 9,
@@ -141,13 +141,13 @@
       "role": "sales_user",
       "expected_tool": "get_customer_profile",
       "expected_outcome": "not_found",
-      "response_preview": "It seems that the customer 'NonExistent Company Ltd' does not exist in the system. Therefore, there are no open issues to display.",
+      "response_preview": "The customer \"NonExistent Company Ltd\" does not exist in our system. Therefore, there are no open issues to display for this customer.\n\nIf you believe this may be a naming discrepancy, please double-check the customer name or provide additional details for further assistance.",
       "passed": true,
       "found_keywords": [
         "nonexistent"
       ],
       "missing_keywords": [],
-      "duration_ms": 10496.48
+      "duration_ms": 15854.62
     },
     {
       "id": 10,
@@ -156,14 +156,14 @@
       "role": "support_user",
       "expected_tool": "update_issue_status",
       "expected_outcome": "not_found",
-      "response_preview": "It seems that the status 'flying' is not a valid status for an issue. As a support user, I do not have the permission to update the status to a custom value. I can only update the status to one of the following valid statuses: 'open', 'in_progress', 'resolved', or 'closed'.\n\nTo update the status, I ",
+      "response_preview": "The status update failed because \"flying\" is not a valid status. Valid statuses are: open, in_progress, resolved, or closed. \n\nWould you like to update the status to one of these valid options instead?",
       "passed": true,
       "found_keywords": [
         "not a valid",
         "flying"
       ],
       "missing_keywords": [],
-      "duration_ms": 5697.8
+      "duration_ms": 8586.07
     }
   ]
 }
