@@ -1,6 +1,10 @@
 # Acme Operations Assistant
 
-An agentic AI assistant for Acme Operations — built for the EY Applied AI Engineer technical assessment. The system enables internal staff to query customer data, manage support issues, and receive AI-powered escalation summaries through a secure, role-based conversational interface.
+An agentic AI assistant for Acme Operations internal staff. 
+Built with FastAPI, LangGraph, Groq LLM, Keycloak authentication, 
+PostgreSQL, Redis, and Docker Compose. Features role-based access 
+control, human-in-the-loop security, customer escalation skill, 
+MCP server, developer dashboard, and 10/10 evaluation pass rate.
 
 ---
 
